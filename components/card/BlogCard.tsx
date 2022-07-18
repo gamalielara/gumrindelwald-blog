@@ -15,7 +15,7 @@ const BlogCard: React.FC<BlogCardInterface> = ({
   slug,
 }) => {
   return (
-    <article className="lg:w-30p md:w-40p w-full md:relative flex flex-col m-2 rounded-lg shadow-xl bg-gray-50 p-2">
+    <article className="lg:w-30p md:w-40p w-full md:relative flex flex-col m-2 rounded-xl shadow-md bg-gray-100 p-2">
       <div
         className="article-heading-image rounded w-full md:h-auto h-40 relative mr-4"
         style={{ paddingTop: "50%" }}
@@ -35,19 +35,17 @@ const BlogCard: React.FC<BlogCardInterface> = ({
         />
       </div>
       <div className="blog-content flex flex-col w-full p-4">
-        <Link href={`/article/${slug}`}>
-          <a className="flex font-semibold hover:underline">
-            <HeadingFive>{title}</HeadingFive>
-          </a>
-        </Link>
-
-        <span className="text-sm">{new Date(datePosted).toDateString()}</span>
         <div className="categories flex gap-4">
           {category.map((c, i) => (
             <CategoryBox key={i}>{c}</CategoryBox>
           ))}
         </div>
-        {/* <p className="text-justify text-sm">{excerpt}</p> */}
+        <span className="text-sm">{new Date(datePosted).toDateString()}</span>
+        <Link href={`/article/${slug}`}>
+          <a className="flex font-semibold hover:text-gray-600 transition-all duration-500">
+            <HeadingFive>{title}</HeadingFive>
+          </a>
+        </Link>
       </div>
     </article>
   );

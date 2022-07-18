@@ -68,3 +68,9 @@ export interface params {
     slug: string;
   };
 }
+
+export interface StateInterface {
+  articles: {
+    posts: ArticleInterface[];
+  };
+}

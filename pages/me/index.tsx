@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
   faInternetExplorer,
+  faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
@@ -64,6 +65,27 @@ const AboutMe: NextPage = () => {
             <ul className="list-none p-0">
               <li>
                 <a
+                  href="https://www.linkedin.com/in/aragamaliel/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4 mr-2" />
+                  LinkedIn
+                </a>
+                <a
+                  href="https://gamalielara.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center"
+                >
+                  <FontAwesomeIcon
+                    icon={faInternetExplorer}
+                    className="w-4 h-4 mr-2"
+                  />
+                  My personal website
+                </a>
+                <a
                   href="https://twitter.com/gumrindelwald"
                   target="_blank"
                   rel="noreferrer"
@@ -92,18 +114,6 @@ const AboutMe: NextPage = () => {
                 >
                   <FontAwesomeIcon icon={faMailBulk} className="w-4 h-4 mr-2" />
                   aragamalielboanerges@gmail.com
-                </a>
-                <a
-                  href="https://gamalielara.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center"
-                >
-                  <FontAwesomeIcon
-                    icon={faInternetExplorer}
-                    className="w-4 h-4 mr-2"
-                  />
-                  My personal website
                 </a>
               </li>
             </ul>

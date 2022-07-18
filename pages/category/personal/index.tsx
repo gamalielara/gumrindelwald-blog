@@ -10,7 +10,7 @@ import { graphcms } from "../../../utils/vars";
 
 const QUERY = gql`
   query Posts {
-    posts(where: { category: PersonalThoughts }) {
+    posts(where: { category: PersonalThoughts }, orderBy: publishedAt_DESC) {
       category
       datePosted
       id

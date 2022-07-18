@@ -13,10 +13,10 @@ const NavMobileButton: React.FC<NavMobileButtonInterface> = ({
 
   return (
     <button
-      className="bg-gray-300 rounded-full absolute bottom-4 right-4 w-10 h-10 flex justify-center items-center z-40 transition-all ease-in-out duration-700"
+      className="bg-gray-300 rounded-full absolute bottom-4 right-4 w-12 h-12 flex justify-center items-center z-40 transition-all ease-in-out duration-700"
       onClick={showBarHandler}
     >
-      <FontAwesomeIcon icon={faBars} className="h-5" />
+      <FontAwesomeIcon icon={faBars} className="h-6" />
     </button>
   );
 };

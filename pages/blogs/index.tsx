@@ -5,13 +5,15 @@ import LatestBlogCard from "../../components/card/LatestBlogCard";
 import HeadDocument from "../../components/HeadDocument";
 import PageContainer from "../../components/container/PageContainer";
 import HeroContainer from "../../components/container/HeroContainer";
-import { BlogsPage } from "../../utils/vars";
-import { gql, GraphQLClient } from "graphql-request";
+import { BlogCardInterface, BlogsPage, StateInterface } from "../../utils/vars";
+import { gql } from "graphql-request";
 import { graphcms } from "../../utils/vars";
+import { useDispatch, useSelector } from "react-redux";
+import { setArticles } from "../../redux/articlesSlice";
 
 const QUERY = gql`
   {
-    posts {
+    posts(orderBy: publishedAt_DESC) {
       category
       datePosted
       id
@@ -33,6 +35,14 @@ const QUERY = gql`
 const Blogs: NextPage<BlogsPage> = ({ posts }) => {
   const featuredBlogs = posts.filter((post) => post.featured);
   const featuredBlog = featuredBlogs[featuredBlogs.length - 1];
+  const articles: BlogCardInterface[] = useSelector(
+    (state: StateInterface) => state.articles.posts
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setArticles(posts));
+  }, []);
 
   return (
     <>
@@ -51,8 +61,8 @@ const Blogs: NextPage<BlogsPage> = ({ posts }) => {
         />
 
         <section className="all-blogs-container w-full flex flex-wrap justify-evenly lg:justify-between mb-4">
-          {posts &&
-            posts.map((blog) => (
+          {articles &&
+            articles.map((blog) => (
               <BlogCard
                 key={blog.title}
                 thumbnail={blog.thumbnail}
