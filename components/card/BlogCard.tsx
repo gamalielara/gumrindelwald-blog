@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 import { BlogCardInterface, CATEGORIES, IMAGELOADER } from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
-import Button from "../Button";
 import HeadingFive from "../text/HeadingFive";
 
 const BlogCard: React.FC<BlogCardInterface> = ({

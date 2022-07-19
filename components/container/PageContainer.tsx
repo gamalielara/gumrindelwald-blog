@@ -22,7 +22,7 @@ const PageContainer: React.FC<PageContainerInterface> = ({ children }) => {
         <div
           className={`sidebar w-fit h-screen fixed bottom-0 ${
             !showSideBar ? "right-0" : "right-3/4"
-          } flex md:hidden items-end transition-all duration-700 ease-in-out z-50`}
+          } flex lg-md:hidden items-end transition-all duration-700 ease-in-out z-50`}
         >
           <NavMobileButton setShowBar={setShowBar} />
           <SideBar />

@@ -11,6 +11,19 @@ module.exports = {
       bold: 600,
       extrabold: 700,
     },
+    screens: {
+      sm: "640px",
+
+      md: "768px",
+
+      "lg-md": "790px",
+
+      lg: "1024px",
+
+      xl: "1280px",
+
+      "2xl": "1536px",
+    },
     extend: {
       fontFamily: {
         inter: ["Rubik", "sans-serif"],

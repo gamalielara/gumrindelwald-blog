@@ -13,7 +13,6 @@ const Navbar: React.FC = () => {
     const header = document.getElementById("header");
     if (header) {
       if (window.scrollY > header.clientHeight) {
-        console.log("yes");
         header.style.top = "0";
       }
 
@@ -36,12 +35,12 @@ const Navbar: React.FC = () => {
       id="header"
     >
       <div
-        className="logo-container md:w-[15%] w-[50%] md:mx-0 md:mr-auto mx-auto hover:cursor-pointer"
+        className="logo-container lg-md:w-[15%] md:w-[30%] w-[50%] lg-md:mx-0 lg-md:mr-auto mx-auto hover:cursor-pointer"
         onClick={() => route.push("/")}
       >
         <Image src={LogoBlack} alt="gumrindelwald logo" />
       </div>
-      <nav className="hidden md:block">
+      <nav className="hidden lg-md:block">
         <ul className="list-none flex flex-wrap justify-around">
           {MENUS.map((menu) => (
             <Link href={menu.url} key={menu.name}>
