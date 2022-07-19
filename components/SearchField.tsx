@@ -53,7 +53,7 @@ const SearchField: React.FC = () => {
       />
       <button
         className="search-btn absolute right-0 bg-black rounded h-full w-8 p-2"
-        onClick={searchArticles}
+        onClick={() => searchArticles}
       >
         <FontAwesomeIcon icon={faSearch} className="text-white" />
       </button>

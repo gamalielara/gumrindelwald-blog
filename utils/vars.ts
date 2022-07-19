@@ -4,7 +4,7 @@ interface ImageLoader {
   src: string;
 }
 
-export const graphcms = new GraphQLClient(process.env.API_ENDPOINT);
+export const graphcms = new GraphQLClient(process.env.API_ENDPOINT as string);
 
 export const IMAGELOADER = (fn: ImageLoader) => fn.src;
 

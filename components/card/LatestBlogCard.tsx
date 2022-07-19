@@ -19,7 +19,7 @@ const LatestBlogCard: React.FC<BlogCardInterface> = ({
     const latestBlogCard = document.getElementById("featured-blog");
     const articleImageContainer = document.getElementsByClassName(
       "article-heading-image"
-    )[0];
+    )[0] as HTMLElement;
 
     if (window.innerWidth >= 700 && latestBlogCard && articleImageContainer) {
       articleImageContainer.style.height = `${latestBlogCard.clientHeight}px`;
