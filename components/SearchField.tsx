@@ -1,7 +1,7 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { gql, GraphQLClient } from "graphql-request";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setArticles } from "../redux/articlesSlice";
 import { graphcms } from "../utils/vars";
@@ -27,18 +27,29 @@ const QUERY = gql`
   }
 `;
 
-const SearchField: React.FC = () => {
+interface Interface {
+  setShowFeatured?: Dispatch<SetStateAction<boolean>>;
+}
+
+const SearchField: React.FC<Interface> = ({ setShowFeatured }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const dispatch = useDispatch();
 
-  const searchArticles = async (e: MouseEvent) => {
-    e.preventDefault();
+  const searchArticles = async () => {
     try {
       const articles = await graphcms.request(QUERY, { article: searchQuery });
       dispatch(setArticles(articles.posts));
       console.log(articles.posts);
     } catch (err) {
       console.log(err);
+    } finally {
+      if (setShowFeatured) {
+        if (searchQuery !== "") {
+          setShowFeatured(() => false);
+        } else {
+          setShowFeatured(() => true);
+        }
+      }
     }
   };
 
@@ -53,7 +64,7 @@ const SearchField: React.FC = () => {
       />
       <button
         className="search-btn absolute right-0 bg-black rounded h-full w-8 p-2"
-        onClick={() => searchArticles}
+        onClick={() => searchArticles()}
       >
         <FontAwesomeIcon icon={faSearch} className="text-white" />
       </button>

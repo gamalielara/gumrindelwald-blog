@@ -33,6 +33,7 @@ const QUERY = gql`
 `;
 
 const Blogs: NextPage<BlogsPage> = ({ posts }) => {
+  const [showFeatured, setShowFeatured] = useState<boolean>(true);
   const featuredBlogs = posts.filter((post) => post.featured);
   const featuredBlog = featuredBlogs[featuredBlogs.length - 1];
   const articles: BlogCardInterface[] = useSelector(
@@ -48,17 +49,24 @@ const Blogs: NextPage<BlogsPage> = ({ posts }) => {
     <>
       <HeadDocument docTitle="All Blogs" />
       <PageContainer>
-        <HeroContainer pageName="All Blog Posts" type="All" showSearch />
-
-        <LatestBlogCard
-          thumbnail={featuredBlog.thumbnail}
-          title={featuredBlog.title}
-          category={featuredBlog.category}
-          datePosted={featuredBlog.datePosted}
-          excerpt={featuredBlog.excerpt}
-          slug={featuredBlog.slug}
-          featured={featuredBlog.featured}
+        <HeroContainer
+          pageName="All Blog Posts"
+          type="All"
+          setShowFeatured={setShowFeatured}
+          showSearch
         />
+
+        {showFeatured && (
+          <LatestBlogCard
+            thumbnail={featuredBlog.thumbnail}
+            title={featuredBlog.title}
+            category={featuredBlog.category}
+            datePosted={featuredBlog.datePosted}
+            excerpt={featuredBlog.excerpt}
+            slug={featuredBlog.slug}
+            featured={featuredBlog.featured}
+          />
+        )}
 
         <section className="all-blogs-container w-full flex flex-wrap justify-evenly lg:justify-between mb-4">
           {articles &&
