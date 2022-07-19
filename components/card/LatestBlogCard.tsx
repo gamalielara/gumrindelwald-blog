@@ -44,7 +44,7 @@ const LatestBlogCard: React.FC<BlogCardInterface> = ({
         />
       </div>
       <div className="blog-content flex flex-col lg:w-2/3 md:1/2 w-full justify-evenly">
-        <span className="font-semibold">FEATURED POST</span>
+        <span className="font-semibold my-2">FEATURED POST</span>
         <HeadingFour>{title}</HeadingFour>
         <span className="text-sm">{new Date(datePosted).toDateString()}</span>
         <div className="category flex gap-4">

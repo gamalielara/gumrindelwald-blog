@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import LogoBlack from "../../assets/logo-black.png";
+import LogoWhite from "../../assets/logo-white.png";
 import { MENUS } from "../../utils/vars";
 import NavMenu from "./NavMenu";
 
 const Navbar: React.FC = () => {
   const route = useRouter();
+  const [isBlackTheme, setIsBlackTheme] = useState<boolean>(false);
 
   useLayoutEffect(() => {
     const header = document.getElementById("header");
@@ -29,6 +31,14 @@ const Navbar: React.FC = () => {
     }
   });
 
+  useEffect(
+    () =>
+      setIsBlackTheme(
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ),
+    []
+  );
+
   return (
     <header
       className="sticky left-0 w-full flex items-center p-4 bg-white z-50 transition-all duration-100"
@@ -38,7 +48,11 @@ const Navbar: React.FC = () => {
         className="logo-container lg-md:w-[15%] md:w-[30%] w-[50%] lg-md:mx-0 lg-md:mr-auto mx-auto hover:cursor-pointer"
         onClick={() => route.push("/")}
       >
-        <Image src={LogoBlack} alt="gumrindelwald logo" />
+        {isBlackTheme ? (
+          <Image src={LogoWhite} alt="gumrindelwald logo" />
+        ) : (
+          <Image src={LogoBlack} alt="gumrindelwald logo" />
+        )}
       </div>
       <nav className="hidden lg-md:block">
         <ul className="list-none flex flex-wrap justify-around">

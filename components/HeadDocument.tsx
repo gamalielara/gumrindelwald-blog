@@ -50,6 +50,7 @@ const HeadDocument: React.FC<Props> = ({
           "https://media.graphassets.com/output=format:jpg/resize=height:800,fit:max/9bhuiwYLRLSpCQeqEjiP"
         }
       />
+      <meta name="color-scheme" content="only light"></meta>
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link

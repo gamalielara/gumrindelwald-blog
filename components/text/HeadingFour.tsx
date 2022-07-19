@@ -3,6 +3,7 @@ import React from "react";
 interface Props {
   children: any;
   center?: boolean;
+  title?: boolean;
 }
 
 const HeadingFour: React.FC<Props> = ({ children, center }) => {
