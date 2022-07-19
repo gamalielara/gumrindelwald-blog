@@ -1,22 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import LogoWhite from "../assets/logo-white.png";
+import LogoWhite from "../assets/com-white.png";
 import LargeButton from "../components/LargeButton";
 import HeadDocument from "../components/HeadDocument";
 import HeadingThree from "../components/text/HeadingThree";
 import Link from "next/link";
-import LandingHeroImage from "../assets/landing.jpeg";
-import { useLayoutEffect } from "react";
-import { faker } from "@faker-js/faker";
+import LandingImage from "../assets/landingimage-1.jpg";
 
 export default function Home() {
-  // useLayoutEffect(() => {
-  //   const video = document.getElementById("bg-video");
-  //   if (video) {
-  //     video.play().then(() => console.log("Yes"));
-  //   }
-  // });
   return (
     <>
       <HeadDocument docTitle="gumrindelwald - Ara Gamaliel's Blog" />
@@ -57,22 +49,13 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute w-full h-full -z-10">
-          <video
-            autoPlay
-            muted
-            loop
-            id="bg-video"
+          <div className="bg-black opacity-50 absolute w-full h-full top-0 right-0 z-20"></div>
+          <Image
+            src={LandingImage}
+            alt="gumrindelwald"
+            layout="fill"
             className="w-full h-full object-cover"
-          >
-            <source
-              src={`/video/hero${faker.datatype.number({
-                min: 1,
-                max: 2,
-              })}.mp4`}
-              type="video/mp4"
-            />
-            Your browser does not support HTML5 video.
-          </video>
+          />
         </div>
       </main>
     </>
