@@ -31,11 +31,11 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className="sticky left-0 w-full flex items-center p-4 bg-white z-50 transition-all duration-100"
+      className="sticky left-0 w-full flex flex-row sm:flex-col lg:flex-row items-center p-4 bg-white z-50 transition-all duration-100"
       id="header"
     >
       <div
-        className="logo-container lg-md:w-[15%] md:w-[30%] w-[50%] lg-md:mx-0 lg-md:mr-auto mx-auto hover:cursor-pointer"
+        className="logo-container xl:w-[15%] lg:w-[25%] md:w-[40%] w-[50%] lg:mx-0 lg:mr-auto mx-auto hover:cursor-pointer"
         onClick={() => route.push("/")}
       >
         <Image src={LogoWhite} alt="gumrindelwald logo" />

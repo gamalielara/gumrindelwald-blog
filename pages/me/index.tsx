@@ -18,8 +18,8 @@ const AboutMe: NextPage = () => {
     <>
       <HeadDocument docTitle="About" />
       <PageContainer>
-        <div className="flex lg-md:flex-row flex-col gap-4 w-full mt-8 md:px-0 px-2">
-          <div className="image-container lg-md:w-1/3 w-full md:h-[75vh] h-[50vh] relative block sm:hidden lg-md:block">
+        <div className="flex lg:flex-row flex-col gap-4 w-full mt-8 lg:px-0 md:px-4 px-2">
+          <div className="image-container lg:w-1/3 w-full md:h-[75vh] h-[50vh] relative block sm:hidden lg:block">
             <Image
               src={MeImage}
               alt="Ara Gamaliel Boanerges"
@@ -28,7 +28,7 @@ const AboutMe: NextPage = () => {
               className="rounded-lg "
             />
           </div>
-          <div className="image-container lg-md:w-1/3 w-full md:h-[75vh] h-[50vh] relative hidden sm:block lg-md:hidden">
+          <div className="image-container lg:w-1/3 w-full md:h-[75vh] h-[50vh] relative hidden sm:block lg:hidden">
             <Image
               src={MeImageTwo}
               alt="Ara Gamaliel Boanerges"
@@ -37,7 +37,7 @@ const AboutMe: NextPage = () => {
               className="rounded-lg"
             />
           </div>
-          <article className="lg-md:w-2/3 w-full article-post">
+          <article className="lg:w-2/3 w-full article-post">
             <h1 className="md:text-5xl sm:text-3xl text-2xl m-0">
               Hello, I am Ara Gamaliel
             </h1>
@@ -74,7 +74,7 @@ const AboutMe: NextPage = () => {
           </article>
         </div>
 
-        <div className="med-sos md:px-0 px-2 mt-8">
+        <div className="med-sos md:px-4 px-2 mt-8">
           <p className="font-bold">My social medias:</p>
           <ul className="list-none p-0">
             <li>
