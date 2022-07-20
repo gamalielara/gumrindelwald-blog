@@ -13,7 +13,7 @@ import { setArticles } from "../../redux/articlesSlice";
 
 const QUERY = gql`
   {
-    posts(orderBy: publishedAt_DESC) {
+    posts(orderBy: datePosted_DESC) {
       category
       datePosted
       id
