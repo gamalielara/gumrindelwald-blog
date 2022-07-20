@@ -68,7 +68,7 @@ const Blogs: NextPage<BlogsPage> = ({ posts }) => {
           />
         )}
 
-        <section className="all-blogs-container w-full flex flex-wrap justify-evenly lg:justify-between mb-4">
+        <section className="all-blogs-container w-full flex flex-wrap justify-evenly mb-4">
           {articles &&
             articles.map((blog) => (
               <BlogCard

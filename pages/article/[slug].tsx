@@ -74,7 +74,7 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
               <CategoryBox key={i}>{c}</CategoryBox>
             ))}
           </div>
-          <div className="hero-image-blog w-full md:h-[75vh] h-30vh relative my-4">
+          <div className="hero-image-blog w-full md:h-[75vmin] h-30vh relative my-4">
             <Image
               layout="fill"
               objectFit="cover"

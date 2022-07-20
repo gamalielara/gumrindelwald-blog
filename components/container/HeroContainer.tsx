@@ -22,12 +22,12 @@ const HeroContainer: React.FC<Props> = ({
   setShowFeatured,
 }) => {
   return (
-    <div className="w-full md:h-50vh h-30vh relative mt-2 sm:mt-4 md:mt-8">
+    <div className="w-full md:h-[50vmin] h-30vh relative mt-2 sm:mt-4 md:mt-8">
       <div className="text-container absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 md:w-full w-5/6 text-white">
         <HeadingOne center>{pageName}</HeadingOne>
         {showSearch && (
           <>
-            <p className="text-center md:mb-4 md-0 md:text-base text-sm">
+            <p className="text-center md:mb-4 mb-2 md:text-base text-sm">
               Discover all of my blogs here.
             </p>
             <SearchField setShowFeatured={setShowFeatured} />

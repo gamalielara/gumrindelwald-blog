@@ -10,7 +10,7 @@ import { graphcms } from "../../../utils/vars";
 
 const QUERY = gql`
   query Posts {
-    posts(where: { category: PersonalThoughts }, orderBy: publishedAt_DESC) {
+    posts(where: { category: PersonalThoughts }, orderBy: datePosted_DESC) {
       category
       datePosted
       id
@@ -32,7 +32,7 @@ const CategoryPage: NextPage<BlogsPage> = ({ posts }) => {
       <HeadDocument docTitle="Personal Thoughts Blogs" />
       <PageContainer>
         <HeroContainer pageName="All Personal Thoughts Blogs" type="Personal" />
-        <section className="all-blogs-container w-full flex flex-wrap justify-evenly lg:justify-between mb-4">
+        <section className="all-blogs-container w-full flex flex-wrap justify-evenly mb-4">
           {posts.length > 0 ? (
             posts.map((article) => (
               <BlogCard
