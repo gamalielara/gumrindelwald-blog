@@ -64,7 +64,7 @@
 
   article img,
   article figure {
-    width: 50%;
+    width: 80%;
     margin: 1rem auto;
     border-radius: 5px;
   }

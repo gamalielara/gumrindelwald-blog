@@ -34,8 +34,8 @@ const QUERY = gql`
 
 const Blogs: NextPage<BlogsPage> = ({ posts }) => {
   const [showFeatured, setShowFeatured] = useState<boolean>(true);
+  const [featuredBlogIndex, setFeaturedBlogIndex] = useState(0);
   const featuredBlogs = posts.filter((post) => post.featured);
-  const featuredBlog = featuredBlogs[featuredBlogs.length - 1];
   const articles: BlogCardInterface[] = useSelector(
     (state: StateInterface) => state.articles.posts
   );
@@ -44,6 +44,10 @@ const Blogs: NextPage<BlogsPage> = ({ posts }) => {
   useEffect(() => {
     dispatch(setArticles(posts));
   }, []);
+
+  const featuredBlogIndexHandler = (number: number) => {
+    setFeaturedBlogIndex(number);
+  };
 
   return (
     <>
@@ -56,19 +60,53 @@ const Blogs: NextPage<BlogsPage> = ({ posts }) => {
           showSearch
         />
 
-        {showFeatured && (
-          <LatestBlogCard
-            thumbnail={featuredBlog.thumbnail}
-            title={featuredBlog.title}
-            category={featuredBlog.category}
-            datePosted={featuredBlog.datePosted}
-            excerpt={featuredBlog.excerpt}
-            slug={featuredBlog.slug}
-            featured={featuredBlog.featured}
-          />
+        {showFeatured && featuredBlogs.length >= 3 && (
+          <div className="latest-blog-card my-8">
+            <LatestBlogCard
+              thumbnail={featuredBlogs[featuredBlogIndex].thumbnail}
+              title={featuredBlogs[featuredBlogIndex].title}
+              category={featuredBlogs[featuredBlogIndex].category}
+              datePosted={featuredBlogs[featuredBlogIndex].datePosted}
+              excerpt={featuredBlogs[featuredBlogIndex].excerpt}
+              slug={featuredBlogs[featuredBlogIndex].slug}
+              featured={featuredBlogs[featuredBlogIndex].featured}
+            />
+            <div className="buttons flex justify-center mx-auto gap-8 w-1/2">
+              <button
+                className={`${
+                  featuredBlogIndex === 0
+                    ? "bg-black text-white"
+                    : "bg-gray-300"
+                } rounded-full w-8 h-8 flex items-center justify-center`}
+                onClick={() => featuredBlogIndexHandler(0)}
+              >
+                <span className="text-base">1</span>
+              </button>
+              <button
+                className={`${
+                  featuredBlogIndex === 1
+                    ? "bg-black text-white"
+                    : "bg-gray-300"
+                } rounded-full w-8 h-8 flex items-center justify-center`}
+                onClick={() => featuredBlogIndexHandler(1)}
+              >
+                <span className="text-base">2</span>
+              </button>
+              <button
+                className={`${
+                  featuredBlogIndex === 2
+                    ? "bg-black text-white"
+                    : "bg-gray-300"
+                } rounded-full w-8 h-8 flex items-center justify-center`}
+                onClick={() => featuredBlogIndexHandler(2)}
+              >
+                <span className="text-base">3</span>
+              </button>
+            </div>
+          </div>
         )}
 
-        <section className="all-blogs-container w-full flex flex-wrap justify-evenly mb-4">
+        <section className="all-blogs-container w-full flex flex-wrap justify-between mb-4">
           {articles &&
             articles.map((blog) => (
               <BlogCard

@@ -14,7 +14,7 @@ const BlogCard: React.FC<BlogCardInterface> = ({
   slug,
 }) => {
   return (
-    <article className="lg:w-30p md:w-40p w-full md:relative flex flex-col m-2 rounded-xl shadow-md bg-gray-100 p-2">
+    <article className="lg:w-30p md:w-[45%] w-full md:relative flex flex-col m-2 rounded-xl shadow-md bg-gray-100 p-2">
       <div
         className="article-heading-image rounded w-full md:h-auto h-40 relative mr-4"
         style={{ paddingTop: "50%" }}

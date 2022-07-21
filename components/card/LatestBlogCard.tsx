@@ -24,11 +24,11 @@ const LatestBlogCard: React.FC<BlogCardInterface> = ({
     if (window.innerWidth >= 700 && latestBlogCard && articleImageContainer) {
       articleImageContainer.style.height = `${latestBlogCard.clientHeight}px`;
     }
-  });
+  }, []);
 
   return (
     <article
-      className="w-full mx-auto flex md:flex-row flex-col justify-center items-center my-8 px-2"
+      className="w-full mx-auto flex md:flex-row flex-col justify-center items-center mb-2 p-2 rounded-xl bg-gray-100 shadow"
       id="featured-blog"
     >
       <div className="article-heading-image rounded lg:w-1/3 md:w-1/2 w-full md:h-72 h-40 relative mr-4">
