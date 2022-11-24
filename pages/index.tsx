@@ -7,6 +7,7 @@ import HeadDocument from "../components/HeadDocument";
 import HeadingThree from "../components/text/HeadingThree";
 import Link from "next/link";
 import LandingImage from "../assets/landingimage-1.jpg";
+import Logo from "../components/logo/Logo";
 
 export default function Home() {
   return (
@@ -17,14 +18,9 @@ export default function Home() {
         <div className="w-fit mx-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center z-10">
           <div
             className="image-wrapper mx-auto relative"
-            style={{ width: "50vmax", height: "20vmin" }}
+            style={{ width: "100vw", height: "20vmin" }}
           >
-            <Image
-              src={LogoWhite}
-              alt="gumrindelwald logo"
-              objectFit="contain"
-              layout="fill"
-            />
+            <Logo fontColor="white"/>
           </div>
           <HeadingThree center color="white">
             Ara Gamaliel Boanerges&apos;s Personal Blog
