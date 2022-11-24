@@ -5,6 +5,7 @@ import React, { useLayoutEffect } from "react";
 import LogoWhite from "../../assets/logo-white.png";
 import { MENUS } from "../../utils/vars";
 import NavMenu from "./NavMenu";
+import Logo from "../logo/Logo";
 
 const Navbar: React.FC = () => {
   const route = useRouter();
@@ -31,14 +32,14 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className="sticky left-0 w-full flex flex-row sm:flex-col lg:flex-row items-center p-4 bg-white z-50 transition-all duration-100"
+      className="sticky left-0 w-full flex flex-col items-center p-4 bg-white z-50 transition-all duration-100"
       id="header"
     >
       <div
-        className="logo-container xl:w-[15%] lg:w-[25%] md:w-[40%] w-[50%] lg:mx-0 lg:mr-auto mx-auto hover:cursor-pointer"
+        className="logo-container hover:cursor-pointer"
         onClick={() => route.push("/")}
       >
-        <Image src={LogoWhite} alt="gumrindelwald logo" />
+        <Logo fontColor="black" isHeader/>
       </div>
       <nav className="hidden lg-md:block">
         <ul className="list-none flex flex-wrap justify-around">

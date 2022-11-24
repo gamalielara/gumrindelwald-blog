@@ -3,7 +3,6 @@ import Image from "next/image";
 import PageContainer from "../../components/container/PageContainer";
 import HeadDocument from "../../components/HeadDocument";
 import MeImage from "../../assets/me.jpeg";
-import MeImageTwo from "../../assets/landing.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
@@ -19,7 +18,7 @@ const AboutMe: NextPage = () => {
       <HeadDocument docTitle="About" />
       <PageContainer>
         <div className="flex lg:flex-row flex-col gap-4 w-full mt-8 lg:px-0 md:px-4 px-2">
-          <div className="image-container lg:w-1/3 w-full md:h-[75vh] h-[50vh] relative block sm:hidden lg:block">
+          <div className="image-container lg:w-1/3 w-full md:h-auto h-[50vh] relative block sm:hidden lg:block">
             <Image
               src={MeImage}
               alt="Ara Gamaliel Boanerges"
@@ -30,7 +29,7 @@ const AboutMe: NextPage = () => {
           </div>
           <div className="image-container lg:w-1/3 w-full md:h-[75vh] h-[50vh] relative hidden sm:block lg:hidden">
             <Image
-              src={MeImageTwo}
+              src={MeImage}
               alt="Ara Gamaliel Boanerges"
               layout="fill"
               objectFit="cover"
