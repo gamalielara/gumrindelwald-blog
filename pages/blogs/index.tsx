@@ -129,6 +129,7 @@ const Blogs: NextPage<BlogsPage> = ({ posts }) => {
 export default Blogs;
 
 export async function getStaticProps() {
+  console.log("HELLO TEST ", process.env.API_ENDPOINT)
   const blogs = await graphcms.request(QUERY);
   return {
     props: blogs,

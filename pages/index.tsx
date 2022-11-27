@@ -8,8 +8,16 @@ import HeadingThree from "../components/text/HeadingThree";
 import Link from "next/link";
 import LandingImage from "../assets/landingimage-1.jpg";
 import Logo from "../components/logo/Logo";
+import {useEffect} from "react";
+import firebase from "firebase/compat";
+import analytics = firebase.analytics;
 
 export default function Home() {
+
+  useEffect(() => {
+    analytics();
+  }, [])
+
   return (
     <>
       <HeadDocument docTitle="gumrindelwald - Ara Gamaliel's Blog" />

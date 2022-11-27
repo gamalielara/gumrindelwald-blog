@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import React from "react";
+import React, {useEffect} from "react";
 import CategoryBox from "../../components/article/CategoryBox";
 import FlexBox from "../../components/container/FlexBox";
 import PageContainer from "../../components/container/PageContainer";
@@ -52,6 +52,7 @@ const SLUGLIST = gql`
 `;
 
 const ArticlePage: React.FC<Props> = ({ article }) => {
+
   return (
     <>
       <HeadDocument
