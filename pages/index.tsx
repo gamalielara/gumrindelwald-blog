@@ -15,7 +15,7 @@ import {logEvent} from "@firebase/analytics";
 export default function Home() {
 
   useEffect(() => {
-    logEvent(analytics, "page_view")
+    logEvent(analytics(), "page_view")
   }, [])
 
   return (
