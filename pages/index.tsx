@@ -9,13 +9,13 @@ import Link from "next/link";
 import LandingImage from "../assets/landingimage-1.jpg";
 import Logo from "../components/logo/Logo";
 import {useEffect} from "react";
-import firebase from "firebase/compat";
-import analytics = firebase.analytics;
+import {analytics} from "../firebase/firebase";
+import {logEvent} from "@firebase/analytics";
 
 export default function Home() {
 
   useEffect(() => {
-    analytics();
+    logEvent(analytics, "page_view")
   }, [])
 
   return (
