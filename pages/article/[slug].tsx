@@ -81,7 +81,6 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
               objectFit="cover"
               src={article.thumbnail.url}
               alt="title"
-              loader={({ src }) => src}
               className="rounded-lg"
             />
           </div>

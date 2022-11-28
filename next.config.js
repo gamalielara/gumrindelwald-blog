@@ -4,6 +4,9 @@ const nextConfig = {
   env: {
     API_ENDPOINT: process.env.API_ENDPOINT,
   },
+  images:{
+    domains: ["media.graphassets.com", ]
+  },
   async redirects() {
     return [
       {

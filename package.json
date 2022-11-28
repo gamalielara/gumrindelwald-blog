@@ -1,5 +1,6 @@
 {
-  "name": "frontend",
+  "name": "gumrindelwald-blog",
+  "main": "server.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
