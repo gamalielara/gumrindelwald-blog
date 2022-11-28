@@ -11,6 +11,7 @@ const server = next({
 
 const nextjsHandle = server.getRequestHandler();
 exports.nextServer = https.onRequest((req, res) => {
+    console.log("FILE: ", req, res)
     return server.prepare()
         .then(() => {
             return nextjsHandle(req, res)

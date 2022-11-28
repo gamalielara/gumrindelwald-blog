@@ -16,4 +16,5 @@ jobs:
         with:
           repoToken: '${{ secrets.ACTION_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GWALD_BLOG }}'
+          expires: 1d
           projectId: gwald-blog
