@@ -38,7 +38,7 @@ const HeroContainer: React.FC<Props> = ({
       <Image
         src={
           type === "All"
-            ? HeroImage
+            ? "../../assets/hero.jpg"
             : type === "Book"
             ? HeroBookImage
             : type === "Film"
