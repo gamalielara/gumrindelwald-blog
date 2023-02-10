@@ -3,7 +3,7 @@
 }
 
 .header{
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 @media screen and (min-width: 640px) {
@@ -12,7 +12,7 @@
     }
 
     .header{
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -22,7 +22,7 @@
     }
 
     .header{
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 }
 
@@ -32,6 +32,6 @@
     }
 
     .header{
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }
