@@ -13,7 +13,7 @@ const PageContainer: React.FC<PageContainerInterface> = ({ children }) => {
   return (
     <>
       <div className="page-container w-full flex md:block">
-        <div className="main-container">
+        <div className="main-container w-full">
           <Navbar />
           <main className="blog-container px-4 xl:w-3/5 lg:w-4/5 w-full min-h-screen mx-auto">
             {children}
