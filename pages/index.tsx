@@ -11,7 +11,6 @@ export default function Home() {
   return (
     <>
       <HeadDocument docTitle="gumrindelwald - Ara Gamaliel's Blog" />
-
       <main className="w-screen h-screen relative">
         <div className="w-fit mx-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center z-10">
           <div
@@ -43,8 +42,8 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute w-full h-full -z-10">
-          <div className="bg-black opacity-50 absolute w-full h-full top-0 right-0 z-20"></div>
-          <video autoPlay muted loop preload="auto" className="w-full h-full object-cover">
+          <div className="bg-black opacity-30 absolute w-full h-full top-0 right-0 z-20"></div>
+          <video autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover" >
             <source src={".//lp-rain-2.mp4"} type="video/mp4"/>
           </video>
         </div>
