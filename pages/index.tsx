@@ -1,13 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
-import LogoWhite from "../assets/com-white.png";
 import LargeButton from "../components/LargeButton";
 import HeadDocument from "../components/HeadDocument";
 import HeadingThree from "../components/text/HeadingThree";
 import Link from "next/link";
-import LandingImage from "../assets/landingimage-1.jpg";
 import Logo from "../components/logo/Logo";
+
 
 export default function Home() {
   return (
@@ -46,14 +44,12 @@ export default function Home() {
         </div>
         <div className="absolute w-full h-full -z-10">
           <div className="bg-black opacity-50 absolute w-full h-full top-0 right-0 z-20"></div>
-          <Image
-            src={LandingImage}
-            alt="gumrindelwald"
-            layout="fill"
-            className="w-full h-full object-cover"
-          />
+          <video autoPlay muted loop preload="auto" className="w-full h-full object-cover">
+            <source src={".//lp-rain-2.mp4"} type="video/mp4"/>
+          </video>
         </div>
       </main>
     </>
   );
+
 }
