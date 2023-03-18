@@ -5,9 +5,18 @@ import HeadDocument from "../components/HeadDocument";
 import HeadingThree from "../components/text/HeadingThree";
 import Link from "next/link";
 import Logo from "../components/logo/Logo";
+import React, {useEffect, useRef} from "react";
 
 
 export default function Home() {
+  const videoContainer: React.MutableRefObject<HTMLVideoElement | null> = useRef(null);
+
+  const playVideo = () => {
+    if(videoContainer.current){
+      videoContainer.current?.play()
+    }
+  }
+
   return (
     <>
       <HeadDocument docTitle="gumrindelwald - Ara Gamaliel's Blog" />
@@ -43,8 +52,8 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute w-full h-full -z-10">
-          <div className="bg-black opacity-50 absolute w-full h-full top-0 right-0 z-20"></div>
-          <video autoPlay muted loop preload="auto" className="w-full h-full object-cover">
+          <div className="bg-black opacity-30 absolute w-full h-full top-0 right-0 z-20"></div>
+          <video autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover" ref={videoContainer} >
             <source src={".//lp-rain-2.mp4"} type="video/mp4"/>
           </video>
         </div>
