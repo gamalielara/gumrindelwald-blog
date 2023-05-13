@@ -2,22 +2,24 @@ import React from "react";
 import Head from "next/head";
 import GumrindelwaldLogo from "../assets/icon-white.ico";
 
-interface Props {
+interface IHeadDocumentProps {
   docTitle: string;
-  metaKeywords?: string;
-  excerpt?: string;
-  heroImage?: string;
+  metaKeywords: string;
+  excerpt: string;
+  heroImage: string;
+  isLandingPage: boolean,
 }
 
-const HeadDocument: React.FC<Props> = ({
+const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
   docTitle,
   metaKeywords,
   excerpt,
   heroImage,
+  isLandingPage,
 }) => {
   return (
     <Head>
-      <title>{docTitle} / gumrindelwald</title>
+      <title>{isLandingPage ? "gumrindelwald - Ara Gamaliel Boanerges's Blog" : `${docTitle} / gumrindelwald`}</title>
       <meta name="color-scheme" content="light only"></meta>
       <meta
         name="description"
@@ -51,6 +53,7 @@ const HeadDocument: React.FC<Props> = ({
           "https://media.graphassets.com/output=format:jpg/resize=height:800,fit:max/9bhuiwYLRLSpCQeqEjiP"
         }
       />
+      {isLandingPage && <link rel="preload" href="/lp-rain-2.mp4" as="video"/>}
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link

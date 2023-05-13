@@ -10,7 +10,7 @@ import Logo from "../components/logo/Logo";
 export default function Home() {
   return (
     <>
-      <HeadDocument docTitle="gumrindelwald - Ara Gamaliel's Blog" />
+      <HeadDocument isLandingPage />
       <main className="w-screen h-screen relative">
         <div className="w-fit mx-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center z-10">
           <div
