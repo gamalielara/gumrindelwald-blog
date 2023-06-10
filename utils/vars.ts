@@ -1,4 +1,6 @@
 import { GraphQLClient } from "graphql-request";
+import { collection } from "@firebase/firestore";
+import { db } from "./firebase";
 
 interface ImageLoader {
   src: string;
@@ -99,3 +101,5 @@ export interface CommentInterface {
   body: string;
   timestamp: number;
 }
+
+export const BLOGS_REF = collection(db, "blogs");
