@@ -12,8 +12,8 @@ import {
 const Footer: React.FC = () => {
   const thisYear = new Date().getFullYear();
   return (
-    <footer className="w-full h-30vh bg-black flex flex-col items-center justify-center mt-8 z-50 p-4">
-      <div className="lg:w-1/4 md:w-2/3 w-3/4">
+    <footer className="w-full h-18vmin bg-black flex flex-col items-center justify-center mt-8 z-50 py-8 px-4">
+      <div className="lg:w-1/6 w-2/3 my-4">
         <Image
           src={BlackLogoImage}
           alt="gumrindelwald.com"
@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
         />
       </div>
 
-      <span className="text-white text-center my-2 text-base md:text-xl">
+      <span className="text-white text-center my-2 text-sm md:text-lg">
         Copyright &copy;{thisYear}. This website is fully created by
         <a
           href="https://gamalielara.com"

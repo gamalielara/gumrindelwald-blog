@@ -1,10 +1,9 @@
-import { GraphQLClient } from "graphql-request";
+import { collection } from "@firebase/firestore";
+import { db } from "./firebase";
 
 interface ImageLoader {
   src: string;
 }
-
-export const graphcms = new GraphQLClient(process.env.API_ENDPOINT as string);
 
 export const IMAGELOADER = (fn: ImageLoader) => fn.src;
 
@@ -35,32 +34,50 @@ export const MENUS = [
   },
 ];
 
-export const CATEGORIES = ["Book", "Film", "Technology", "Personal Thoughts"];
+export enum Category {
+  BOOK = "book",
+  FILM = "film",
+  PERSONAL_THOUGHTS = "personal_thoughts",
+  TECHNOLOGY = "technology",
+}
+
+export const CATEGORY_DICTIONARIES = {
+  [Category.BOOK]: "📚 Book",
+  [Category.FILM]: "🎞️ Film",
+  [Category.PERSONAL_THOUGHTS]: "💬 Personal Thoughts",
+  [Category.TECHNOLOGY]: "👨🏻‍💻 Technology",
+};
+
+export enum Language {
+  ID = "in",
+  EN = "en",
+  DE = "de",
+  RU = "ru",
+}
 
 export interface BlogCardInterface {
-  id?: () => string | string;
-  title: string;
-  category: string[];
-  datePosted: string;
-  thumbnail: {
-    url: string;
-  };
+  id: string;
+  category: Category;
+  comments: CommentInterface[];
+  created_at: number;
   excerpt: string;
-  slug: string;
   featured: boolean;
+  slug: string;
+  thumbnail_image: string;
+  title: string;
+  updated_at: number;
+  likes: number[];
+  language: Language;
 }
 
 export interface ArticleInterface extends BlogCardInterface {
-  content: {
-    html: string;
-  };
+  content: string;
   keywords: string;
   tags?: string;
-  language: string;
 }
 
 export interface BlogsPage {
-  posts: BlogCardInterface[];
+  blogs: BlogCardInterface[];
 }
 
 export interface params {
@@ -71,6 +88,15 @@ export interface params {
 
 export interface StateInterface {
   articles: {
-    posts: ArticleInterface[];
+    blogs: ArticleInterface[];
   };
 }
+
+export interface CommentInterface {
+  id: string;
+  username: string;
+  body: string;
+  timestamp: number;
+}
+
+export const BLOGS_REF = collection(db, "blogs");

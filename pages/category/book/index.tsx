@@ -1,49 +1,29 @@
+import React from "react";
 import { NextPage } from "next";
-import React, { useEffect, useState } from "react";
 import BlogCard from "../../../components/card/BlogCard";
 import HeadDocument from "../../../components/HeadDocument";
 import PageContainer from "../../../components/container/PageContainer";
 import HeroContainer from "../../../components/container/HeroContainer";
-import { BlogsPage } from "../../../utils/vars";
-import { gql, GraphQLClient } from "graphql-request";
-import { graphcms } from "../../../utils/vars";
+import { BlogsPage, Category } from "../../../utils/vars";
+import { queryBlogs } from "../../../utils/helpers";
 
-const QUERY = gql`
-  query Posts {
-    posts(where: { category: Book }, orderBy: datePosted_DESC) {
-      category
-      datePosted
-      id
-      slug
-      title
-      excerpt
-      tags
-      language
-      thumbnail {
-        url
-      }
-    }
-  }
-`;
-
-const CategoryPage: NextPage<BlogsPage> = ({ posts }) => {
+const CategoryPage: NextPage<BlogsPage> = ({ blogs }) => {
   return (
     <>
       <HeadDocument docTitle="Book Blogs" />
       <PageContainer>
         <HeroContainer pageName="All Book Blogs" type="Book" />
         <section className="all-blogs-container w-full flex flex-wrap justify-evenly mb-4">
-          {posts.length > 0 ? (
-            posts.map((article) => (
+          {blogs.length > 0 ? (
+            blogs.map((article) => (
               <BlogCard
                 key={article.title}
-                thumbnail={article.thumbnail}
+                thumbnail_image={article.thumbnail_image}
                 title={article.title}
                 category={article.category}
                 excerpt={article.excerpt}
-                datePosted={article.datePosted}
+                created_at={article.created_at}
                 slug={article.slug}
-                featured={article.featured}
               />
             ))
           ) : (
@@ -60,9 +40,13 @@ const CategoryPage: NextPage<BlogsPage> = ({ posts }) => {
 export default CategoryPage;
 
 export async function getStaticProps() {
-  const query = await graphcms.request(QUERY);
+  const bookBlogs = await queryBlogs({
+    field: "category",
+    value: Category.BOOK,
+  });
+
   return {
-    props: query,
+    props: { blogs: bookBlogs },
     revalidate: 10,
   };
 }

@@ -5,7 +5,6 @@ import HeroBookImage from "../../assets/books.jpg";
 import HeroFilmImage from "../../assets/film.jpg";
 import HeroTechImage from "../../assets/tech.jpg";
 import HeroPersonalImage from "../../assets/personal.jpg";
-import SearchField from "../SearchField";
 import HeadingOne from "../text/HeadingOne";
 
 interface Props {
@@ -30,7 +29,8 @@ const HeroContainer: React.FC<Props> = ({
             <p className="text-center md:mb-4 mb-2 md:text-base text-sm">
               Discover all of my blogs here.
             </p>
-            <SearchField setShowFeatured={setShowFeatured} />
+            {/* disabled for a while */}
+            {/* <SearchField setShowFeatured={setShowFeatured} /> */}
           </>
         )}
       </div>

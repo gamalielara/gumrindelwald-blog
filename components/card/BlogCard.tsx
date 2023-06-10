@@ -1,16 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { BlogCardInterface, CATEGORIES, IMAGELOADER } from "../../utils/vars";
+import {
+  BlogCardInterface,
+  CATEGORY_DICTIONARIES,
+  IMAGELOADER,
+} from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import HeadingFive from "../text/HeadingFive";
 
-const BlogCard: React.FC<BlogCardInterface> = ({
+type BlogTypeKeys =
+  | "title"
+  | "category"
+  | "excerpt"
+  | "created_at"
+  | "thumbnail_image"
+  | "slug";
+
+const BlogCard: React.FC<Pick<BlogCardInterface, BlogTypeKeys>> = ({
   title,
   category,
-  excerpt,
-  datePosted,
-  thumbnail,
+  created_at,
+  thumbnail_image,
   slug,
 }) => {
   return (
@@ -21,9 +32,8 @@ const BlogCard: React.FC<BlogCardInterface> = ({
       >
         <Image
           src={
-            thumbnail
-              ? thumbnail.url
-              : "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
+            thumbnail_image ??
+            "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
           }
           alt={title}
           layout="fill"
@@ -34,12 +44,10 @@ const BlogCard: React.FC<BlogCardInterface> = ({
         />
       </div>
       <div className="blog-content flex flex-col w-full p-4">
-        <div className="categories flex gap-4">
-          {category.map((c, i) => (
-            <CategoryBox key={i}>{c}</CategoryBox>
-          ))}
-        </div>
-        <span className="text-sm">{new Date(datePosted).toDateString()}</span>
+        <CategoryBox category={category}>
+          {CATEGORY_DICTIONARIES[category]}
+        </CategoryBox>
+        <span className="text-sm">{new Date(created_at).toDateString()}</span>
         <Link href={`/article/${slug}`}>
           <a className="flex font-semibold hover:text-gray-600 transition-all duration-500">
             <HeadingFive>{title}</HeadingFive>
