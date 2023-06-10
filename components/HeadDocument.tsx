@@ -7,7 +7,7 @@ interface IHeadDocumentProps {
   metaKeywords: string;
   excerpt: string;
   heroImage: string;
-  isLandingPage: boolean,
+  isLandingPage: boolean;
 }
 
 const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
@@ -19,7 +19,11 @@ const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
 }) => {
   return (
     <Head>
-      <title>{isLandingPage ? "gumrindelwald - Ara Gamaliel Boanerges's Blog" : `${docTitle} / gumrindelwald`}</title>
+      <title>
+        {isLandingPage
+          ? "gumrindelwald - Ara Gamaliel Boanerges's Blog"
+          : `${docTitle} / gumrindelwald`}
+      </title>
       <meta name="color-scheme" content="light only"></meta>
       <meta
         name="description"
@@ -38,7 +42,14 @@ const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
       <meta name="twitter:site" content="www.gumrindelwald.com" />
       <meta name="twitter:creator" content="@gumrindelwald" />
       <meta property="og:url" content="https://gumrindelwald.com" />
-      <meta property="og:title" content={`${docTitle} / gumrindelwald`} />
+      <meta
+        property="og:title"
+        content={
+          docTitle
+            ? "gumrindelwald - Ara Gamaliel Boanerges's Blog"
+            : `${docTitle} / gumrindelwald`
+        }
+      />
       <meta
         property="og:description"
         content={
@@ -53,7 +64,7 @@ const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
           "https://media.graphassets.com/output=format:jpg/resize=height:800,fit:max/9bhuiwYLRLSpCQeqEjiP"
         }
       />
-      {isLandingPage && <link rel="preload" href="/lp-rain-2.mp4" as="video"/>}
+      {isLandingPage && <link rel="preload" href="/lp-rain-2.mp4" as="video" />}
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link
