@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    API_ENDPOINT: process.env.API_ENDPOINT,
     REACT_APP_APIKEY: process.env.REACT_APP_APIKEY,
     REACT_APP_AUTHDOMAIN: process.env.REACT_APP_AUTHDOMAIN,
     REACT_APP_PROJECTID: process.env.REACT_APP_PROJECTID,
