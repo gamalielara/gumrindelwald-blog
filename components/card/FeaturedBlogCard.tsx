@@ -5,24 +5,26 @@ import { BlogCardInterface, IMAGELOADER } from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import Button from "../Button";
 import HeadingFour from "../text/HeadingFour";
-import HeadingThree from "../text/HeadingThree";
 
-const LatestBlogCard: React.FC<BlogCardInterface> = ({
-  thumbnail_image,
-  category,
-  excerpt,
-  created_at,
-  slug,
-  title,
-}) => {
+type FeaturedBlogCardKeys =
+  | "thumbnail_image"
+  | "category"
+  | "excerpt"
+  | "created_at"
+  | "slug"
+  | "title";
+
+const FeaturedBlogCard: React.FC<
+  Pick<BlogCardInterface, FeaturedBlogCardKeys>
+> = ({ thumbnail_image, category, excerpt, created_at, slug, title }) => {
   useLayoutEffect(() => {
-    const latestBlogCard = document.getElementById("featured-blog");
+    const featuredBlogCard = document.getElementById("featured-blog");
     const articleImageContainer = document.getElementsByClassName(
       "article-heading-image"
     )[0] as HTMLElement;
 
-    if (window.innerWidth >= 700 && latestBlogCard && articleImageContainer) {
-      articleImageContainer.style.height = `${latestBlogCard.clientHeight}px`;
+    if (window.innerWidth >= 700 && featuredBlogCard && articleImageContainer) {
+      articleImageContainer.style.height = `${featuredBlogCard.clientHeight}px`;
     }
   }, []);
 
@@ -61,4 +63,4 @@ const LatestBlogCard: React.FC<BlogCardInterface> = ({
   );
 };
 
-export default LatestBlogCard;
+export default FeaturedBlogCard;

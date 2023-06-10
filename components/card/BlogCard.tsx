@@ -1,14 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { BlogCardInterface, CATEGORIES, IMAGELOADER } from "../../utils/vars";
+import { BlogCardInterface, IMAGELOADER } from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import HeadingFive from "../text/HeadingFive";
 
-const BlogCard: React.FC<BlogCardInterface> = ({
+type BlogTypeKeys =
+  | "title"
+  | "category"
+  | "excerpt"
+  | "created_at"
+  | "thumbnail_image"
+  | "slug";
+
+const BlogCard: React.FC<Pick<BlogCardInterface, BlogTypeKeys>> = ({
   title,
   category,
-  excerpt,
   created_at,
   thumbnail_image,
   slug,

@@ -35,26 +35,46 @@ export const MENUS = [
   },
 ];
 
-export const CATEGORIES = ["Book", "Film", "Technology", "Personal Thoughts"];
+export enum Category {
+  BOOK = "book",
+  FILM = "film",
+  PERSONAL_THOUGHTS = "personal_thoughts",
+  TECHNOLOGY = "technology",
+}
+
+export const CATEGORY_DICTIONARIES = {
+  [Category.BOOK]: "Book",
+  [Category.FILM]: "Film",
+  [Category.PERSONAL_THOUGHTS]: "Personal Thoughts",
+  [Category.TECHNOLOGY]: "Technology",
+};
+
+export enum Language {
+  ID = "in",
+  EN = "en",
+  DE = "de",
+  RU = "ru",
+}
 
 export interface BlogCardInterface {
-  id?: () => string | string;
-  title: string;
-  category: string;
-  created_at: string;
-  thumbnail_image: string;
+  id: string;
+  category: Category;
+  comments: CommentInterface[];
+  created_at: number;
   excerpt: string;
-  slug: string;
   featured: boolean;
+  slug: string;
+  thumbnail_image: string;
+  title: string;
+  updated_at: number;
+  likes: number[];
+  language: Language;
 }
 
 export interface ArticleInterface extends BlogCardInterface {
-  content: {
-    html: string;
-  };
+  content: string;
   keywords: string;
   tags?: string;
-  language: string;
 }
 
 export interface BlogsPage {
@@ -71,4 +91,11 @@ export interface StateInterface {
   articles: {
     blogs: ArticleInterface[];
   };
+}
+
+export interface CommentInterface {
+  id: string;
+  username: string;
+  body: string;
+  timestamp: number;
 }

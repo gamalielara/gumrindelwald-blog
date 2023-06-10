@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React, { useState } from "react";
 import BlogCard from "../../components/card/BlogCard";
-import LatestBlogCard from "../../components/card/LatestBlogCard";
+import FeaturedBlogCard from "../../components/card/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
 import PageContainer from "../../components/container/PageContainer";
 import HeroContainer from "../../components/container/HeroContainer";
@@ -31,14 +31,13 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
 
         {showFeatured && Boolean(featuredBlogs.length) && (
           <div className="latest-blog-card my-8">
-            <LatestBlogCard
+            <FeaturedBlogCard
               thumbnail_image={featuredBlogs[featuredBlogIndex].thumbnail_image}
               title={featuredBlogs[featuredBlogIndex].title}
               category={featuredBlogs[featuredBlogIndex].category}
               created_at={featuredBlogs[featuredBlogIndex].created_at}
               excerpt={featuredBlogs[featuredBlogIndex].excerpt}
               slug={featuredBlogs[featuredBlogIndex].slug}
-              featured={featuredBlogs[featuredBlogIndex].featured}
             />
             <div className="buttons flex justify-center mx-auto gap-8 w-1/2">
               {[...Array(featuredBlogs.length).keys()].map((el) => (
@@ -69,7 +68,6 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
                 excerpt={blog.excerpt}
                 created_at={blog.created_at}
                 slug={blog.slug}
-                featured={blog.featured}
               />
             ))}
         </section>
