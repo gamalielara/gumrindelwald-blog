@@ -20,3 +20,18 @@ export const queryBlogs = async ({ field, value }: Record<string, string>) => {
 
   return queryResult ?? [];
 };
+
+export const searchBlogsByTitle = async (title: string) => {
+  const queryBlog = query(
+    BLOGS_REF,
+    where("title", ">=", title),
+    where("title", "<=", title + "\uf8ff")
+  );
+  const queryRawResult = await getDocs(queryBlog);
+  const queryResult = queryRawResult.docs.map((blog) => ({
+    ...blog.data(),
+    id: blog.id,
+  }));
+
+  return queryResult ?? [];
+};

@@ -30,7 +30,8 @@ const HeroContainer: React.FC<Props> = ({
             <p className="text-center md:mb-4 mb-2 md:text-base text-sm">
               Discover all of my blogs here.
             </p>
-            <SearchField setShowFeatured={setShowFeatured} />
+            {/* disabled for a while */}
+            {/* <SearchField setShowFeatured={setShowFeatured} /> */}
           </>
         )}
       </div>

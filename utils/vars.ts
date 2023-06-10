@@ -6,8 +6,6 @@ interface ImageLoader {
   src: string;
 }
 
-export const graphcms = new GraphQLClient(process.env.API_ENDPOINT as string);
-
 export const IMAGELOADER = (fn: ImageLoader) => fn.src;
 
 export const MENUS = [
@@ -45,10 +43,10 @@ export enum Category {
 }
 
 export const CATEGORY_DICTIONARIES = {
-  [Category.BOOK]: "Book",
-  [Category.FILM]: "Film",
-  [Category.PERSONAL_THOUGHTS]: "Personal Thoughts",
-  [Category.TECHNOLOGY]: "Technology",
+  [Category.BOOK]: "📚 Book",
+  [Category.FILM]: "🎞️ Film",
+  [Category.PERSONAL_THOUGHTS]: "💬 Personal Thoughts",
+  [Category.TECHNOLOGY]: "👨🏻‍💻 Technology",
 };
 
 export enum Language {

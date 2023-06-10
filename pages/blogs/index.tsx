@@ -5,7 +5,7 @@ import FeaturedBlogCard from "../../components/card/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
 import PageContainer from "../../components/container/PageContainer";
 import HeroContainer from "../../components/container/HeroContainer";
-import { BlogsPage } from "../../utils/vars";
+import { ArticleInterface, BlogsPage } from "../../utils/vars";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
 
@@ -84,7 +84,10 @@ export async function getStaticProps() {
   const blogs = rawBlogs.docs.map((blogDoc) => ({
     ...blogDoc.data(),
     id: blogDoc.id,
-  }));
+  })) as ArticleInterface[];
+
+  // decending date posted sorting (newest blog to oldest)
+  blogs.sort((a, b) => b.created_at - a.created_at);
 
   return {
     props: { blogs },

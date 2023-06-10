@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { BlogCardInterface, IMAGELOADER } from "../../utils/vars";
+import {
+  BlogCardInterface,
+  CATEGORY_DICTIONARIES,
+  IMAGELOADER,
+} from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import HeadingFive from "../text/HeadingFive";
 
@@ -40,9 +44,9 @@ const BlogCard: React.FC<Pick<BlogCardInterface, BlogTypeKeys>> = ({
         />
       </div>
       <div className="blog-content flex flex-col w-full p-4">
-        <div className="categories flex gap-4">
-          <CategoryBox>{category}</CategoryBox>
-        </div>
+        <CategoryBox category={category}>
+          {CATEGORY_DICTIONARIES[category]}
+        </CategoryBox>
         <span className="text-sm">{new Date(created_at).toDateString()}</span>
         <Link href={`/article/${slug}`}>
           <a className="flex font-semibold hover:text-gray-600 transition-all duration-500">

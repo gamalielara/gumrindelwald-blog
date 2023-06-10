@@ -10,9 +10,9 @@ import { queryBlogs } from "../../../utils/helpers";
 const CategoryPage: NextPage<BlogsPage> = ({ blogs }) => {
   return (
     <>
-      <HeadDocument docTitle="Book Blogs" />
+      <HeadDocument docTitle="Technology Blogs" />
       <PageContainer>
-        <HeroContainer pageName="All Book Blogs" type="Book" />
+        <HeroContainer pageName="All Technology Blogs" type="Tech" />
         <section className="all-blogs-container w-full flex flex-wrap justify-evenly mb-4">
           {blogs.length > 0 ? (
             blogs.map((article) => (

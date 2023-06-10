@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useLayoutEffect } from "react";
-import { BlogCardInterface, IMAGELOADER } from "../../utils/vars";
+import {
+  BlogCardInterface,
+  CATEGORY_DICTIONARIES,
+  IMAGELOADER,
+} from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import Button from "../Button";
 import HeadingFour from "../text/HeadingFour";
@@ -50,7 +54,9 @@ const FeaturedBlogCard: React.FC<
         <HeadingFour>{title}</HeadingFour>
         <span className="text-sm">{new Date(created_at).toDateString()}</span>
         <div className="category flex gap-4">
-          <CategoryBox>{category}</CategoryBox>
+          <CategoryBox category={category}>
+            {CATEGORY_DICTIONARIES[category]}
+          </CategoryBox>
         </div>
         <p className="text-justify text-sm lg:text-base">{excerpt}</p>
         <Button>
