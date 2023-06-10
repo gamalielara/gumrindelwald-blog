@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import GumrindelwaldLogo from "../assets/icon-white.ico";
 
 interface IHeadDocumentProps {
   docTitle: string;
@@ -45,7 +44,7 @@ const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
       <meta
         property="og:title"
         content={
-          docTitle
+          isLandingPage
             ? "gumrindelwald - Ara Gamaliel Boanerges's Blog"
             : `${docTitle} / gumrindelwald`
         }
