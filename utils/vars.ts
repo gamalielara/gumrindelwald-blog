@@ -40,11 +40,9 @@ export const CATEGORIES = ["Book", "Film", "Technology", "Personal Thoughts"];
 export interface BlogCardInterface {
   id?: () => string | string;
   title: string;
-  category: string[];
-  datePosted: string;
-  thumbnail: {
-    url: string;
-  };
+  category: string;
+  created_at: string;
+  thumbnail_image: string;
   excerpt: string;
   slug: string;
   featured: boolean;
@@ -60,7 +58,7 @@ export interface ArticleInterface extends BlogCardInterface {
 }
 
 export interface BlogsPage {
-  posts: BlogCardInterface[];
+  blogs: BlogCardInterface[];
 }
 
 export interface params {
@@ -71,6 +69,6 @@ export interface params {
 
 export interface StateInterface {
   articles: {
-    posts: ArticleInterface[];
+    blogs: ArticleInterface[];
   };
 }

@@ -8,12 +8,12 @@ import HeadingFour from "../text/HeadingFour";
 import HeadingThree from "../text/HeadingThree";
 
 const LatestBlogCard: React.FC<BlogCardInterface> = ({
-  thumbnail,
-  title,
+  thumbnail_image,
   category,
   excerpt,
-  datePosted,
+  created_at,
   slug,
+  title,
 }) => {
   useLayoutEffect(() => {
     const latestBlogCard = document.getElementById("featured-blog");
@@ -33,7 +33,7 @@ const LatestBlogCard: React.FC<BlogCardInterface> = ({
     >
       <div className="article-heading-image rounded lg:w-1/3 md:w-1/2 w-full md:h-72 h-40 relative mr-4">
         <Image
-          src={thumbnail.url}
+          src={thumbnail_image}
           alt={title}
           layout="fill"
           loader={IMAGELOADER}
@@ -46,11 +46,9 @@ const LatestBlogCard: React.FC<BlogCardInterface> = ({
       <div className="blog-content flex flex-col lg:w-2/3 md:1/2 w-full justify-evenly">
         <span className="font-semibold my-2">FEATURED POST</span>
         <HeadingFour>{title}</HeadingFour>
-        <span className="text-sm">{new Date(datePosted).toDateString()}</span>
+        <span className="text-sm">{new Date(created_at).toDateString()}</span>
         <div className="category flex gap-4">
-          {category.map((c, i) => (
-            <CategoryBox key={i}>{c}</CategoryBox>
-          ))}
+          <CategoryBox>{category}</CategoryBox>
         </div>
         <p className="text-justify text-sm lg:text-base">{excerpt}</p>
         <Button>

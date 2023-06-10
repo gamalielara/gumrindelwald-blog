@@ -9,8 +9,8 @@ const BlogCard: React.FC<BlogCardInterface> = ({
   title,
   category,
   excerpt,
-  datePosted,
-  thumbnail,
+  created_at,
+  thumbnail_image,
   slug,
 }) => {
   return (
@@ -21,9 +21,8 @@ const BlogCard: React.FC<BlogCardInterface> = ({
       >
         <Image
           src={
-            thumbnail
-              ? thumbnail.url
-              : "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
+            thumbnail_image ??
+            "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
           }
           alt={title}
           layout="fill"
@@ -35,11 +34,9 @@ const BlogCard: React.FC<BlogCardInterface> = ({
       </div>
       <div className="blog-content flex flex-col w-full p-4">
         <div className="categories flex gap-4">
-          {category.map((c, i) => (
-            <CategoryBox key={i}>{c}</CategoryBox>
-          ))}
+          <CategoryBox>{category}</CategoryBox>
         </div>
-        <span className="text-sm">{new Date(datePosted).toDateString()}</span>
+        <span className="text-sm">{new Date(created_at).toDateString()}</span>
         <Link href={`/article/${slug}`}>
           <a className="flex font-semibold hover:text-gray-600 transition-all duration-500">
             <HeadingFive>{title}</HeadingFive>
