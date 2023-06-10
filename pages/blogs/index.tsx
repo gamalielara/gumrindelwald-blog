@@ -85,7 +85,6 @@ export async function getStaticProps() {
     ...blogDoc.data(),
     id: blogDoc.id,
   }));
-  console.log({ blogs });
 
   return {
     props: { blogs },

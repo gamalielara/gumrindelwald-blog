@@ -12,44 +12,13 @@ import HeadDocument from "../../components/HeadDocument";
 import HeadingOne from "../../components/text/HeadingOne";
 import { gql, GraphQLClient } from "graphql-request";
 import { ArticleInterface, params } from "../../utils/vars";
+import { collection, getDocs, query, where } from "@firebase/firestore";
+import { db } from "../../utils/firebase";
+import { queryBlogs } from "../../utils/helpers";
 
 interface Props {
   article: ArticleInterface;
 }
-
-const graphcms = new GraphQLClient(
-  "https://api-us-west-2.graphcms.com/v2/cl5dq8ppt07xo01ugcv3v3iv0/master"
-);
-
-const QUERY = gql`
-  query Post($slug: String!) {
-    post(where: { slug: $slug }) {
-      category
-      datePosted
-      id
-      slug
-      title
-      content {
-        html
-      }
-      keywords
-      excerpt
-      tags
-      language
-      thumbnail {
-        url
-      }
-    }
-  }
-`;
-
-const SLUGLIST = gql`
-  {
-    posts {
-      slug
-    }
-  }
-`;
 
 const ArticlePage: React.FC<Props> = ({ article }) => {
   return (
@@ -57,7 +26,7 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
       <HeadDocument
         docTitle={article.title}
         metaKeywords={article.keywords}
-        heroImage={article.thumbnail.url}
+        heroImage={article.thumbnail_image}
         excerpt={article.excerpt}
       />
       <PageContainer>
@@ -65,20 +34,18 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
           <Text size="sm" center gray>
             PUBLISHED ON{" "}
             <strong>
-              {new Date(article.datePosted).toDateString().toUpperCase()}
+              {new Date(article.created_at).toDateString().toUpperCase()}
             </strong>
           </Text>
           <HeadingOne center>{article.title}</HeadingOne>
           <div className="category w-fit mx-auto flex gap-4">
-            {article.category.map((c, i) => (
-              <CategoryBox key={i}>{c}</CategoryBox>
-            ))}
+            <CategoryBox>{article.category}</CategoryBox>
           </div>
           <div className="hero-image-blog w-full md:h-[75vmin] h-30vh relative my-4">
             <Image
               layout="fill"
               objectFit="cover"
-              src={article.thumbnail.url}
+              src={article.thumbnail_image}
               alt="title"
               loader={({ src }) => src}
               className="rounded-lg"
@@ -97,7 +64,7 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
                 id="article-post"
                 className="article-post"
                 dangerouslySetInnerHTML={{
-                  __html: article.content.html,
+                  __html: article.content,
                 }}
               />
             </div>
@@ -122,13 +89,18 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
 export default ArticlePage;
 
 export async function getStaticPaths() {
-  const { posts } = await graphcms.request(SLUGLIST);
+  const blogsRef = collection(db, "blogs");
+  const rawBlogs = await getDocs(blogsRef);
+  const blogs = rawBlogs.docs.map((blogDoc) => ({
+    ...blogDoc.data(),
+    id: blogDoc.id,
+  }));
 
   return {
-    paths: posts.map((post: any) => {
+    paths: blogs.map((blog: any) => {
       return {
         params: {
-          slug: post.slug,
+          slug: blog.slug,
         },
       };
     }),
@@ -138,9 +110,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: params) {
   const slug = params.slug;
-  const query = await graphcms.request(QUERY, { slug });
-  return {
-    props: { article: query.post },
-    revalidate: 10,
-  };
+
+  const thisBlog = await queryBlogs({ field: "slug", value: slug });
+
+  if (thisBlog.length) {
+    return {
+      props: { article: thisBlog[0] },
+      revalidate: 10,
+    };
+  }
 }
