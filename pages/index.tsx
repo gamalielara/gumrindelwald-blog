@@ -6,7 +6,6 @@ import HeadingThree from "../components/text/HeadingThree";
 import Link from "next/link";
 import Logo from "../components/logo/Logo";
 
-
 export default function Home() {
   return (
     <>
@@ -17,7 +16,7 @@ export default function Home() {
             className="image-wrapper mx-auto relative"
             style={{ width: "100vw", height: "20vmin" }}
           >
-            <Logo fontColor="white"/>
+            <Logo fontColor="white" />
           </div>
           <HeadingThree center color="white">
             Ara Gamaliel Boanerges&apos;s Personal Blog
@@ -41,14 +40,39 @@ export default function Home() {
             </LargeButton>
           </div>
         </div>
-        <div className="absolute w-full h-full -z-10">
+        <div
+          className="absolute w-full h-full -z-10"
+          style={{
+            backgroundImage: `url("./lp-rain-placeholder.webp")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
           <div className="bg-black opacity-30 absolute w-full h-full top-0 right-0 z-20"></div>
-          <video autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover" >
-            <source src={".//lp-rain-2.mp4"} type="video/mp4"/>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover absolute top-0 right-0 z-10"
+          >
+            <source src={"./lp-rain-2.mp4"} type="video/mp4" />
+          </video>
+
+          {/* video placeholder */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover absolute top-0 right-0 z-5"
+          >
+            <source src={"./lp-rain-resized.mp4"} type="video/mp4" />
           </video>
         </div>
       </main>
     </>
   );
-
 }
