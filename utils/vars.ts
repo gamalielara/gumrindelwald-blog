@@ -1,4 +1,3 @@
-import { GraphQLClient } from "graphql-request";
 import { collection } from "@firebase/firestore";
 import { db } from "./firebase";
 

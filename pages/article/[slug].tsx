@@ -10,9 +10,12 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Tag from "../../components/article/Tag";
 import HeadDocument from "../../components/HeadDocument";
 import HeadingOne from "../../components/text/HeadingOne";
-import { gql, GraphQLClient } from "graphql-request";
-import { ArticleInterface, params } from "../../utils/vars";
-import { collection, getDocs, query, where } from "@firebase/firestore";
+import {
+  ArticleInterface,
+  CATEGORY_DICTIONARIES,
+  params,
+} from "../../utils/vars";
+import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
 import { queryBlogs } from "../../utils/helpers";
 
@@ -39,7 +42,9 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
           </Text>
           <HeadingOne center>{article.title}</HeadingOne>
           <div className="category w-fit mx-auto flex gap-4">
-            <CategoryBox>{article.category}</CategoryBox>
+            <CategoryBox category={article.category}>
+              {CATEGORY_DICTIONARIES[article.category]}
+            </CategoryBox>
           </div>
           <div className="hero-image-blog w-full md:h-[75vmin] h-30vh relative my-4">
             <Image

@@ -5,7 +5,6 @@ import HeroBookImage from "../../assets/books.jpg";
 import HeroFilmImage from "../../assets/film.jpg";
 import HeroTechImage from "../../assets/tech.jpg";
 import HeroPersonalImage from "../../assets/personal.jpg";
-import SearchField from "../SearchField";
 import HeadingOne from "../text/HeadingOne";
 
 interface Props {

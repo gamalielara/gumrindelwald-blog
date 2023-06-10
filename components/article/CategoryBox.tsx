@@ -17,7 +17,7 @@ const CategoryBox: React.FC<Prop> = ({ children, category }) => {
 
   return (
     <Link href={categoryLinks[category] ?? ""}>
-      <a className="inline-block rounded bg-black text-white text-xs lg:text-sm my-2 w-fit px-2 p-1 hover:cursor-pointer flex items-center">
+      <a className="inline-block rounded bg-black text-white text-sm lg:text-base my-2 w-fit px-2 p-1 hover:cursor-pointer flex items-center">
         {children}
       </a>
     </Link>
