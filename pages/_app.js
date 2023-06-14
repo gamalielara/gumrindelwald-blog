@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { str } from "./str";
+import { str } from "../welcomeConsole";
 
 console.info(
   str,
