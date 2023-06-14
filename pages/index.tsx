@@ -3,7 +3,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import HeadDocument from "../components/HeadDocument";
 import Link from "next/link";
 import Logo from "../components/logo/Logo";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
@@ -12,18 +12,14 @@ export default function Home() {
   useEffect(() => {
     if (!videoRef.current) return;
 
-    const defaultClassnames =
-      "w-full h-full object-cover absolute top-0 right-0 z-10";
+    const defaultClassnames = `${styles["video-background"]}`;
 
     if (videoRef.current?.readyState === 4) {
       videoRef.current.className = defaultClassnames;
     } else {
-      videoRef.current.className += " " + styles["video-blur"];
+      videoRef.current.className =
+        defaultClassnames + " " + `${styles["video-blur"]}`;
     }
-
-    // videoRef.current.addEventListener("loadstart", () => {
-
-    // })
   }, []);
 
   return (
@@ -61,14 +57,7 @@ export default function Home() {
 
         <div className={styles["video-bg-wrapper"]}>
           <div className={styles["video-placeholder"]}></div>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={styles["video-background"]}
-          >
+          <video ref={videoRef} autoPlay muted loop playsInline preload="auto">
             <source src={"./lp-rain-2.mp4"} type="video/mp4" />
           </video>
         </div>

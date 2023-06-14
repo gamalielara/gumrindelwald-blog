@@ -1,4 +1,5 @@
-@import "./styles/main.scss";
+@import "../styles/main.scss";
+@import "../styles/animations.scss";
 
 .main-page {
   width: 100vw;
@@ -90,6 +91,10 @@
   width: 100vw;
   height: 100vh;
   z-index: -10;
+  background-image: url("../public/lp-rain-placeholder.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .video-placeholder {
@@ -107,4 +112,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  &.video-blur {
+    animation: pulse 2.5s infinite ease;
+  }
 }
