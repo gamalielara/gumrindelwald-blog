@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   env: {
     REACT_APP_APIKEY: process.env.REACT_APP_APIKEY,
     REACT_APP_AUTHDOMAIN: process.env.REACT_APP_AUTHDOMAIN,
@@ -9,6 +9,11 @@ const nextConfig = {
     REACT_APP_MESSAGINGSENDERID: process.env.REACT_APP_MESSAGINGSENDERID,
     REACT_APP_APPID: process.env.REACT_APP_APPID,
     REACT_APP_MEASUREMENTID: process.env.REACT_APP_MEASUREMENTID,
+  },
+  compiler: {
+    removeConsole: {
+      exclude: ["info"],
+    },
   },
   async redirects() {
     return [
