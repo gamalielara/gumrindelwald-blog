@@ -74,9 +74,6 @@
 
   &:hover {
     background-color: $secondary-color;
-    & a {
-      color: $text-secondary-color;
-    }
   }
 
   @media screen and (min-width: $screen-sm) {
