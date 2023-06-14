@@ -1,24 +1,25 @@
-import styles from "./style.module.css"
+import styles from "./style.module.scss";
 
 interface LogoInterface {
-    fontColor: string;
-    letterSpacing?: number;
-    isHeader?: boolean;
+  fontColor: string;
+  isHeader?: boolean;
 }
 
-const Logo: React.FC<LogoInterface> = ({fontColor, letterSpacing, isHeader}) => {
-    return (
-        <div
-            className={`${isHeader ? styles.header : styles.title } text-${fontColor} flex items-end w-fit m-auto font-bold space-x-${letterSpacing || 0.5}`}>
-            g
-            <div className="main-text overflow-hidden inline-block animate-mainTextAnimation">umrindel</div>
-            <em className="flex">w
-                <span className="italic overflow-hidden animate-italicTextAnimation">
-                    <span className="main-word pr-2.5">ald</span>
-                </span>
-            </em>
-        </div>
-    )
-}
+const Logo: React.FC<LogoInterface> = ({ fontColor, isHeader }) => {
+  return (
+    <div
+      {...{ color: fontColor }}
+      className={`${isHeader ? styles.header : styles.title} ${styles["logo"]}`}
+    >
+      g<div className={styles["main-text"]}>umrindel</div>
+      <em className={styles["em-text"]}>
+        w
+        <span>
+          <span>ald</span>
+        </span>
+      </em>
+    </div>
+  );
+};
 
-export default Logo
+export default Logo;

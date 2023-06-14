@@ -1,0 +1,26 @@
+@keyframes mainAnimationKeyframes {
+  0%,
+  10% {
+    max-width: 0;
+  }
+  50% {
+    max-width: 999px;
+  }
+  75%,
+  100% {
+    max-width: 0;
+  }
+}
+
+@keyframes italicAnimationKeyframes {
+  0%,
+  25% {
+    max-width: 0;
+  }
+  70% {
+    max-width: 999px;
+  }
+  100% {
+    max-width: 0;
+  }
+}

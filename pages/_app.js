@@ -1,4 +1,5 @@
-import "../styles/globals.css";
+import "../styles/app.scss";
+import "../styles/main.scss";
 import { str } from "../welcomeConsole";
 
 console.info(

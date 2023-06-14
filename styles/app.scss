@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  font-family: "Rubik", sans-serif;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  color-sceme: light only;
+}
+
+#gw-logo {
+  filter: grayscale(0);
+}
+
+.article-body p {
+  text-align: justify;
+}
+
+.article-post p {
+  margin: 0.5rem 0;
+}
+
+blockquote {
+  padding: 1rem 1.5rem;
+  border-radius: 0.25rem;
+  background-color: rgb(229 231 235);
+  position: relative;
+  width: 75%;
+  margin: 1.25rem auto;
+  font-size: 1rem;
+}
+
+blockquote::before,
+blockquote::after {
+  position: absolute;
+  font-size: 2rem;
+  font-style: initial;
+  font-weight: bold;
+}
+
+blockquote::before {
+  content: "\f10d";
+  font-family: "Font Awesome 5 Free";
+  top: -20px;
+  left: -20px;
+}
+
+blockquote::after {
+  content: "\f10e";
+  font-family: "Font Awesome 5 Free";
+  bottom: -20px;
+  right: -20px;
+}
+
+blockquote > p {
+  margin: 0 !important;
+}
+
+article img,
+article figure {
+  width: 80%;
+  margin: 1rem auto;
+  border-radius: 5px;
+}
+
+article h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.blog-content > h4 {
+  margin: 0;
+}
+
+article h1 {
+  font-size: 2.25rem;
+}
+
+article h2 {
+  font-size: 2rem;
+}
+
+article h3 {
+  font-size: 1.5rem;
+}
+
+article ul {
+  list-style-type: disc;
+  padding: revert;
+}
+
+article ol {
+  list-style-type: decimal;
+  padding: revert;
+}
+
+@media screen and (max-width: 450px) {
+  blockquote {
+    font-size: 0.9rem;
+  }
+
+  article h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article h3 {
+    font-size: 1.25rem;
+  }
+
+  article img {
+    width: 80%;
+  }
+}
