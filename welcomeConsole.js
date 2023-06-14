@@ -1,4 +1,4 @@
-export default `
+export const str = `
 
 __    __  ________  __        __         ______  
 /  |  /  |/        |/  |      /  |       /      \\ 
