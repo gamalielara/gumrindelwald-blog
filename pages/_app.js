@@ -1,8 +1,8 @@
 import "../styles/globals.css";
-import string from "./welcomeString";
+import { str } from "./str";
 
 console.info(
-  string,
+  str,
   "color: red",
   "background-color: blue",
   "background-color: green"
