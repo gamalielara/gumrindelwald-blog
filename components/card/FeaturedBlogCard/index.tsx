@@ -5,10 +5,11 @@ import {
   BlogCardInterface,
   CATEGORY_DICTIONARIES,
   IMAGELOADER,
-} from "../../utils/vars";
-import CategoryBox from "../article/CategoryBox";
-import Button from "../Button";
-import HeadingFour from "../text/HeadingFour";
+} from "../../../utils/vars";
+import CategoryBox from "../../article/CategoryBox";
+import Button from "../../Button";
+import HeadingFour from "../../text/HeadingFour";
+import styles from "./styles.module.scss";
 
 type FeaturedBlogCardKeys =
   | "thumbnail_image"
@@ -34,10 +35,10 @@ const FeaturedBlogCard: React.FC<
 
   return (
     <article
-      className="w-full mx-auto flex md:flex-row flex-col justify-center items-center mb-2 p-2 rounded-xl bg-gray-100 shadow"
+      className={styles["featured-blog-card-wrapper"]}
       id="featured-blog"
     >
-      <div className="article-heading-image rounded lg:w-1/3 md:w-1/2 w-full md:h-72 h-40 relative mr-4">
+      <div className={styles["article-image"]}>
         <Image
           src={thumbnail_image}
           alt={title}
@@ -49,19 +50,19 @@ const FeaturedBlogCard: React.FC<
           unoptimized
         />
       </div>
-      <div className="blog-content flex flex-col lg:w-2/3 md:1/2 w-full justify-evenly">
-        <span className="font-semibold my-2">FEATURED POST</span>
-        <HeadingFour>{title}</HeadingFour>
-        <span className="text-sm">{new Date(created_at).toDateString()}</span>
-        <div className="category flex gap-4">
-          <CategoryBox category={category}>
-            {CATEGORY_DICTIONARIES[category]}
-          </CategoryBox>
-        </div>
-        <p className="text-justify text-sm lg:text-base">{excerpt}</p>
+      <div className={styles["blog-content"]}>
+        <span className={styles["featured-blog-text"]}>FEATURED POST</span>
+        <h4>{title}</h4>
+        <span className={styles["date-posted"]}>
+          {new Date(created_at).toDateString()}
+        </span>
+        <CategoryBox category={category}>
+          {CATEGORY_DICTIONARIES[category]}
+        </CategoryBox>
+        <p className={styles["blog-excerpt"]}>{excerpt}</p>
         <Button>
           <Link href={`/article/${slug}`}>
-            <a className="flex font-semibold hover:underline">Read More</a>
+            <a className={styles["read-more"]}>Read More</a>
           </Link>
         </Button>
       </div>

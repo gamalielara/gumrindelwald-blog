@@ -1,4 +1,4 @@
-import "../styles/app.scss";
+import "../styles/global.css";
 import "../styles/main.scss";
 import { str } from "../welcomeConsole";
 

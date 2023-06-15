@@ -8,6 +8,7 @@ import HeroContainer from "../../components/container/HeroContainer";
 import { ArticleInterface, BlogsPage } from "../../utils/vars";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
+import styles from "./styles.module.scss";
 
 const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
   const [showFeatured, setShowFeatured] = useState<boolean>(true);
@@ -22,15 +23,15 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
     <>
       <HeadDocument docTitle="All Blogs" />
       <PageContainer>
-        <HeroContainer
+        {/* <HeroContainer
           pageName="All Blog Posts"
           type="All"
           setShowFeatured={setShowFeatured}
           showSearch
-        />
+        /> */}
 
         {showFeatured && Boolean(featuredBlogs.length) && (
-          <div className="latest-blog-card my-8">
+          <div className={styles["featured-blog-card"]}>
             <FeaturedBlogCard
               thumbnail_image={featuredBlogs[featuredBlogIndex].thumbnail_image}
               title={featuredBlogs[featuredBlogIndex].title}
@@ -39,25 +40,28 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
               excerpt={featuredBlogs[featuredBlogIndex].excerpt}
               slug={featuredBlogs[featuredBlogIndex].slug}
             />
-            <div className="buttons flex justify-center mx-auto gap-8 w-1/2">
-              {[...Array(featuredBlogs.length).keys()].map((el) => (
-                <button
-                  key={`${Math.random()}`}
-                  className={`${
-                    featuredBlogIndex === el
-                      ? "bg-black text-white"
-                      : "bg-gray-300"
-                  } rounded-full w-8 h-8 flex items-center justify-center`}
-                  onClick={() => featuredBlogIndexHandler(el)}
-                >
-                  <span className="text-base">{el + 1}</span>
-                </button>
-              ))}
+            <div className={styles["buttons-wrapper"]}>
+              {[...Array(featuredBlogs.length).keys()].map((el) => {
+                console.info(featuredBlogIndex, el);
+
+                const selected = featuredBlogIndex === el;
+
+                return (
+                  <button
+                    {...{ selected }}
+                    key={`${Math.random()}`}
+                    className={styles["button-pagination"]}
+                    onClick={() => featuredBlogIndexHandler(el)}
+                  >
+                    <span className="text-base">{el + 1}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
 
-        <section className="all-blogs-container w-full flex flex-wrap justify-between mb-4">
+        {/* <section className="all-blogs-container w-full flex flex-wrap justify-between mb-4">
           {blogs &&
             blogs.map((blog) => (
               <BlogCard
@@ -70,7 +74,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
                 slug={blog.slug}
               />
             ))}
-        </section>
+        </section> */}
       </PageContainer>
     </>
   );

@@ -1,0 +1,27 @@
+@import "../../styles/main.scss";
+
+.featured-blog-card {
+  margin: 2rem 0;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-items: center;
+  margin: 0 auto;
+  gap: 2rem;
+  width: 50%;
+}
+
+.button-pagination {
+  border-radius: 100%;
+  background-color: $background-color-grey;
+  width: 2rem;
+  aspect-ratio: 1;
+  justify-items: center;
+  align-items: center;
+  border: none;
+
+  &[selected] {
+    background-color: $background-color;
+  }
+}
