@@ -11,32 +11,28 @@
   border-radius: 0.75rem;
   background-color: $card-color;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  aspect-ratio: auto;
-
+  width: inherit;
   overflow: auto;
+  min-width: 100%;
+  box-sizing: border-box;
 
   @media screen and (min-width: $screen-md) {
-    width: auto;
     flex-direction: row;
-    aspect-ratio: 3/1;
-  }
-
-  @media screen and (min-width: $screen-lg) {
-    width: 75%;
   }
 }
 
 .article-image {
   border-radius: 0.25rem;
   position: relative;
-  aspect-ratio: 2/1;
+  aspect-ratio: 1;
   width: 100%;
 
   @media screen and (min-width: $screen-md) {
-    margin-right: 1rem;
     width: auto;
-    height: 100%;
+    margin-right: 1rem;
+    flex: 1;
     aspect-ratio: 1.5/1.75;
+    height: 100%;
   }
 }
 
@@ -44,6 +40,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  @media screen and (min-width: $screen-md) {
+    flex: 3;
+  }
 }
 
 .featured-blog-text {

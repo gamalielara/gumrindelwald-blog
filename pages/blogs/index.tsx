@@ -32,14 +32,21 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
 
         {showFeatured && Boolean(featuredBlogs.length) && (
           <div className={styles["featured-blog-card"]}>
-            <FeaturedBlogCard
-              thumbnail_image={featuredBlogs[featuredBlogIndex].thumbnail_image}
-              title={featuredBlogs[featuredBlogIndex].title}
-              category={featuredBlogs[featuredBlogIndex].category}
-              created_at={featuredBlogs[featuredBlogIndex].created_at}
-              excerpt={featuredBlogs[featuredBlogIndex].excerpt}
-              slug={featuredBlogs[featuredBlogIndex].slug}
-            />
+            <div className={styles["cards-wrapper"]}>
+              <div>
+                {featuredBlogs.map((blog) => (
+                  <FeaturedBlogCard
+                    key={blog.id}
+                    thumbnail_image={blog.thumbnail_image}
+                    title={blog.title}
+                    category={blog.category}
+                    created_at={blog.created_at}
+                    excerpt={blog.excerpt}
+                    slug={blog.slug}
+                  />
+                ))}
+              </div>
+            </div>
             <div className={styles["buttons-wrapper"]}>
               {[...Array(featuredBlogs.length).keys()].map((el) => {
                 console.info(featuredBlogIndex, el);

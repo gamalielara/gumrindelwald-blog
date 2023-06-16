@@ -1,7 +1,23 @@
 @import "../../styles/main.scss";
 
 .featured-blog-card {
-  margin: 2rem 0;
+  width: 100%;
+  margin: 2rem auto;
+
+  @media screen and (min-width: $screen-lg) {
+    width: 75%;
+  }
+}
+
+.cards-wrapper {
+  width: 100%;
+  overflow: hidden;
+
+  & > div:first-child {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
 }
 
 .buttons-wrapper {
