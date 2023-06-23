@@ -1,6 +1,7 @@
 import React from "react";
 import { Category } from "../../utils/vars";
 import Link from "next/link";
+import styles from "./styles.module.scss";
 
 interface Prop {
   children: any;
@@ -17,9 +18,7 @@ const CategoryBox: React.FC<Prop> = ({ children, category }) => {
 
   return (
     <Link href={categoryLinks[category] ?? ""}>
-      <a className="inline-block rounded bg-black text-white text-sm lg:text-base my-2 w-fit px-2 p-1 hover:cursor-pointer flex items-center">
-        {children}
-      </a>
+      <a className={styles["category-tag-wrapper"]}>{children}</a>
     </Link>
   );
 };

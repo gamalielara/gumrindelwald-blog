@@ -18,8 +18,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
 
   const blogCardRef = useRef<HTMLDivElement>(null);
   const featuredBlogsCarousel = useRef<HTMLDivElement>(null);
-
-  let stopCarousel: () => void;
+  const buttonsWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const carouselIndex = setInterval(() => {
@@ -32,9 +31,13 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
       });
     }, 5000);
 
-    stopCarousel = () => clearInterval(carouselIndex);
+    const paginationButtons = buttonsWrapper.current;
 
-    return stopCarousel();
+    if (paginationButtons) {
+      paginationButtons.onclick = () => clearInterval(carouselIndex);
+    }
+
+    return () => clearInterval(carouselIndex);
   }, []);
 
   useEffect(() => {
@@ -77,7 +80,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
                 ))}
               </div>
             </div>
-            <div className={styles["buttons-wrapper"]}>
+            <div className={styles["buttons-wrapper"]} ref={buttonsWrapper}>
               {[...Array(featuredBlogs.length).keys()].map((el) => {
                 const selected = featuredBlogIndex === el;
 
@@ -89,7 +92,6 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
                     }`}
                     onClick={() => {
                       setFeaturedBlogIndex(el);
-                      stopCarousel?.();
                     }}
                   >
                     <span className="text-base">{el + 1}</span>

@@ -29,10 +29,6 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: inherit;
-}
-
 blockquote {
   padding: 1rem 1.5rem;
   border-radius: 0.25rem;
