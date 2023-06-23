@@ -8,7 +8,6 @@ import {
 } from "../../../utils/vars";
 import CategoryBox from "../../article/CategoryBox";
 import Button from "../../Button";
-import HeadingFour from "../../text/HeadingFour";
 import styles from "./styles.module.scss";
 
 type FeaturedBlogCardKeys =
@@ -51,8 +50,7 @@ const FeaturedBlogCard: React.FC<
         />
       </div>
       <div className={styles["blog-content"]}>
-        <span className={styles["featured-blog-text"]}>FEATURED POST</span>
-        <h4>{title}</h4>
+        <h3>{title}</h3>
         <span className={styles["date-posted"]}>
           {new Date(created_at).toDateString()}
         </span>
@@ -60,11 +58,11 @@ const FeaturedBlogCard: React.FC<
           {CATEGORY_DICTIONARIES[category]}
         </CategoryBox>
         <p className={styles["blog-excerpt"]}>{excerpt}</p>
-        <Button>
+        <button className={styles["read-more-btn"]}>
           <Link href={`/article/${slug}`}>
             <a className={styles["read-more"]}>Read More</a>
           </Link>
-        </Button>
+        </button>
       </div>
     </article>
   );

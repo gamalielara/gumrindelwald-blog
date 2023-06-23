@@ -24,7 +24,7 @@
 .article-image {
   border-radius: 0.25rem;
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 2/1;
   width: 100%;
 
   @media screen and (min-width: $screen-md) {
@@ -40,6 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin: 10px;
 
   @media screen and (min-width: $screen-md) {
     flex: 3;
@@ -64,6 +65,17 @@
   }
 }
 
+.read-more-btn {
+  border-radius: 10px;
+  background-color: $btn-color-primary;
+  color: $text-color;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border: none;
+  width: fit-content;
+}
+
 .read-more {
   font-weight: 500;
+  color: $text-color;
 }

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import BlogCard from "../../components/card/BlogCard";
 import FeaturedBlogCard from "../../components/card/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
@@ -13,11 +13,41 @@ import styles from "./styles.module.scss";
 const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
   const [showFeatured, setShowFeatured] = useState<boolean>(true);
   const [featuredBlogIndex, setFeaturedBlogIndex] = useState(0);
+
   const featuredBlogs = blogs.filter((post) => post.featured);
 
-  const featuredBlogIndexHandler = (number: number) => {
-    setFeaturedBlogIndex(number);
-  };
+  const blogCardRef = useRef<HTMLDivElement>(null);
+  const featuredBlogsCarousel = useRef<HTMLDivElement>(null);
+
+  let stopCarousel: () => void;
+
+  useEffect(() => {
+    const carouselIndex = setInterval(() => {
+      setFeaturedBlogIndex((index) => {
+        if (index < featuredBlogs.length - 1) {
+          return index + 1;
+        } else {
+          return 0;
+        }
+      });
+    }, 5000);
+
+    stopCarousel = () => clearInterval(carouselIndex);
+
+    return stopCarousel();
+  }, []);
+
+  useEffect(() => {
+    const carousel = featuredBlogsCarousel?.current;
+
+    if (carousel) {
+      // card width + gap between the cards = 1rem
+      const swipeAmount = `calc(${
+        -1 * featuredBlogIndex * (blogCardRef.current?.offsetWidth ?? 0)
+      }px - ${featuredBlogIndex}rem)`;
+      carousel.style.transform = `translateX(${swipeAmount})`;
+    }
+  }, [featuredBlogIndex]);
 
   return (
     <>
@@ -31,9 +61,9 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
         /> */}
 
         {showFeatured && Boolean(featuredBlogs.length) && (
-          <div className={styles["featured-blog-card"]}>
+          <div className={styles["featured-blog-card"]} ref={blogCardRef}>
             <div className={styles["cards-wrapper"]}>
-              <div>
+              <div ref={featuredBlogsCarousel}>
                 {featuredBlogs.map((blog) => (
                   <FeaturedBlogCard
                     key={blog.id}
@@ -49,16 +79,18 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
             </div>
             <div className={styles["buttons-wrapper"]}>
               {[...Array(featuredBlogs.length).keys()].map((el) => {
-                console.info(featuredBlogIndex, el);
-
                 const selected = featuredBlogIndex === el;
 
                 return (
                   <button
-                    {...{ selected }}
                     key={`${Math.random()}`}
-                    className={styles["button-pagination"]}
-                    onClick={() => featuredBlogIndexHandler(el)}
+                    className={`${styles["button-pagination"]} ${
+                      selected ? "selected" : ""
+                    }`}
+                    onClick={() => {
+                      setFeaturedBlogIndex(el);
+                      stopCarousel?.();
+                    }}
                   >
                     <span className="text-base">{el + 1}</span>
                   </button>

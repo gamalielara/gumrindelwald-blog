@@ -4,7 +4,7 @@
   width: 100%;
   margin: 2rem auto;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: $screen-xl) {
     width: 75%;
   }
 }
@@ -17,12 +17,17 @@
     display: flex;
     gap: 1rem;
     flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+  & > div {
+    transition: all 1s ease-in-out;
   }
 }
 
 .buttons-wrapper {
   display: flex;
-  justify-items: center;
+  justify-content: space-between;
   margin: 0 auto;
   gap: 2rem;
   width: 50%;
@@ -30,14 +35,16 @@
 
 .button-pagination {
   border-radius: 100%;
-  background-color: $background-color-grey;
   width: 2rem;
   aspect-ratio: 1;
   justify-items: center;
   align-items: center;
+  background-color: $background-color-grey;
   border: none;
+  cursor: pointer;
 
-  &[selected] {
+  &[class*="selected"] {
     background-color: $background-color;
+    color: $text-color;
   }
 }
