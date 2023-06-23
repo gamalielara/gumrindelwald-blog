@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import BlogCard from "../../components/card/BlogCard";
 import FeaturedBlogCard from "../../components/card/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
@@ -13,12 +13,32 @@ import styles from "./styles.module.scss";
 const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
   const [showFeatured, setShowFeatured] = useState<boolean>(true);
   const [featuredBlogIndex, setFeaturedBlogIndex] = useState(0);
+  const [maxBlogCardHeight, setMaxBlogCardHeight] = useState(0);
 
   const featuredBlogs = blogs.filter((post) => post.featured);
 
   const blogCardRef = useRef<HTMLDivElement>(null);
   const featuredBlogsCarousel = useRef<HTMLDivElement>(null);
   const buttonsWrapper = useRef<HTMLDivElement>(null);
+  const blogCardsRef = useRef<HTMLDivElement[]>([]);
+  const blogSectionGridRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    let h = 0;
+
+    blogCardsRef.current.forEach((el) => {
+      if (h < el.clientHeight) h = el.clientHeight;
+    });
+
+    setMaxBlogCardHeight(h);
+  }, [blogs, blogCardsRef.current, blogCardsRef.current.length]);
+
+  useEffect(() => {
+    const sectionGrid = blogSectionGridRef.current;
+    if (maxBlogCardHeight > 0 && sectionGrid) {
+      sectionGrid.style.gridTemplateRows = `repeat(5, ${maxBlogCardHeight}px)`;
+    }
+  }, [maxBlogCardHeight, blogSectionGridRef.current]);
 
   useEffect(() => {
     const carouselIndex = setInterval(() => {
@@ -102,20 +122,31 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
           </div>
         )}
 
-        {/* <section className="all-blogs-container w-full flex flex-wrap justify-between mb-4">
+        <section
+          className={styles["blog-cards-section"]}
+          ref={blogSectionGridRef}
+        >
           {blogs &&
-            blogs.map((blog) => (
-              <BlogCard
-                key={blog.title}
-                thumbnail_image={blog.thumbnail_image}
-                title={blog.title}
-                category={blog.category}
-                excerpt={blog.excerpt}
-                created_at={blog.created_at}
-                slug={blog.slug}
-              />
-            ))}
-        </section> */}
+            blogs.map((blog, i) => {
+              return (
+                <BlogCard
+                  ref={(el: any) => {
+                    const curr = blogCardsRef?.current;
+                    if (curr) {
+                      curr[i] = el;
+                    }
+                  }}
+                  key={blog.title}
+                  thumbnail_image={blog.thumbnail_image}
+                  title={blog.title}
+                  category={blog.category}
+                  excerpt={blog.excerpt}
+                  created_at={blog.created_at}
+                  slug={blog.slug}
+                />
+              );
+            })}
+        </section>
       </PageContainer>
     </>
   );
