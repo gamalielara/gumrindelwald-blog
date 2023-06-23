@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { MENUS } from "../../utils/vars";
 import NavMenu from "./NavMenu";
 import Logo from "../logo/Logo";
+import styles from "./styles.module.scss";
 
 const Navbar: React.FC = () => {
   const route = useRouter();
@@ -11,11 +12,9 @@ const Navbar: React.FC = () => {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const baseClassnames =
-      "sticky left-0 w-full flex p-4 bg-white z-50 transition-all duration-100 top-0";
-    const becomeFlexRowClassnames =
-      baseClassnames + " flex-row lg:justify-between justify-center";
-    const becomeFlexColClassnames = baseClassnames + " flex-col items-center";
+    const baseClassnames = styles["header-base"];
+    const becomeFlexRowClassnames = baseClassnames + " " + styles["header-row"];
+    const becomeFlexColClassnames = baseClassnames + " " + styles["header-col"];
 
     if (headerRef.current) {
       if (window.scrollY > headerRef.current.clientHeight) {
@@ -44,18 +43,17 @@ const Navbar: React.FC = () => {
 
   return (
     <header id="header" ref={headerRef}>
-      <div
-        className="logo-container hover:cursor-pointer scale-75"
-        onClick={() => route.push("/")}
-      >
+      <div className={styles["logo-container"]} onClick={() => route.push("/")}>
         <Logo fontColor="black" isHeader />
       </div>
-      <nav className="hidden lg-md:block">
-        <ul className="list-none flex flex-wrap justify-center">
+      <nav className={styles["nav-menus-container"]}>
+        <ul className={styles["nav-menu-list"]}>
           {MENUS.map((menu) => (
             <Link href={menu.url} key={menu.name}>
               <a>
-                <NavMenu>{menu.name}</NavMenu>
+                <li className={styles["nav-menu"]}>
+                  <span>{menu.name}</span>
+                </li>
               </a>
             </Link>
           ))}
