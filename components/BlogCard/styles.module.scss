@@ -11,50 +11,56 @@
   padding: 0.5rem;
   box-sizing: border-box;
   grid-column: span 1;
-  width: 100%;
-  transition: all 1s ease-in;
+  width: auto;
+  transition: all 2.5s ease-in;
 
-  &:hover {
-    width: 99%;
-    cursor: pointer;
-    grid-column: span 2;
-    flex-direction: row-reverse;
+  $parent: &;
 
-    .article-image {
-      margin-right: 0;
-      margin-left: 10px;
-      padding-top: unset;
-      height: 100%;
-    }
+  // @include hideOtherBlogCard();
 
-    .blog-content {
-      justify-content: center;
-      align-items: flex-end;
+  @media screen and (min-width: $screen-md) {
+    &:hover {
+      width: 99%;
+      cursor: pointer;
+      grid-column: span 3;
+      flex-direction: row-reverse;
 
-      h4 {
-        text-align: end;
+      .article-image {
+        margin-right: 0;
+        margin-left: 10px;
+        padding-top: unset;
+        height: 100%;
+      }
+
+      .blog-content {
+        justify-content: center;
+        align-items: flex-end;
+
+        h4 {
+          text-align: end;
+        }
       }
     }
-  }
 
-  @media screen and (min-width: $screen-lg) {
-    &:nth-child(3n-1):has(+ &:hover) {
-      display: none;
-    }
+    @for $i from 1 through $blog-cards {
+      #{$parent}:nth-child(#{$i - 2}n):has(&) {
+        display: none;
+      }
 
-    &:nth-child(3n):hover {
-      grid-column: 2 / -1;
-      margin-left: auto;
-    }
+      &:nth-child(#{$i}n):hover {
+        grid-column: 1 / span #{$blog-card-columns-sm};
+        grid-row: ceil($i / $blog-card-columns-sm);
 
-    &:nth-child(3n-2):hover {
-      margin-right: auto;
-    }
-  }
+        @media screen and (min-width: $screen-md) {
+          grid-column: 1 / span #{$blog-card-columns-md};
+          grid-row: ceil($i / $blog-card-columns-md);
+        }
 
-  @media screen and (max-width: $screen-lg) {
-    &:nth-child(2n-1):has(+ &:hover) {
-      display: none;
+        @media screen and (min-width: $screen-lg) {
+          grid-column: 1 / span #{$blog-card-columns-lg};
+          grid-row: ceil($i / $blog-card-columns-lg);
+        }
+      }
     }
   }
 }
@@ -67,6 +73,7 @@
   height: 10rem;
   padding-top: 50%;
   transition: all 0.25s ease-in-out;
+  max-height: 100%;
 
   @media screen and (min-width: $screen-md) {
     height: auto;

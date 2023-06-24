@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import BlogCard from "../../components/BlogCard";
 import FeaturedBlogCard from "../../components/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
@@ -143,6 +143,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
                   excerpt={blog.excerpt}
                   created_at={blog.created_at}
                   slug={blog.slug}
+                  i={i + 1}
                 />
               );
             })}

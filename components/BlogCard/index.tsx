@@ -25,12 +25,13 @@ const BlogCard = React.forwardRef(
       created_at,
       thumbnail_image,
       slug,
-    }: Pick<BlogCardInterface, BlogTypeKeys>,
+      i,
+    }: Pick<BlogCardInterface, BlogTypeKeys> & { i: number },
     ref: any
   ) => {
     return (
       // <Link href={`/article/${slug}`}>
-      <article className={styles["article-box"]} ref={ref}>
+      <article className={`${styles["article-box"]} blog-card-${i}`} ref={ref}>
         <div className={styles["article-image"]}>
           <Image
             src={
