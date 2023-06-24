@@ -131,6 +131,10 @@ article ol {
   }
 }
 
+.blog-card-hidden {
+  display: none !important;
+}
+
 /* FOR LOCAL DEVELOPMENT ONLY. DELETE THIS LATER */
 img {
   background-color: rgb(172, 172, 172) !important;

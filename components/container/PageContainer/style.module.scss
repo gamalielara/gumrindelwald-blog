@@ -19,12 +19,12 @@
   min-height: 100vh;
   margin: 0 auto;
 
-  @media screen and (min-width: $screen-xl) {
-    width: 75%;
+  @media screen and (min-width: $screen-lg) {
+    width: calc(calc(4 / 5) * 100%);
   }
 
-  @media screen and (min-width: $screen-lg) {
-    width: calc(calc(3 / 5) * 100%);
+  @media screen and (min-width: $screen-xl) {
+    width: 75%;
   }
 }
 
