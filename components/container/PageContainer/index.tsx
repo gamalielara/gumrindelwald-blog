@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Footer from "../../Footer";
-import Navbar from "../../navbar/Navbar";
-import NavMobileButton from "../../button/NavMobileButton";
-import SideBar from "../../navbar/SideBar";
+import Navbar from "../../Navbar";
+import SideBar from "../../Sidebar";
 import styles from "./style.module.scss";
+import NavMobileButton from "../../NavMobileButton";
 
 interface PageContainerInterface {
   children: any;

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import BlogCard from "../../components/card/BlogCard";
-import FeaturedBlogCard from "../../components/card/FeaturedBlogCard";
+import BlogCard from "../../components/BlogCard";
+import FeaturedBlogCard from "../../components/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
 import PageContainer from "../../components/container/PageContainer";
 import HeroContainer from "../../components/container/HeroContainer";

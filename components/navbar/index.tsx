@@ -2,8 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
 import { MENUS } from "../../utils/vars";
-import NavMenu from "./NavMenu";
-import Logo from "../logo/Logo";
+import Logo from "../Logo";
 import styles from "./styles.module.scss";
 
 const Navbar: React.FC = () => {

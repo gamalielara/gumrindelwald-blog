@@ -130,3 +130,9 @@ article ol {
     width: 80%;
   }
 }
+
+/* FOR LOCAL DEVELOPMENT ONLY. DELETE THIS LATER */
+img {
+  background-color: rgb(172, 172, 172) !important;
+  transition: all 1s ease-in;
+}

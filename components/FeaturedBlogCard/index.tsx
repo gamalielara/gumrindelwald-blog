@@ -5,9 +5,8 @@ import {
   BlogCardInterface,
   CATEGORY_DICTIONARIES,
   IMAGELOADER,
-} from "../../../utils/vars";
-import CategoryBox from "../../article/CategoryBox";
-import Button from "../../Button";
+} from "../../utils/vars";
+import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
 
 type FeaturedBlogCardKeys =

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import HeadDocument from "../components/HeadDocument";
 import Link from "next/link";
-import Logo from "../components/logo/Logo";
+import Logo from "../components/Logo";
 import styles from "./index.module.scss";
 import { useEffect, useRef } from "react";
 

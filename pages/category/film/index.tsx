@@ -1,6 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
-import BlogCard from "../../../components/card/BlogCard";
+import BlogCard from "../../../components/BlogCard";
 import HeadDocument from "../../../components/HeadDocument";
 import PageContainer from "../../../components/container/PageContainer";
 import HeroContainer from "../../../components/container/HeroContainer";

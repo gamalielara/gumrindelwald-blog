@@ -1,7 +1,6 @@
 @import "../../styles/main.scss";
 
 .article-box {
-  width: auto;
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
@@ -12,9 +11,11 @@
   padding: 0.5rem;
   box-sizing: border-box;
   grid-column: span 1;
-  transition: 1000ms;
+  width: 100%;
+  transition: all 1s ease-in;
 
   &:hover {
+    width: 99%;
     cursor: pointer;
     grid-column: span 2;
     flex-direction: row-reverse;
@@ -38,18 +39,21 @@
 
   @media screen and (min-width: $screen-lg) {
     &:nth-child(3n-1):has(+ &:hover) {
-      visibility: hidden;
       display: none;
     }
 
     &:nth-child(3n):hover {
       grid-column: 2 / -1;
+      margin-left: auto;
+    }
+
+    &:nth-child(3n-2):hover {
+      margin-right: auto;
     }
   }
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (max-width: $screen-lg) {
     &:nth-child(2n-1):has(+ &:hover) {
-      visibility: hidden;
       display: none;
     }
   }
@@ -62,7 +66,7 @@
   margin-right: 1rem;
   height: 10rem;
   padding-top: 50%;
-  transition: all 1000ms ease-in-out;
+  transition: all 0.25s ease-in-out;
 
   @media screen and (min-width: $screen-md) {
     height: auto;
