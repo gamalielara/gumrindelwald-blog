@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import React, { ForwardedRef } from "react";
+import React from "react";
 import {
   BlogCardInterface,
   CATEGORY_DICTIONARIES,
