@@ -41,6 +41,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin: 10px;
+  height: 100%;
 
   @media screen and (min-width: $screen-md) {
     flex: 3;
@@ -59,6 +60,7 @@
 .blog-excerpt {
   text-align: justify;
   font-size: 0.875rem;
+  overflow: auto;
 
   @media screen and (min-width: $screen-lg) {
     font-size: 1rem;

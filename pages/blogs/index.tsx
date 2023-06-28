@@ -27,6 +27,10 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
   useEffect(() => {
     let h = 0;
 
+    // Not working in small devices (phone until tablet)
+    console.info(window.innerWidth, window.innerWidth < 790);
+    if (window.innerWidth < 768) return;
+
     blogCardsRef.current.forEach((el) => {
       if (h < el.clientHeight) h = el.clientHeight;
 
@@ -46,8 +50,6 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
 
         blogIdxs?.forEach((ix) => {
           if (ix !== idx) {
-            console.info({ ix, idx });
-
             blogCardsRef.current[ix - 1].className += " blog-card-hidden";
           }
         });

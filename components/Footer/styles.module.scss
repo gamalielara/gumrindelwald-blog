@@ -9,14 +9,13 @@
   justify-content: center;
   margin-top: 2rem;
   z-index: 50;
-  padding: 2rem 1rem;
 }
 
 .footer-wrapper {
   width: calc((2 / 3) * 100%);
   margin: 1rem 0;
 
-  @media screen and (max-width: $screen-lg) {
+  @media screen and (min-width: $screen-lg) {
     width: calc((1 / 6) * 100%);
   }
 }
@@ -35,7 +34,7 @@
 .social-media {
   margin-top: 0.5rem;
   width: 50%;
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 1rem;
   display: flex;
 
