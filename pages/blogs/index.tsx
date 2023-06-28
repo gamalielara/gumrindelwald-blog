@@ -4,7 +4,7 @@ import BlogCard from "../../components/BlogCard";
 import FeaturedBlogCard from "../../components/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
 import PageContainer from "../../components/container/PageContainer";
-import HeroContainer from "../../components/container/HeroContainer";
+import HeroContainer from "../../components/HeroContainer";
 import { ArticleInterface, BlogsPage } from "../../utils/vars";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../utils/firebase";

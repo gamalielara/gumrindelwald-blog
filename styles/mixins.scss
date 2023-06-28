@@ -20,15 +20,3 @@ $breakpoints: (
     $blog-card-columns: $blog-card-columns-lg;
   }
 }
-
-// @mixin hideOtherBlogCard() {
-//   @for $i from 1 through $blog-cards {
-//     &:nth-child(#{$i - 2}n):has(&:nth-child(#{$i}n):hover) {
-//       display: none;
-//     }
-
-//     &:nth-child(#{$i - 1}n):has(&:nth-child(#{$i}n):hover) {
-//       display: none;
-//     }
-//   }
-// }

@@ -54,7 +54,9 @@ export default () => {
   useEffect(() => {
     const sectionGrid = blogSectionGridRef.current;
     if (maxBlogCardHeight > 0 && sectionGrid) {
-      sectionGrid.style.gridTemplateRows = `repeat(5, ${maxBlogCardHeight}px)`;
+      sectionGrid.style.gridTemplateRows = `repeat(${Math.ceil(
+        blogCardsRef.current.length / 3
+      )}, ${maxBlogCardHeight}px)`;
     }
   }, [maxBlogCardHeight, blogSectionGridRef.current]);
 

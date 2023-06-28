@@ -6,6 +6,7 @@ import HeroFilmImage from "../../assets/film.jpg";
 import HeroTechImage from "../../assets/tech.jpg";
 import HeroPersonalImage from "../../assets/personal.jpg";
 import HeadingOne from "../text/HeadingOne";
+import styles from "./styles.module.scss";
 
 interface Props {
   pageName: string;
@@ -21,12 +22,12 @@ const HeroContainer: React.FC<Props> = ({
   setShowFeatured,
 }) => {
   return (
-    <div className="w-full md:h-[50vmin] h-30vh relative mt-2 sm:mt-4 md:mt-8">
-      <div className="text-container absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 md:w-full w-5/6 text-white">
-        <HeadingOne center>{pageName}</HeadingOne>
+    <div className={styles["hero-container-wrapper"]}>
+      <div className={styles["text-container"]}>
+        <h1>{pageName}</h1>
         {showSearch && (
           <>
-            <p className="text-center md:mb-4 mb-2 md:text-base text-sm">
+            <p className={styles["search-text"]}>
               Discover all of my blogs here.
             </p>
             {/* disabled for a while */}
@@ -34,7 +35,7 @@ const HeroContainer: React.FC<Props> = ({
           </>
         )}
       </div>
-      <div className="bg-black opacity-50 w-full h-full absolute z-10 rounded-lg"></div>
+      <div className={styles["black-overlay"]}></div>
       <Image
         src={
           type === "All"
@@ -52,7 +53,7 @@ const HeroContainer: React.FC<Props> = ({
         layout="fill"
         alt="gumrindelwald.com"
         objectFit="cover"
-        className="rounded-lg"
+        className={styles["hero-image"]}
       />
     </div>
   );
