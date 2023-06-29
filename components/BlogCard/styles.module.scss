@@ -16,13 +16,17 @@
 
   $parent: &;
 
-  // @include hideOtherBlogCard();
+  @media screen and (min-width: $screen-md) {
+    &:hover {
+      grid-column: span 3;
+    }
+  }
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: $screen-md) {
     &:hover {
       width: 99%;
       cursor: pointer;
-      grid-column: span 3;
+      grid-column: span 2;
       flex-direction: row-reverse;
 
       .article-image {

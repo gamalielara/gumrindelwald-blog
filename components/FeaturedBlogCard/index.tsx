@@ -43,7 +43,6 @@ const FeaturedBlogCard: React.FC<
           layout="fill"
           loader={IMAGELOADER}
           objectFit="cover"
-          className="rounded-lg"
           priority
           unoptimized
         />

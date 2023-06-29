@@ -13,8 +13,9 @@
 .header-row {
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: $screen-md) {
     justify-content: space-between;
   }
 }
@@ -27,6 +28,10 @@
 .logo-container {
   &:hover {
     cursor: pointer;
+  }
+
+  & > span:first-child {
+    font-size: 3rem;
   }
 
   transform: scale(0.75);

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { BLOG_CARDS_COUNT, LG_SCREEN_WIDTH } from "../utils/vars";
 
 export default () => {
   const [hoveredBlogIndex, setHoveredBlogIndex] = useState<number | null>(null);
@@ -11,23 +12,24 @@ export default () => {
     let h = 0;
 
     // Not working in small devices (phone until tablet)
-    console.info(window.innerWidth, window.innerWidth < 790);
     if (window.innerWidth < 790) return;
 
     blogCardsRef.current.forEach((el) => {
       if (h < el.clientHeight) h = el.clientHeight;
 
-      const blogGroups = [
-        null,
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-        [10, 11, 12],
-        [13, 14, 15],
-      ];
+      const blogGroups: number[][] = [];
+      const columnCount = window.innerWidth >= LG_SCREEN_WIDTH ? 3 : 2;
+
+      [...Array(BLOG_CARDS_COUNT).keys()].forEach((e) => {
+        if (!blogGroups[Math.ceil(e / columnCount)]) {
+          blogGroups[Math.ceil(e / columnCount)] = [];
+        }
+
+        blogGroups[Math.ceil(e / columnCount)].push(e);
+      });
 
       el.onmouseenter = () => {
-        const idx = Number(el.className.match(/.*-(\d+)/)?.[1]) ?? null;
+        const idx = Number(el.className.match(/.*-(\d+)/)?.[1]);
         const group = Math.ceil(idx / 3);
         const blogIdxs = blogGroups[group];
 

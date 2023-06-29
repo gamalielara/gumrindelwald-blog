@@ -24,7 +24,7 @@
 .article-image {
   border-radius: 0.25rem;
   position: relative;
-  aspect-ratio: 2/1;
+  aspect-ratio: 1;
   width: 100%;
 
   @media screen and (min-width: $screen-md) {
@@ -39,12 +39,12 @@
 .blog-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   margin: 10px;
-  height: 100%;
 
   @media screen and (min-width: $screen-md) {
     flex: 3;
+    justify-content: space-evenly;
+    height: 100%;
   }
 }
 

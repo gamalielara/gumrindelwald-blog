@@ -100,3 +100,7 @@ export interface CommentInterface {
 }
 
 export const BLOGS_REF = collection(db, "blogs");
+
+export const BLOG_CARDS_COUNT = 15;
+
+export const LG_SCREEN_WIDTH = 1024;

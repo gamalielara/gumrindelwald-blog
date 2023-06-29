@@ -7,6 +7,7 @@ import {
 } from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
+import Link from "next/link";
 
 type BlogTypeKeys =
   | "title"
