@@ -41,10 +41,27 @@
 
 @keyframes rotatingBorderButton {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg);
+    border-image: linear-gradient(0deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+
+  25% {
+    border-image: linear-gradient(90deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+
+  50% {
+    border-image: linear-gradient(180deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+
+  75% {
+    border-image: linear-gradient(270deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
   }
 
   100% {
-    transform: translate(-50%, -50%) rotate(-360deg);
+    border-image: linear-gradient(360deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
   }
 }

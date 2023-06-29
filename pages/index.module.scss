@@ -57,12 +57,11 @@
 
 .opt-button {
   border-color: transparent;
-  border-radius: 0.25rem;
-  background-color: transparent;
+  border-radius: 10px;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   transition: all 0.5s ease-in-out;
-  flex: 1;
+  background-color: transparent;
 
   & a {
     color: $text-color;
@@ -71,6 +70,8 @@
     align-items: center;
     gap: 0.5rem;
     justify-content: center;
+    position: relative;
+    z-index: 9;
 
     & svg {
       width: 1rem;
@@ -86,6 +87,14 @@
       font-size: 1.125rem;
     }
   }
+}
+
+.to-all-blogs-button {
+  --angle: 45deg;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  animation: rotatingBorderButton 2s linear infinite;
 }
 
 .video-bg-wrapper {
@@ -118,4 +127,10 @@
   &.video-blur {
     animation: pulse 2.5s infinite ease;
   }
+}
+
+.rounded-button {
+  margin-right: 10px;
+  border-radius: 5px;
+  overflow: hidden;
 }
