@@ -26,6 +26,10 @@
   @media screen and (min-width: $screen-xl) {
     width: 75%;
   }
+
+  @media screen and (min-width: $screen-2xl) {
+    width: 60%;
+  }
 }
 
 .sidebar {

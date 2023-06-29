@@ -12,7 +12,7 @@ export default () => {
     let h = 0;
 
     // Not working in small devices (phone until tablet)
-    if (window.innerWidth < 790) return;
+    if (window.innerWidth < 768) return;
 
     blogCardsRef.current.forEach((el) => {
       if (h < el.clientHeight) h = el.clientHeight;
@@ -20,7 +20,8 @@ export default () => {
       const blogGroups: number[][] = [];
       const columnCount = window.innerWidth >= LG_SCREEN_WIDTH ? 3 : 2;
 
-      [...Array(BLOG_CARDS_COUNT).keys()].forEach((e) => {
+      // Add one because the index always start from 0 to the length - 1
+      [...Array(BLOG_CARDS_COUNT + 1).keys()].forEach((e) => {
         if (!blogGroups[Math.ceil(e / columnCount)]) {
           blogGroups[Math.ceil(e / columnCount)] = [];
         }
