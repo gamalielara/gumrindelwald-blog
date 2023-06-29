@@ -1,6 +1,13 @@
 @import "../styles/main.scss";
 @import "../styles/animations.scss";
 
+.main-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
 .main-content {
   width: fit-content;
   margin: 0 auto;
@@ -36,11 +43,15 @@
 .menus {
   width: 100%;
   display: flex;
-  justify-items: center;
+  justify-content: space-evenly;
   margin: 0.5rem auto 0;
 
   @media screen and (min-width: $screen-md) {
     width: 50%;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    width: 25%;
   }
 }
 
@@ -51,7 +62,7 @@
   font-size: 1rem;
   padding: 0.5rem 1rem;
   transition: all 0.5s ease-in-out;
-  margin: 0 auto;
+  flex: 1;
 
   & a {
     color: $text-color;
@@ -59,6 +70,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    justify-content: center;
 
     & svg {
       width: 1rem;
@@ -80,7 +92,7 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
-  z-index: -10;
+  z-index: 5;
   background-image: url("../public/lp-rain-placeholder.webp");
   background-size: cover;
   background-position: center;

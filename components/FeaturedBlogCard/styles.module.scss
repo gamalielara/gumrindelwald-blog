@@ -27,6 +27,10 @@
   aspect-ratio: 1;
   width: 100%;
 
+  & img {
+    border-radius: 0.25rem;
+  }
+
   @media screen and (min-width: $screen-md) {
     width: auto;
     margin-right: 1rem;

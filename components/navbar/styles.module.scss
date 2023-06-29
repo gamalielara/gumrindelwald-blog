@@ -40,7 +40,7 @@
 .nav-menus-container {
   display: none;
 
-  @media screen and (min-width: $screen-lg-md) {
+  @media screen and (min-width: $screen-md) {
     display: block;
   }
 }

@@ -44,7 +44,9 @@ export default function Home() {
               </Link>
             </button>
 
-            <button className={styles["opt-button"]}>
+            <button
+              className={`${styles["opt-button"]} ${styles["to-all-blogs-button"]}`}
+            >
               <Link href="/blogs">
                 <a className="flex text-white">
                   My Blogs

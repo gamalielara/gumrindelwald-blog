@@ -81,6 +81,10 @@
   padding-top: 50%;
   max-height: 100%;
 
+  & img {
+    border-radius: 10px;
+  }
+
   @media screen and (min-width: $screen-md) {
     height: auto;
   }
