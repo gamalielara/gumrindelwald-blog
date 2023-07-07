@@ -7,6 +7,8 @@
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
+  position: relative;
+  z-index: 99999999;
 }
 
 .footer-wrapper {
@@ -27,13 +29,18 @@
   @media screen and (min-width: $screen-lg) {
     font-size: 1.25rem;
   }
+
+  & a {
+    margin-left: 0.25em;
+    color: $link-text-color;
+  }
 }
 
 .social-media {
   margin: 0.5rem 0;
   width: 50%;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   display: flex;
 
   & a {
@@ -44,7 +51,7 @@
     display: inline-block;
 
     & > svg {
-      width: 1rem;
+      width: 1.5rem;
       aspect-ratio: 1;
 
       @media screen and (max-width: $screen-md) {

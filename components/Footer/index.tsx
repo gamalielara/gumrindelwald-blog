@@ -22,7 +22,9 @@ const Footer: React.FC = () => {
       </div>
 
       <span className={styles["footer-desc"]}>
-        Copyright &copy;{thisYear}. This website is fully created by
+        gumrindelwald v{process.env.REACT_APP_VERSION ?? "3.0"}. Copyright
+        &copy;
+        {thisYear}. This website is fully created by
         <a
           href="https://gamalielara.com"
           target="_blank"
