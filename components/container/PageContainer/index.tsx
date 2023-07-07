@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import SideBar from "../../Sidebar";
-import NavMobileButton from "../../NavMobileButton";
+import NavMobileButton from "../../Navbar/NavbarMobileButton";
 import styles from "./style.module.scss";
 
 interface PageContainerInterface {
