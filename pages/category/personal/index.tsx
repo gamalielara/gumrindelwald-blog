@@ -6,30 +6,18 @@ import PageContainer from "../../../components/container/PageContainer";
 import HeroContainer from "../../../components/HeroContainer";
 import { BlogsPage, Category } from "../../../utils/vars";
 import { queryBlogs } from "../../../utils/helpers";
-import useBlogCardOnHover from "../../../hooks/useBlogCardOnHover";
 import styles from "../styles.module.scss";
 
 const CategoryPage: NextPage<BlogsPage> = ({ blogs }) => {
-  const { blogSectionGridRef, blogCardsRef } = useBlogCardOnHover();
-
   return (
     <>
       <HeadDocument docTitle="Personal Thoughts Blogs" />
       <PageContainer>
         <HeroContainer pageName="All Personal Thoughts Blogs" type="Personal" />
         {blogs.length ? (
-          <section
-            className={styles["blog-cards-section"]}
-            ref={blogSectionGridRef}
-          >
+          <section className={styles["blog-cards-section"]}>
             {blogs.map((blog, i) => (
               <BlogCard
-                ref={(el: any) => {
-                  const curr = blogCardsRef?.current;
-                  if (curr) {
-                    curr[i] = el;
-                  }
-                }}
                 key={blog.title}
                 thumbnail_image={blog.thumbnail_image}
                 title={blog.title}

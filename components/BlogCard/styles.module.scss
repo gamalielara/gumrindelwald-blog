@@ -13,62 +13,10 @@
   grid-column: span 1;
   width: auto;
   transition: all 2.5s ease-in;
-
   $parent: &;
 
-  @media screen and (min-width: $screen-lg) {
-    &:hover {
-      grid-column: span 3;
-    }
-  }
-
-  @media screen and (min-width: $screen-md) {
-    &:hover {
-      width: 99%;
-      cursor: pointer;
-      grid-column: span 2;
-      flex-direction: row-reverse;
-
-      .article-image {
-        flex: 1;
-        margin-right: 0;
-        margin-left: 10px;
-        padding-top: unset;
-        height: 100%;
-      }
-
-      .blog-content {
-        flex: 2;
-        justify-content: center;
-        align-items: flex-end;
-
-        h4 {
-          text-align: end;
-        }
-      }
-    }
-
-    @for $i from 1 through $blog-cards {
-      #{$parent}:nth-child(#{$i - 2}n):has(&) {
-        display: none;
-      }
-
-      &:nth-child(#{$i}n):hover {
-        z-index: 99999;
-        grid-column: 1 / span #{$blog-card-columns-sm};
-        grid-row: ceil($i / $blog-card-columns-sm);
-
-        @media screen and (min-width: $screen-md) {
-          grid-column: 1 / span #{$blog-card-columns-md};
-          grid-row: ceil($i / $blog-card-columns-md);
-        }
-
-        @media screen and (min-width: $screen-lg) {
-          grid-column: 1 / span #{$blog-card-columns-lg};
-          grid-row: ceil($i / $blog-card-columns-lg);
-        }
-      }
-    }
+  &:hover {
+    cursor: pointer;
   }
 }
 

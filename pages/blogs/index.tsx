@@ -9,7 +9,6 @@ import { ArticleInterface, BlogsPage } from "../../utils/vars";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
 import styles from "./styles.module.scss";
-import useBlogCardOnHover from "../../hooks/useBlogCardOnHover";
 
 const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
   const [showFeatured, setShowFeatured] = useState<boolean>(true);
@@ -20,8 +19,6 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
   const featuredBlogCardRef = useRef<HTMLDivElement>(null);
   const featuredBlogsCarousel = useRef<HTMLDivElement>(null);
   const buttonsWrapper = useRef<HTMLDivElement>(null);
-
-  const { blogSectionGridRef, blogCardsRef } = useBlogCardOnHover();
 
   useEffect(() => {
     const carouselIndex = setInterval(() => {
@@ -108,20 +105,11 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
           </div>
         )}
 
-        <section
-          className={styles["blog-cards-section"]}
-          ref={blogSectionGridRef}
-        >
+        <section className={styles["blog-cards-section"]}>
           {blogs.length &&
             blogs.map((blog, i) => {
               return (
                 <BlogCard
-                  ref={(el: any) => {
-                    const curr = blogCardsRef?.current;
-                    if (curr) {
-                      curr[i] = el;
-                    }
-                  }}
                   key={blog.title}
                   thumbnail_image={blog.thumbnail_image}
                   title={blog.title}
