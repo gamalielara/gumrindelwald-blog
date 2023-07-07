@@ -17,24 +17,21 @@ type BlogTypeKeys =
   | "thumbnail_image"
   | "slug";
 
-const BlogCard = React.forwardRef(
-  (
-    {
-      title,
-      category,
-      created_at,
-      thumbnail_image,
-      slug,
-      i,
-    }: Pick<BlogCardInterface, BlogTypeKeys> & { i: number },
-    ref: any
-  ) => {
-    return (
-      <Link href={`/article/${slug}`}>
-        <article
-          className={`${styles["article-box"]} blog-card-${i}`}
-          ref={ref}
-        >
+type BlogCardType = Pick<BlogCardInterface, BlogTypeKeys> & { i: number };
+
+const BlogCard: React.FC<BlogCardType> = ({
+  title,
+  category,
+  created_at,
+  thumbnail_image,
+  excerpt,
+  slug,
+  i,
+}) => {
+  return (
+    <div className={styles["article-card-wrapper"]}>
+      <article className={styles["article-card"]}>
+        <div className={styles["article-card__front"]}>
           <div className={styles["article-image"]}>
             <Image
               src={
@@ -58,10 +55,16 @@ const BlogCard = React.forwardRef(
 
             <h4>{title}</h4>
           </div>
-        </article>
-      </Link>
-    );
-  }
-);
+        </div>
+        <div className={styles["article-card__back"]}>
+          <p>{excerpt}</p>
+          <Link href={`/article/${slug}`}>
+            <button>Read More</button>
+          </Link>
+        </div>
+      </article>
+    </div>
+  );
+};
 
 export default BlogCard;
