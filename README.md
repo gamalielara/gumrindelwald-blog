@@ -4,9 +4,9 @@
 
 This blog is made by using:
 - NextTS (NextJS with TypeScript)
-- TailwindCSS as the CSS framework
-- Redux Toolkit (RTK) for state management
-- GraphQL for data fetching
+- ~TailwindCSS as the CSS framework~ (Deprecated, changed to SASS)
+- ~Redux Toolkit (RTK) for state management~ (Deprecated)
+- ~GraphQL for data fetching~ (Deprecated, changed to Firebase Firestore)
 
 ## How to run this project
 - Clone this repository
