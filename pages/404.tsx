@@ -3,9 +3,8 @@ import React from "react";
 import ImageHero from "../assets/404.jpg";
 import HeadDocument from "../components/HeadDocument";
 import GWLogoWhite from "../assets/com-white.png";
-import LargeButton from "../components/LargeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import styles from "./styles-404.module.scss";
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import SideBar from "../../Sidebar";
@@ -12,8 +12,6 @@ interface PageContainerInterface {
 const PageContainer: React.FC<PageContainerInterface> = ({ children }) => {
   const [showSideBar, setShowBar] = useState<boolean>(false);
 
-  const props = { ...{ showSideBar } };
-
   return (
     <>
       <div className={styles["page-container"]}>
@@ -21,9 +19,18 @@ const PageContainer: React.FC<PageContainerInterface> = ({ children }) => {
           <Navbar />
           <main className={styles["blog-container"]}>{children}</main>
         </div>
-        <div {...props} className={styles["sidebar"]}>
+        <div
+          style={{ right: showSideBar ? "75%" : 0 }}
+          className={styles["sidebar"]}
+        >
           <NavMobileButton setShowBar={setShowBar} />
           <SideBar />
+
+          <div
+            style={{ visibility: showSideBar ? "visible" : "hidden" }}
+            className={styles["bg-mask"]}
+            onClick={() => setShowBar((state) => !state)}
+          />
         </div>
       </div>
       <Footer />

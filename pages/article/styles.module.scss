@@ -41,12 +41,10 @@
 .article-body {
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
+  width: auto;
   margin-bottom: 2rem;
 
   @media screen and (min-width: $screen-md) {
-    width: calc((11 / 12) * 100%);
-    padding-right: 1rem;
     margin-bottom: 0.5rem;
   }
 }

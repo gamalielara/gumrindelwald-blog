@@ -72,17 +72,6 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
               }}
             />
           </div>
-          <aside className="flex md:flex-col flex-row md:justify-start items-center md:w-1/12 gap-4 md:pt-20">
-            <button className="md:w-6 md:h-6 w-5 h-5 md:mb-0 mb-2">
-              <FontAwesomeIcon className="w-full h-full" icon={faTwitter} />
-            </button>
-            <button className="md:w-6 md:h-6 w-5 h-5 md:mb-0 mb-2">
-              <FontAwesomeIcon className="w-full h-full" icon={faLinkedin} />
-            </button>
-            <button className="md:w-6 md:h-6 w-5 h-5 md:mb-0 mb-2">
-              <FontAwesomeIcon className="w-full h-full" icon={faLink} />
-            </button>
-          </aside>
         </article>
       </PageContainer>
     </>
