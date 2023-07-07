@@ -18,6 +18,7 @@ import {
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
 import { queryBlogs } from "../../utils/helpers";
+import styles from "./styles.module.scss";
 
 interface Props {
   article: ArticleInterface;
@@ -33,58 +34,44 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
         excerpt={article.excerpt}
       />
       <PageContainer>
-        <article className="article-post w-full mt-4">
-          <Text size="sm" center gray>
-            PUBLISHED ON{" "}
+        <article className={styles["article-post-wrapper"]}>
+          <p className={styles["published-on-text"]}>
+            PUBLISHED ON&nbsp;
             <strong>
               {new Date(article.created_at).toDateString().toUpperCase()}
             </strong>
-          </Text>
-          <HeadingOne center>{article.title}</HeadingOne>
-          <div className="category w-fit mx-auto flex gap-4">
+          </p>
+          <h1 className={styles["article-title"]}>{article.title}</h1>
+          <div className={styles["category-box"]}>
             <CategoryBox category={article.category}>
               {CATEGORY_DICTIONARIES[article.category]}
             </CategoryBox>
           </div>
-          <div className="hero-image-blog w-full md:h-[75vmin] h-30vh relative my-4">
+          <div className={styles["article-thumbnail"]}>
             <Image
               layout="fill"
               objectFit="cover"
               src={article.thumbnail_image}
-              alt="title"
+              alt={article.title}
               loader={({ src }) => src}
-              className="rounded-lg"
             />
           </div>
-          <FlexBox justify="evenly">
-            <div className="article-body md:w-11/12 w-full md:pr-4 mb-8 md:mb-2">
-              {article.tags && (
-                <div className="tag-container flex gap-4">
-                  {article.tags.split(";").map((tag, i) => (
-                    <Tag key={i}>{tag}</Tag>
-                  ))}
-                </div>
-              )}
-              <div
-                id="article-post"
-                className="article-post"
-                dangerouslySetInnerHTML={{
-                  __html: article.content,
-                }}
-              />
-            </div>
-            <aside className="flex md:flex-col flex-row md:justify-start items-center md:w-1/12 gap-4 md:pt-20">
-              <button className="md:w-6 md:h-6 w-5 h-5 md:mb-0 mb-2">
-                <FontAwesomeIcon className="w-full h-full" icon={faTwitter} />
-              </button>
-              <button className="md:w-6 md:h-6 w-5 h-5 md:mb-0 mb-2">
-                <FontAwesomeIcon className="w-full h-full" icon={faLinkedin} />
-              </button>
-              <button className="md:w-6 md:h-6 w-5 h-5 md:mb-0 mb-2">
-                <FontAwesomeIcon className="w-full h-full" icon={faLink} />
-              </button>
-            </aside>
-          </FlexBox>
+
+          <div className={styles["article-body"]}>
+            {article.tags && (
+              <div className="tag-container flex gap-4">
+                {article.tags.split(";").map((tag, i) => (
+                  <Tag key={i}>{tag}</Tag>
+                ))}
+              </div>
+            )}
+            <div
+              className={styles["article-post"]}
+              dangerouslySetInnerHTML={{
+                __html: article.content,
+              }}
+            />
+          </div>
         </article>
       </PageContainer>
     </>

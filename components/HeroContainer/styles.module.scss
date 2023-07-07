@@ -1,0 +1,61 @@
+@import "../../styles/main.scss";
+
+.hero-container-wrapper {
+  width: 100%;
+  height: 30vh;
+  position: relative;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+
+  @media screen and (min-width: $screen-md) {
+    height: 50vmin;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    margin-top: 2rem;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    margin-top: 1rem;
+  }
+}
+
+.text-container {
+  @include positionCenter();
+  z-index: 20;
+  width: calc((5 / 6) * 100%);
+  color: white;
+
+  @media screen and (min-width: $screen-md) {
+    width: 100%;
+  }
+
+  & > h1 {
+    text-align: center;
+  }
+}
+
+.search-text {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+
+  @media screen and (min-width: $screen-md) {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}
+
+.black-overlay {
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  border-radius: 0.5rem;
+}
+
+.hero-image {
+  border-radius: 0.5rem;
+}

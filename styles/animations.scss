@@ -1,0 +1,67 @@
+@keyframes mainAnimationKeyframes {
+  0%,
+  10% {
+    max-width: 0;
+  }
+  50% {
+    max-width: 999px;
+  }
+  75%,
+  100% {
+    max-width: 0;
+  }
+}
+
+@keyframes italicAnimationKeyframes {
+  0%,
+  25% {
+    max-width: 0;
+  }
+  70% {
+    max-width: 999px;
+  }
+  100% {
+    max-width: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  50% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  10% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes rotatingBorderButton {
+  0% {
+    border-image: linear-gradient(0deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+
+  25% {
+    border-image: linear-gradient(90deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+
+  50% {
+    border-image: linear-gradient(180deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+
+  75% {
+    border-image: linear-gradient(270deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+
+  100% {
+    border-image: linear-gradient(360deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
+      stretch round;
+  }
+}

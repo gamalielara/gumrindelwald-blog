@@ -1,0 +1,6 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+#__next {
+  background-color: $background-color-secondary;
+}

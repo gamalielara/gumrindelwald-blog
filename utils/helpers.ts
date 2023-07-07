@@ -1,5 +1,5 @@
 import { getDocs, query, where } from "@firebase/firestore";
-import { BLOGS_REF } from "./vars";
+import { ArticleInterface, BLOGS_REF } from "./vars";
 
 export const fetchAllBlogs = async () => {
   const rawBlogs = await getDocs(BLOGS_REF);
@@ -16,7 +16,7 @@ export const queryBlogs = async ({ field, value }: Record<string, string>) => {
   const queryResult = queryRawResult.docs.map((blog) => ({
     ...blog.data(),
     id: blog.id,
-  }));
+  })) as ArticleInterface[];
 
   return queryResult ?? [];
 };

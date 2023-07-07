@@ -11,14 +11,15 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
+import styles from "./styles.module.scss";
 
 const AboutMe: NextPage = () => {
   return (
     <>
       <HeadDocument docTitle="About" />
       <PageContainer>
-        <div className="flex lg:flex-row flex-col gap-4 w-full mt-8 lg:px-0 md:px-4 px-2">
-          <div className="image-container lg:w-1/3 w-full md:h-auto h-[50vh] relative block sm:hidden lg:block">
+        <div className={styles["me-page-container"]}>
+          <div className={styles["me-image-large"]}>
             <Image
               src={MeImage}
               alt="Ara Gamaliel Boanerges"
@@ -27,7 +28,7 @@ const AboutMe: NextPage = () => {
               className="rounded-lg "
             />
           </div>
-          <div className="image-container lg:w-1/3 w-full md:h-[75vh] h-[50vh] relative hidden sm:block lg:hidden">
+          <div className={styles["me-image-small"]}>
             <Image
               src={MeImage}
               alt="Ara Gamaliel Boanerges"
@@ -36,14 +37,12 @@ const AboutMe: NextPage = () => {
               className="rounded-lg"
             />
           </div>
-          <article className="lg:w-2/3 w-full article-post">
-            <h1 className="md:text-5xl sm:text-3xl text-2xl m-0">
-              Hello, I am Ara Gamaliel
-            </h1>
-            <h2 className="md:text-2xl sm:text-xl text-base m-0">
+          <article className={styles["about-container"]}>
+            <h1 className={styles["my-name"]}>Hello, I am Ara Gamaliel</h1>
+            <h2 className={styles["my-name-sub"]}>
               the creator and the sole author in gumrindelwald.
             </h2>
-            <div className="body sm:text-base text-sm text-justify">
+            <div className={styles["about-me-body"]}>
               <p>
                 Writing and reading activities has always been my favorite thing
                 to do since I was a child. I had tried to write a blog before,
@@ -72,16 +71,14 @@ const AboutMe: NextPage = () => {
             </div>
           </article>
         </div>
-
-        <div className="med-sos md:px-4 px-2 mt-8">
-          <p className="font-bold">My social medias:</p>
-          <ul className="list-none p-0">
+        <div className={styles["med-sos"]}>
+          <p>My social medias:</p>
+          <ul>
             <li>
               <a
                 href="https://www.linkedin.com/in/aragamaliel/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center"
               >
                 <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4 mr-2" />
                 LinkedIn
@@ -90,7 +87,6 @@ const AboutMe: NextPage = () => {
                 href="https://gamalielara.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center"
               >
                 <FontAwesomeIcon
                   icon={faInternetExplorer}
@@ -102,7 +98,6 @@ const AboutMe: NextPage = () => {
                 href="https://twitter.com/gumrindelwald"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center"
               >
                 <FontAwesomeIcon icon={faTwitter} className="w-4 h-4 mr-2" />
                 Twitter
@@ -111,7 +106,6 @@ const AboutMe: NextPage = () => {
                 href="https://www.instagram.com/gamalielboanerges/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center"
               >
                 <FontAwesomeIcon icon={faInstagram} className="w-4 h-4 mr-2" />
                 Instagram
@@ -120,7 +114,6 @@ const AboutMe: NextPage = () => {
                 href="mailto:aragamalielboanerges@gmail.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center"
               >
                 <FontAwesomeIcon icon={faMailBulk} className="w-4 h-4 mr-2" />
                 aragamalielboanerges@gmail.com
@@ -128,6 +121,7 @@ const AboutMe: NextPage = () => {
             </li>
           </ul>
         </div>
+        <div className={styles["waves"]} />
       </PageContainer>
     </>
   );

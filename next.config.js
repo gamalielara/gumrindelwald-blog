@@ -9,6 +9,7 @@ const nextConfig = {
     REACT_APP_MESSAGINGSENDERID: process.env.REACT_APP_MESSAGINGSENDERID,
     REACT_APP_APPID: process.env.REACT_APP_APPID,
     REACT_APP_MEASUREMENTID: process.env.REACT_APP_MEASUREMENTID,
+    REACT_APP_VERSION: require("./package.json").version,
   },
   compiler: {
     removeConsole: {

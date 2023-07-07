@@ -1,0 +1,22 @@
+.hamburger-mobile-nav-btn {
+  display: flex;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  background-color: #d1d5db;
+  transition-property: all;
+  transition-duration: 700ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  border: none;
+  padding: 1rem;
+
+  & svg {
+    width: 100%;
+  }
+}

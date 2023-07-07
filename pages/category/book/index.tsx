@@ -1,11 +1,12 @@
 import React from "react";
 import { NextPage } from "next";
-import BlogCard from "../../../components/card/BlogCard";
+import BlogCard from "../../../components/BlogCard";
 import HeadDocument from "../../../components/HeadDocument";
 import PageContainer from "../../../components/container/PageContainer";
-import HeroContainer from "../../../components/container/HeroContainer";
+import HeroContainer from "../../../components/HeroContainer";
 import { BlogsPage, Category } from "../../../utils/vars";
 import { queryBlogs } from "../../../utils/helpers";
+import styles from "../styles.module.scss";
 
 const CategoryPage: NextPage<BlogsPage> = ({ blogs }) => {
   return (
@@ -13,25 +14,24 @@ const CategoryPage: NextPage<BlogsPage> = ({ blogs }) => {
       <HeadDocument docTitle="Book Blogs" />
       <PageContainer>
         <HeroContainer pageName="All Book Blogs" type="Book" />
-        <section className="all-blogs-container w-full flex flex-wrap justify-evenly mb-4">
-          {blogs.length > 0 ? (
-            blogs.map((article) => (
+        {blogs.length ? (
+          <section className={styles["blog-cards-section"]}>
+            {blogs.map((blog, i) => (
               <BlogCard
-                key={article.title}
-                thumbnail_image={article.thumbnail_image}
-                title={article.title}
-                category={article.category}
-                excerpt={article.excerpt}
-                created_at={article.created_at}
-                slug={article.slug}
+                key={blog.title}
+                thumbnail_image={blog.thumbnail_image}
+                title={blog.title}
+                category={blog.category}
+                excerpt={blog.excerpt}
+                created_at={blog.created_at}
+                slug={blog.slug}
+                i={i + 1}
               />
-            ))
-          ) : (
-            <h1 className="text-xl text-center my-8 mx-auto font-bold">
-              No blogs
-            </h1>
-          )}
-        </section>
+            ))}
+          </section>
+        ) : (
+          <h1 className={styles["no-blog-text"]}>No blogs</h1>
+        )}
       </PageContainer>
     </>
   );
@@ -44,6 +44,8 @@ export async function getStaticProps() {
     field: "category",
     value: Category.BOOK,
   });
+
+  bookBlogs.sort((a, b) => b.created_at - a.created_at);
 
   return {
     props: { blogs: bookBlogs },

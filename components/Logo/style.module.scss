@@ -1,0 +1,76 @@
+@import "../../styles/animations.scss";
+@import "../../styles/main.scss";
+
+.logo {
+  display: flex;
+  justify-items: flex-end;
+  width: fit-content;
+  margin: auto;
+  font-weight: 600;
+
+  &[color*="white"] {
+    color: white;
+  }
+
+  &[letterSpacing] {
+    letter-spacing: 1;
+  }
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.header {
+  font-size: 2rem;
+}
+
+.main-text {
+  overflow: hidden;
+  display: inline-block;
+  animation: mainAnimationKeyframes 10s infinite;
+}
+
+.em-text {
+  display: flex;
+
+  & > span {
+    font-style: italic;
+    overflow: hidden;
+    animation: italicAnimationKeyframes 10s infinite;
+
+    & > span {
+      padding-right: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .header {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 5rem;
+  }
+
+  .header {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    font-size: 7rem;
+  }
+
+  .header {
+    font-size: 3rem;
+  }
+}
