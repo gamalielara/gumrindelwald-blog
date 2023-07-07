@@ -5,6 +5,12 @@
   color-scheme: light;
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box !important;
+}
+
 body {
   margin: 0;
 }
@@ -32,6 +38,10 @@ a {
 
 .blog-card-hidden {
   display: none !important;
+}
+
+#__next {
+  height: auto;
 }
 
 /* FOR LOCAL DEVELOPMENT ONLY. DELETE THIS LATER */

@@ -8,6 +8,8 @@
   background-color: $background-color-secondary;
   z-index: 999;
   transition: all 100ms;
+  transform-style: preserve-3d;
+  transform: translateZ(999999px);
 }
 
 .header-row {

@@ -88,6 +88,13 @@ const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
         src="https://kit.fontawesome.com/8af159f785.js"
         crossOrigin="anonymous"
       ></script>
+      {isLandingPage && (
+        <style>
+          {`body {
+            overflow: hidden
+          }`}
+        </style>
+      )}
     </Head>
   );
 };
