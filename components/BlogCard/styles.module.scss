@@ -3,9 +3,18 @@
 .article-card-wrapper {
   aspect-ratio: 1;
 
-  &:hover {
-    cursor: pointer;
+  &[data-platform*="general-web"] {
+    &:hover {
+      cursor: pointer;
 
+      & > .article-card {
+        transform: rotateY(0.5turn);
+      }
+    }
+  }
+
+  // when open in mobile devide and card is clicked
+  &__card-clicked {
     & > .article-card {
       transform: rotateY(0.5turn);
     }
