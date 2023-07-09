@@ -52,7 +52,7 @@ const BlogCard: React.FC<BlogCardType> = ({
         );
       }
     });
-  }, []);
+  }, [isInMobile]);
 
   return (
     <div
