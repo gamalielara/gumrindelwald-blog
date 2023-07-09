@@ -17,7 +17,7 @@ const AboutMe: NextPage = () => {
   return (
     <>
       <HeadDocument docTitle="About" />
-      <PageContainer>
+      <PageContainer pageName="me-page" noFooter>
         <div className={styles["me-page-container"]}>
           <div className={styles["me-image-large"]}>
             <Image

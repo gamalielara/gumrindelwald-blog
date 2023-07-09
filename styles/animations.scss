@@ -39,29 +39,15 @@
   }
 }
 
+$steps: 100;
+
 @keyframes rotatingBorderButton {
-  0% {
-    border-image: linear-gradient(0deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
-      stretch round;
-  }
-
-  25% {
-    border-image: linear-gradient(90deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
-      stretch round;
-  }
-
-  50% {
-    border-image: linear-gradient(180deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
-      stretch round;
-  }
-
-  75% {
-    border-image: linear-gradient(270deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
-      stretch round;
-  }
-
-  100% {
-    border-image: linear-gradient(360deg, rgb(13, 74, 144), rgb(232, 95, 95)) 1
-      stretch round;
+  @for $i from 0 through $steps {
+    #{percentage($i / $steps)} {
+      border-image: linear-gradient($i * 360deg / $steps, #0d4a90, #e85f5f)
+        1
+        stretch
+        round;
+    }
   }
 }

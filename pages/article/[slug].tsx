@@ -33,7 +33,7 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
         heroImage={article.thumbnail_image}
         excerpt={article.excerpt}
       />
-      <PageContainer>
+      <PageContainer pageName={article.slug}>
         <article className={styles["article-post-wrapper"]}>
           <p className={styles["published-on-text"]}>
             PUBLISHED ON&nbsp;

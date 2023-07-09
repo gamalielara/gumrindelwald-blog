@@ -55,7 +55,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
   return (
     <>
       <HeadDocument docTitle="All Blogs" />
-      <PageContainer>
+      <PageContainer pageName="all-blogs-page">
         {/* <HeroContainer
           pageName="All Blog Posts"
           type="All"
