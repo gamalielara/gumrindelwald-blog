@@ -30,6 +30,10 @@
   @media screen and (min-width: $screen-2xl) {
     width: 60%;
   }
+
+  &[data-page*="me-page"] {
+    min-height: 100%;
+  }
 }
 
 .sidebar {

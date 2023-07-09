@@ -12,7 +12,7 @@ const CategoryPage: NextPage<BlogsPage> = ({ blogs }) => {
   return (
     <>
       <HeadDocument docTitle="Book Blogs" />
-      <PageContainer>
+      <PageContainer pageName="book-blogs-page">
         <HeroContainer pageName="All Book Blogs" type="Book" />
         {blogs.length ? (
           <section className={styles["blog-cards-section"]}>

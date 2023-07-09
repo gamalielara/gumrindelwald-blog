@@ -7,9 +7,15 @@ import styles from "./style.module.scss";
 
 interface PageContainerInterface {
   children: any;
+  noFooter?: boolean;
+  pageName: string;
 }
 
-const PageContainer: React.FC<PageContainerInterface> = ({ children }) => {
+const PageContainer: React.FC<PageContainerInterface> = ({
+  children,
+  noFooter,
+  pageName,
+}) => {
   const [showSideBar, setShowBar] = useState<boolean>(false);
 
   return (
@@ -17,7 +23,9 @@ const PageContainer: React.FC<PageContainerInterface> = ({ children }) => {
       <div className={styles["page-container"]}>
         <div className={styles["main-container"]}>
           <Navbar />
-          <main className={styles["blog-container"]}>{children}</main>
+          <main className={styles["blog-container"]} data-page={pageName}>
+            {children}
+          </main>
         </div>
         <div
           style={{ right: showSideBar ? "75%" : 0 }}
@@ -33,7 +41,7 @@ const PageContainer: React.FC<PageContainerInterface> = ({ children }) => {
           />
         </div>
       </div>
-      <Footer />
+      {!noFooter && <Footer />}
     </>
   );
 };
