@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   BlogCardInterface,
   CATEGORY_DICTIONARIES,
@@ -8,6 +8,7 @@ import {
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
 import Link from "next/link";
+import usePlatform from "../../hooks/usePlatform";
 
 type BlogTypeKeys =
   | "title"
@@ -28,8 +29,38 @@ const BlogCard: React.FC<BlogCardType> = ({
   slug,
   i,
 }) => {
+  const [isInMobile, platform] = usePlatform();
+
+  const cardWrapperRef = useRef<HTMLDivElement>(null);
+
+  const onCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isInMobile) {
+      e.currentTarget.classList.toggle(
+        styles["article-card-wrapper__card-clicked"]
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (!isInMobile) return;
+
+    document.addEventListener("click", (e: any) => {
+      // Check if the event target is not the card itself (or its descendants)
+      if (!cardWrapperRef.current?.contains(e.target)) {
+        cardWrapperRef.current?.classList.remove(
+          styles["article-card-wrapper__card-clicked"]
+        );
+      }
+    });
+  }, [isInMobile]);
+
   return (
-    <div className={styles["article-card-wrapper"]}>
+    <div
+      data-platform={`${isInMobile ? "mobile" : "general"}-${platform}`}
+      className={styles["article-card-wrapper"]}
+      onClick={onCardClick}
+      ref={cardWrapperRef}
+    >
       <article className={styles["article-card"]}>
         <div className={styles["article-card__front"]}>
           <div className={styles["article-image"]}>

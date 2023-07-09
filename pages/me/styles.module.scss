@@ -144,8 +144,12 @@
   z-index: 1;
 
   &:before {
-    // mask-image: url("../../assets/svg/wave.svg");
-    content: url("../../assets/svg/wave.svg");
+    content: "";
+    mask-image: url("../../assets/svg/wave.svg");
+    background-color: inherit;
+    mask-repeat: repeat-x;
+    mask-position: bottom;
+    height: 50%;
     width: 100%;
     bottom: 99%;
     position: absolute;
