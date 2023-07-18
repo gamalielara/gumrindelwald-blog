@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import {
   BlogCardInterface,
   CATEGORY_DICTIONARIES,
@@ -8,7 +8,6 @@ import {
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import usePlatform from "../../hooks/usePlatform";
 
 type BlogTypeKeys =
   | "title"
@@ -29,38 +28,9 @@ const BlogCard: React.FC<BlogCardType> = ({
   slug,
   i,
 }) => {
-  const [isInMobile, platform] = usePlatform();
-
-  const cardWrapperRef = useRef<HTMLDivElement>(null);
-
-  const onCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isInMobile) {
-      e.currentTarget.classList.toggle(
-        styles["article-card-wrapper__card-clicked"]
-      );
-    }
-  };
-
-  useEffect(() => {
-    if (!isInMobile) return;
-
-    document.addEventListener("click", (e: any) => {
-      // Check if the event target is not the card itself (or its descendants)
-      if (!cardWrapperRef.current?.contains(e.target)) {
-        cardWrapperRef.current?.classList.remove(
-          styles["article-card-wrapper__card-clicked"]
-        );
-      }
-    });
-  }, [isInMobile]);
-
   return (
-    <div
-      data-platform={`${isInMobile ? "mobile" : "general"}-${platform}`}
-      className={styles["article-card-wrapper"]}
-      onClick={onCardClick}
-      ref={cardWrapperRef}
-    >
+    <div className={styles["article-card-wrapper"]}>
+      <input type="checkbox" />
       <article className={styles["article-card"]}>
         <div className={styles["article-card__front"]}>
           <div className={styles["article-image"]}>
@@ -90,7 +60,7 @@ const BlogCard: React.FC<BlogCardType> = ({
         <div className={styles["article-card__back"]}>
           <p>{excerpt}</p>
           <Link href={`/article/${slug}`}>
-            <button>Read More</button>
+            <button className={styles["to-blog-link"]}>Read More</button>
           </Link>
         </div>
       </article>
