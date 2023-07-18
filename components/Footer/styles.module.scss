@@ -63,18 +63,27 @@
 
   & a {
     color: $text-color;
-    font-size: 1.25rem;
-    width: 1.25rem;
+    font-size: 1.5rem;
+    width: 1.5rem;
     aspect-ratio: 1;
     display: inline-block;
+    margin: 0 5px;
 
     & > svg {
-      width: 1.5rem;
+      width: 100%;
       aspect-ratio: 1;
+
+      @supports not (aspect-ratio: 1) {
+        height: 1.5rem;
+      }
 
       @media screen and (max-width: $screen-md) {
         font-size: 1.5rem;
       }
+    }
+
+    @supports not (aspect-ratio: 1) {
+      height: 1.5rem;
     }
   }
 

@@ -39,6 +39,10 @@
   cursor: pointer;
   color: black;
 
+  @supports not (aspect-ratio: 1) {
+    height: 2rem;
+  }
+
   &[class*="selected"] {
     background-color: $background-color;
     color: $text-color;
@@ -47,14 +51,11 @@
 
 .blog-cards-section {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat($blog-card-columns-sm, 1fr);
-  gap: 3rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
   margin-bottom: 1rem;
 
   @media screen and (min-width: $screen-md) {
+    display: grid;
+    // grid-template-columns: repeat($blog-card-columns-sm, 1fr);
     gap: 15px;
     grid-template-columns: repeat($blog-card-columns-md, 1fr);
   }
