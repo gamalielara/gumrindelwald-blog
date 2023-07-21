@@ -26,6 +26,7 @@ const CategoryPage: NextPage<BlogsPage> = ({ blogs }) => {
                 created_at={blog.created_at}
                 slug={blog.slug}
                 i={i + 1}
+                language={blog.language}
               />
             ))}
           </section>

@@ -15,7 +15,8 @@ type BlogTypeKeys =
   | "excerpt"
   | "created_at"
   | "thumbnail_image"
-  | "slug";
+  | "slug"
+  | "language";
 
 type BlogCardType = Pick<BlogCardInterface, BlogTypeKeys> & { i: number };
 
@@ -26,7 +27,7 @@ const BlogCard: React.FC<BlogCardType> = ({
   thumbnail_image,
   excerpt,
   slug,
-  i,
+  language,
 }) => {
   return (
     <div className={styles["article-card-wrapper"]}>
@@ -59,7 +60,7 @@ const BlogCard: React.FC<BlogCardType> = ({
         </div>
         <div className={styles["article-card__back"]}>
           <p>{excerpt}</p>
-          <Link href={`/article/${slug}`}>
+          <Link href={`/article/${slug}`} locale={language}>
             <button className={styles["to-blog-link"]}>Read More</button>
           </Link>
         </div>

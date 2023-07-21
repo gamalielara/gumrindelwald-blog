@@ -5,7 +5,6 @@ import HeroBookImage from "../../assets/books.jpg";
 import HeroFilmImage from "../../assets/film.jpg";
 import HeroTechImage from "../../assets/tech.jpg";
 import HeroPersonalImage from "../../assets/personal.jpg";
-import HeadingOne from "../text/HeadingOne";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -15,12 +14,21 @@ interface Props {
   type: "All" | "Book" | "Film" | "Tech" | "Personal";
 }
 
-const HeroContainer: React.FC<Props> = ({
-  pageName,
-  showSearch,
-  type,
-  setShowFeatured,
-}) => {
+const HeroContainer: React.FC<Props> = ({ pageName, showSearch, type }) => {
+  const decideImage = (type: string) => {
+    switch (type) {
+      case "Book":
+        return HeroBookImage;
+      case "Film":
+        return HeroFilmImage;
+      case "Tech":
+        return HeroTechImage;
+      case "Personal":
+        return HeroPersonalImage;
+      default:
+        return HeroImage;
+    }
+  };
   return (
     <div className={styles["hero-container-wrapper"]}>
       <div className={styles["text-container"]}>
@@ -30,26 +38,12 @@ const HeroContainer: React.FC<Props> = ({
             <p className={styles["search-text"]}>
               Discover all of my blogs here.
             </p>
-            {/* disabled for a while */}
-            {/* <SearchField setShowFeatured={setShowFeatured} /> */}
           </>
         )}
       </div>
       <div className={styles["black-overlay"]}></div>
       <Image
-        src={
-          type === "All"
-            ? HeroImage
-            : type === "Book"
-            ? HeroBookImage
-            : type === "Film"
-            ? HeroFilmImage
-            : type === "Tech"
-            ? HeroTechImage
-            : type === "Personal"
-            ? HeroPersonalImage
-            : HeroImage
-        }
+        src={decideImage(type)}
         layout="fill"
         alt="gumrindelwald.com"
         objectFit="cover"
