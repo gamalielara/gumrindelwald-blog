@@ -1,15 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React from "react";
 import CategoryBox from "../../components/article/CategoryBox";
-import FlexBox from "../../components/container/FlexBox";
 import PageContainer from "../../components/container/PageContainer";
-import Text from "../../components/text/Text";
-import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Tag from "../../components/article/Tag";
 import HeadDocument from "../../components/HeadDocument";
-import HeadingOne from "../../components/text/HeadingOne";
 import {
   ArticleInterface,
   CATEGORY_DICTIONARIES,
