@@ -10,6 +10,7 @@ const nextConfig = {
     REACT_APP_APPID: process.env.REACT_APP_APPID,
     REACT_APP_MEASUREMENTID: process.env.REACT_APP_MEASUREMENTID,
     REACT_APP_VERSION: require("./package.json").version,
+    REACT_GA_ID: process.env.REACT_GA_ID,
   },
   compiler: {
     removeConsole: {
