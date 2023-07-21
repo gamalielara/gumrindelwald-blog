@@ -4,14 +4,12 @@ import BlogCard from "../../components/BlogCard";
 import FeaturedBlogCard from "../../components/FeaturedBlogCard";
 import HeadDocument from "../../components/HeadDocument";
 import PageContainer from "../../components/container/PageContainer";
-import HeroContainer from "../../components/HeroContainer";
 import { ArticleInterface, BlogsPage } from "../../utils/vars";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../utils/firebase";
 import styles from "./styles.module.scss";
 
 const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
-  const [showFeatured, setShowFeatured] = useState<boolean>(true);
   const [featuredBlogIndex, setFeaturedBlogIndex] = useState(0);
 
   const featuredBlogs = blogs.filter((post) => post.featured);
@@ -56,14 +54,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
     <>
       <HeadDocument docTitle="All Blogs" />
       <PageContainer pageName="all-blogs-page">
-        {/* <HeroContainer
-          pageName="All Blog Posts"
-          type="All"
-          setShowFeatured={setShowFeatured}
-          showSearch
-        /> */}
-
-        {showFeatured && Boolean(featuredBlogs.length) && (
+        {Boolean(featuredBlogs.length) && (
           <div
             className={styles["featured-blog-card"]}
             ref={featuredBlogCardRef}
@@ -106,7 +97,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
         )}
 
         <section className={styles["blog-cards-section"]}>
-          {blogs.length &&
+          {Boolean(blogs.length) &&
             blogs.map((blog, i) => {
               return (
                 <BlogCard
@@ -118,6 +109,7 @@ const Blogs: NextPage<BlogsPage> = ({ blogs }) => {
                   created_at={blog.created_at}
                   slug={blog.slug}
                   i={i + 1}
+                  language={blog.language}
                 />
               );
             })}

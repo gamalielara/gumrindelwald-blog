@@ -4,7 +4,6 @@ import {
   BlogCardInterface,
   CATEGORY_DICTIONARIES,
   IMAGELOADER,
-  Language,
 } from "../../utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
