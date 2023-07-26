@@ -5,21 +5,19 @@ import styles from "./styles.module.scss";
 
 const SideBar = () => {
   return (
-    <>
-      <aside className={styles["sidebar-aside"]}>
-        <ul className={styles["nav-menu-list"]}>
-          {MENUS.map((menu) => (
+    <aside className={styles["sidebar-aside"]}>
+      <ul className={styles["nav-menu-list"]}>
+        {MENUS.map((menu) => (
+          <li className={styles["nav-menu"]}>
             <Link href={menu.url} key={menu.name}>
               <a>
-                <li className={styles["nav-menu"]}>
-                  <span>{menu.name}</span>
-                </li>
+                <span>{menu.name}</span>
               </a>
             </Link>
-          ))}
-        </ul>
-      </aside>
-    </>
+          </li>
+        ))}
+      </ul>
+    </aside>
   );
 };
 

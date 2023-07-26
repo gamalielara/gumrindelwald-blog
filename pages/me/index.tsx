@@ -8,7 +8,6 @@ import {
   faInstagram,
   faInternetExplorer,
   faLinkedin,
-  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
@@ -93,14 +92,6 @@ const AboutMe: NextPage = () => {
                   className="w-4 h-4 mr-2"
                 />
                 My personal website
-              </a>
-              <a
-                href="https://twitter.com/gumrindelwald"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FontAwesomeIcon icon={faTwitter} className="w-4 h-4 mr-2" />
-                Twitter
               </a>
               <a
                 href="https://www.instagram.com/gamalielboanerges/"
