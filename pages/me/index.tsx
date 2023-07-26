@@ -24,7 +24,6 @@ const AboutMe: NextPage = () => {
               alt="Ara Gamaliel Boanerges"
               layout="fill"
               objectFit="cover"
-              className="rounded-lg "
             />
           </div>
           <div className={styles["me-image-small"]}>
@@ -33,7 +32,6 @@ const AboutMe: NextPage = () => {
               alt="Ara Gamaliel Boanerges"
               layout="fill"
               objectFit="cover"
-              className="rounded-lg"
             />
           </div>
           <article className={styles["about-container"]}>
@@ -79,7 +77,7 @@ const AboutMe: NextPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4 mr-2" />
+                <FontAwesomeIcon icon={faLinkedin} />
                 LinkedIn
               </a>
               <a
@@ -87,10 +85,7 @@ const AboutMe: NextPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon
-                  icon={faInternetExplorer}
-                  className="w-4 h-4 mr-2"
-                />
+                <FontAwesomeIcon icon={faInternetExplorer} />
                 My personal website
               </a>
               <a
@@ -98,7 +93,7 @@ const AboutMe: NextPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon icon={faInstagram} className="w-4 h-4 mr-2" />
+                <FontAwesomeIcon icon={faInstagram} />
                 Instagram
               </a>
               <a
@@ -106,7 +101,7 @@ const AboutMe: NextPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon icon={faMailBulk} className="w-4 h-4 mr-2" />
+                <FontAwesomeIcon icon={faMailBulk} />
                 aragamalielboanerges@gmail.com
               </a>
             </li>

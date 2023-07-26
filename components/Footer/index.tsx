@@ -25,12 +25,7 @@ const Footer: React.FC = () => {
         gumrindelwald v{process.env.REACT_APP_VERSION ?? "3.0"}. Copyright
         &copy;
         {thisYear}. This website is fully created by
-        <a
-          href="https://gamalielara.com"
-          target="_blank"
-          className="underline ml-2"
-          rel="noreferrer"
-        >
+        <a href="https://gamalielara.com" target="_blank" rel="noreferrer">
           Ara Gamaliel Boanerges
         </a>
       </span>
