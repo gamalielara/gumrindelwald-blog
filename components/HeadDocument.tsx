@@ -63,7 +63,12 @@ const HeadDocument: React.FC<Partial<IHeadDocumentProps>> = ({
           "https://media.graphassets.com/output=format:jpg/resize=height:800,fit:max/9bhuiwYLRLSpCQeqEjiP"
         }
       />
-      {isLandingPage && <link rel="preload" href="/lp-rain-2.mp4" as="video" />}
+      {isLandingPage && (
+        <>
+          <link rel="preload" href="/bg-videos/1.mp4" as="video" />
+          <link rel="preload" href="/bg-videos/2.mp4" as="video" />
+        </>
+      )}
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link

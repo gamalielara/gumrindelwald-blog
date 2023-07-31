@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const bgVideoIndex = Math.round(Math.random() * (2 - 1) + 1);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -62,7 +63,7 @@ export default function Home() {
         <div className={styles["video-bg-wrapper"]}>
           <div className={styles["video-placeholder"]}></div>
           <video ref={videoRef} autoPlay muted loop playsInline preload="auto">
-            <source src={"./lp-rain-2.mp4"} type="video/mp4" />
+            <source src={`./bg-videos/${bgVideoIndex}.mp4`} type="video/mp4" />
           </video>
         </div>
       </main>
