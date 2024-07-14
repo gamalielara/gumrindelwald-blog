@@ -1,0 +1,74 @@
+@import "../styles/main.scss";
+
+.featured-blog-card {
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.cards-wrapper {
+  width: 100%;
+  overflow: hidden;
+
+  & > div:first-child {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+  & > div {
+    transition: all 1s ease-in-out;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto 20px;
+  gap: 2rem;
+}
+
+.button-pagination {
+  border-radius: 100%;
+  width: 2rem;
+  aspect-ratio: 1;
+  justify-items: center;
+  align-items: center;
+  background-color: $background-color-grey;
+  border: none;
+  cursor: pointer;
+  color: black;
+
+  @supports not (aspect-ratio: 1) {
+    height: 2rem;
+  }
+
+  &[class*="selected"] {
+    background-color: $background-color;
+    color: $text-color;
+  }
+}
+
+.blog-cards-section {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: $screen-md) {
+    display: grid;
+    // grid-template-columns: repeat($blog-card-columns-sm, 1fr);
+    gap: 15px;
+    grid-template-columns: repeat($blog-card-columns-md, 1fr);
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    grid-template-columns: repeat($blog-card-columns-lg, 1fr);
+    gap: 25px;
+  }
+}
+
+.no-blog-text {
+  text: 2rem;
+  text-align: center;
+  margin: 2rem auto;
+  font: bold;
+}

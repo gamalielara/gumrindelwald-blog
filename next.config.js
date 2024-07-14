@@ -13,11 +13,7 @@ const nextConfig = {
     REACT_GA_ID: process.env.REACT_GA_ID,
     REACT_GA_INIT_FUNC: process.env.REACT_GA_INIT_FUNC,
   },
-  compiler: {
-    removeConsole: {
-      exclude: ["info"],
-    },
-  },
+  compiler: {}, // TODO: reenable console exception
   async redirects() {
     return [
       {
