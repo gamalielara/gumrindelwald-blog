@@ -4,7 +4,7 @@
   position: sticky;
   left: 0;
   display: flex;
-  padding: 1rem;
+  padding: .5rem 1rem;
   backdrop-filter: blur(50px);
   background-color: $background-color-header;
   z-index: 999;
@@ -12,6 +12,8 @@
   transform-style: preserve-3d;
   transform: translateZ(999999px);
   justify-content: space-between;
+  margin: 10px;
+  border-radius: 20px;
 }
 
 .logo-container {

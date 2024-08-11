@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
-import SideBar from "../../Sidebar";
-import NavMobileButton from "../../Navbar/NavbarMobileButton";
 import styles from "./style.module.scss";
 
 interface PageContainerInterface {
   children: any;
   noFooter?: boolean;
   pageName: string;
+  isInLP?: boolean;
 }
 
 const PageContainer: React.FC<PageContainerInterface> = ({
   children,
   noFooter,
   pageName,
+  isInLP,
 }) => {
   // const [showSideBar, setShowBar] = useState<boolean>(false);
 
@@ -22,7 +22,7 @@ const PageContainer: React.FC<PageContainerInterface> = ({
     <>
       <div className={styles["page-container"]}>
         <div className={styles["main-container"]}>
-          <Navbar />
+          <Navbar isInLandingPage={isInLP} />
           <main className={styles["blog-container"]} data-page={pageName}>
             {children}
           </main>

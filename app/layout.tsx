@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { figTree } from "./ui/font";
 import "./global.css";
+import "./styles/global.scss";
 
 function initMock() {
   if ( process.env.NODE_ENV !== "development" ) return;
