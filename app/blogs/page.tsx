@@ -13,6 +13,7 @@ const Blogs: NextPage = async () => {
     <>
       <HeadDocument docTitle="All Blogs"/>
       <PageContainer pageName="all-blogs-page" isInLP>
+        <section className={ styles["main-banner"] }/>
         <section className={ styles["blog-cards-section"] }>
           { Boolean(blogs?.length) &&
             blogs.map((blog, i) => {

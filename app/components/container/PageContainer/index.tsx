@@ -11,21 +11,21 @@ interface PageContainerInterface {
 }
 
 const PageContainer: React.FC<PageContainerInterface> = ({
-  children,
-  noFooter,
-  pageName,
-  isInLP,
-}) => {
+                                                           children,
+                                                           noFooter,
+                                                           pageName,
+                                                           isInLP,
+                                                         }) => {
   // const [showSideBar, setShowBar] = useState<boolean>(false);
 
   return (
     <>
-      <div className={styles["page-container"]}>
-        <div className={styles["main-container"]}>
-          <Navbar isInLandingPage={isInLP} />
-          <main className={styles["blog-container"]} data-page={pageName}>
-            {children}
-          </main>
+      <main className={ styles["page-container"] }>
+        <div className={ styles["main-container"] }>
+          <Navbar isInLandingPage={ isInLP }/>
+          <div className={ styles["blog-container"] } data-page={ pageName }>
+            { children }
+          </div>
         </div>
         {/* <div
           style={{ right: showSideBar ? "75%" : 0 }}
@@ -39,9 +39,9 @@ const PageContainer: React.FC<PageContainerInterface> = ({
             className={styles["bg-mask"]}
             onClick={() => setShowBar((state) => !state)}
           />
-        </div> */}
-      </div>
-      {!noFooter && <Footer />}
+        </div> */ }
+      </main>
+      { !noFooter && <Footer/> }
     </>
   );
 };

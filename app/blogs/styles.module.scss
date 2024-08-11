@@ -1,5 +1,16 @@
 @import "../styles/main.scss";
 
+$BANNER_SECTION_HEIGHT: 30vh;
+
+.main-banner {
+  height: $BANNER_SECTION_HEIGHT;
+  width: 100%;
+  background-color: black;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
 .featured-blog-card {
   width: 100%;
   margin: 2rem auto;
@@ -52,6 +63,7 @@
 .blog-cards-section {
   width: 100%;
   margin-bottom: 1rem;
+  margin-top: $BANNER_SECTION_HEIGHT;
 
   @media screen and (min-width: $screen-md) {
     display: grid;
