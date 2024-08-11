@@ -22,7 +22,9 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
   const headerRef = useRef<HTMLElement>(null);
 
   const windowScrollYSubscriber = (callback: () => void) => {
-    window.addEventListener("scroll", callback);
+    window.addEventListener("scroll", () => {
+      callback();
+    });
 
     return () => window.removeEventListener("scroll", callback);
   };
@@ -42,11 +44,19 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
 
 
     if ( Math.floor(top) < 0 && windowScrollY >= headerHeight ) {
+      if ( isInLandingPage ) {
+        headerRef.current.style.visibility = "visible";
+      }
+
       top *= 2;
     }
 
     if ( windowScrollY === 0 ) {
       top = headerHeight * -1;
+    }
+
+    if ( windowScrollY <= headerHeight && isInLandingPage ) {
+      headerRef.current.style.visibility = "hidden";
     }
 
     if ( Math.floor(top) >= 0 ) {
@@ -64,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
         top: getTopValue()
       } }
       className={ styles["header-base"] }
-      data-type={ isInLandingPage ? "lp" : "general" }
+      data-should-hide={ window.scrollY > 0 ? "no" : "yes" }
     >
       <div className={ styles["logo-container"] } onClick={ () => route.push("/") }>
         { animateLogo ? (
