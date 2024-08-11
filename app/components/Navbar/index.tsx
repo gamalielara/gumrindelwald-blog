@@ -40,7 +40,6 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
 
     top += windowScrollY / HEADER_SLIDE_DOWN_SPEED;
 
-    console.log({ windowScrollY, top });
 
     if ( Math.floor(top) < 0 && windowScrollY >= headerHeight ) {
       top *= 2;
