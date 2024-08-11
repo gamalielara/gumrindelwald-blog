@@ -5,11 +5,13 @@
   left: 0;
   display: flex;
   padding: 1rem;
-  background-color: $background-color;
+  backdrop-filter: blur(50px);
+  background-color: $background-color-header;
   z-index: 999;
   transition: all 100ms;
   transform-style: preserve-3d;
   transform: translateZ(999999px);
+  justify-content: space-between;
 }
 
 .logo-container {
