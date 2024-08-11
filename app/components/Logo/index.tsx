@@ -5,14 +5,15 @@ interface LogoInterface {
   isHeader?: boolean;
 }
 
-const Logo: React.FC<LogoInterface> = ({ fontColor, isHeader }) => {
+const Logo: React.FC<LogoInterface> = ({ fontColor, }) => {
   return (
     <div
-      {...{ color: fontColor }}
-      className={`${isHeader ? styles.header : styles.title} ${styles["logo"]}`}
+      { ...{ color: fontColor } }
+      className={ `${ styles.header } ${ styles["logo"] }` }
     >
-      g<div className={styles["main-text"]}>umrindel</div>
-      <em className={styles["em-text"]}>
+      g
+      <div className={ styles["main-text"] }>umrindel</div>
+      <em className={ styles["em-text"] }>
         w
         <span>
           <span>ald</span>

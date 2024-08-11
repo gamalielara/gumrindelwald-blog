@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import React, { useRef, useState, useSyncExternalStore } from "react";
 import Logo from "../Logo";
 import styles from "./styles.module.scss";
 import { MENUS } from "<utils>/constants";
@@ -11,23 +11,17 @@ interface NavbarProps {
   isInLandingPage?: boolean;
 }
 
+const HEADER_MARGIN_TOP = 10;
+const HEADER_SLIDE_DOWN_SPEED = 4;
+
+
 const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
   const [ animateLogo, setAnimateLogo ] = useState(true);
   const route = useRouter();
 
   const headerRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    if ( headerRef.current ) {
-      if ( window.scrollY >= headerRef.current.clientHeight ) {
-        setAnimateLogo(false);
-        headerRef.current.style.top = "0px";
-      } else {
-      }
-    }
-  }, []);
-
-  const subscriber = (callback: () => void) => {
+  const windowScrollYSubscriber = (callback: () => void) => {
     window.addEventListener("scroll", callback);
 
     return () => window.removeEventListener("scroll", callback);
@@ -35,29 +29,29 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
 
   const getWindowScrollY = () => window.scrollY;
 
-  const windowScrollY = useSyncExternalStore(subscriber, getWindowScrollY);
+  const windowScrollY = useSyncExternalStore(windowScrollYSubscriber, getWindowScrollY);
 
   const getTopValue = () => {
     if ( !headerRef.current ) return;
 
+    const headerHeight = headerRef.current.clientHeight;
 
-    let top = headerRef.current.clientHeight * -1;
+    let top = headerHeight * -1;
 
+    top += windowScrollY / HEADER_SLIDE_DOWN_SPEED;
 
-    top += windowScrollY / 4;
+    console.log({ windowScrollY, top });
 
-    // console.log({ windowScrollY, top, topAbs: Math.abs(top) });
-
-    if ( Math.floor(top) < 0 && windowScrollY >= headerRef.current.clientHeight ) {
+    if ( Math.floor(top) < 0 && windowScrollY >= headerHeight ) {
       top *= 2;
     }
 
     if ( windowScrollY === 0 ) {
-      top = headerRef.current.clientHeight * -1;
+      top = headerHeight * -1;
     }
 
     if ( Math.floor(top) >= 0 ) {
-      top = 0;
+      top = HEADER_MARGIN_TOP;
     }
 
     return `${ top }px`;

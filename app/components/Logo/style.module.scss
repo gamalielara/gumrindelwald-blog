@@ -22,6 +22,7 @@
 
 .header {
   font-size: 2rem;
+  font-weight: 600;
 }
 
 .main-text {
@@ -45,31 +46,19 @@
 }
 
 @media screen and (min-width: 640px) {
-  .title {
-    font-size: 3rem;
-  }
-
   .header {
-    font-size: 2.5rem;
+    font-size: 1rem;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .title {
-    font-size: 5rem;
-  }
-
   .header {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .title {
-    font-size: 7rem;
-  }
-
   .header {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }

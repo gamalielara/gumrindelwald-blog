@@ -1,5 +1,7 @@
 @import "../../styles/main.scss";
 
+$HEADER_MARGIN_TOP: -999px;
+
 .header-base {
   position: sticky;
   left: 0;
@@ -14,6 +16,8 @@
   justify-content: space-between;
   margin: 10px;
   border-radius: 20px;
+  align-items: center;
+  top: $HEADER_MARGIN_TOP;
 }
 
 .logo-container {
@@ -24,8 +28,6 @@
   & > span:first-child {
     font-size: 3rem;
   }
-
-  transform: scale(0.75);
 }
 
 .nav-menus-container {
