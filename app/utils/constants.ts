@@ -6,10 +6,6 @@ export const IMAGELOADER = (fn: ImageLoader) => fn.src;
 
 export const MENUS = [
   {
-    name: "All Blogs",
-    url: "/blogs",
-  },
-  {
     name: "Book",
     url: "/category/book",
   },

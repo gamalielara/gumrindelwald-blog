@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useRef, useState, useSyncExternalStore } from "react";
+import React, { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Logo from "../Logo";
 import styles from "./styles.module.scss";
 import { MENUS } from "<utils>/constants";
@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
 
     if ( Math.floor(top) < 0 && windowScrollY >= headerHeight ) {
       if ( isInLandingPage ) {
-        headerRef.current.style.visibility = "visible";
+        headerRef.current.setAttribute("data-should-show", "yes");
       }
 
       top *= 2;
@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
     }
 
     if ( windowScrollY <= headerHeight && isInLandingPage ) {
-      headerRef.current.style.visibility = "hidden";
+      headerRef.current.setAttribute("data-should-show", "no");
     }
 
     if ( Math.floor(top) >= 0 ) {
@@ -66,6 +66,16 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
     return `${ top }px`;
   };
 
+  const shouldHeaderShowOnMount = useMemo(() => {
+    if ( !headerRef.current ) return;
+
+    if ( isInLandingPage ) {
+      return windowScrollY >= headerRef.current.clientHeight;
+    }
+    
+    return windowScrollY > 0;
+  }, [ headerRef.current ]);
+
   return (
     <header
       id="header"
@@ -74,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
         top: getTopValue()
       } }
       className={ styles["header-base"] }
-      data-should-hide={ window.scrollY > 0 ? "no" : "yes" }
+      data-should-show={ shouldHeaderShowOnMount ? "yes" : "no" }
     >
       <div className={ styles["logo-container"] } onClick={ () => route.push("/") }>
         { animateLogo ? (

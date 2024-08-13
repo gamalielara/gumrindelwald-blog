@@ -10,7 +10,7 @@ $HEADER_MARGIN_TOP: -999px;
   backdrop-filter: blur(50px);
   background-color: $background-color-header;
   z-index: 999;
-  transition: all ease-in-out 100ms;
+  //transition: all ease-in-out 100ms;
   transform-style: preserve-3d;
   transform: translateZ(999999px);
   justify-content: space-between;
@@ -19,8 +19,14 @@ $HEADER_MARGIN_TOP: -999px;
   align-items: center;
   top: $HEADER_MARGIN_TOP;
 
-  &[data-should-hide="yes"] {
+  &[data-should-show="no"] {
     visibility: hidden;
+    opacity: 0;
+  }
+
+  &[data-should-show="yes"] {
+    visibility: visible;
+    opacity: 1;
   }
 }
 
