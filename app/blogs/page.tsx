@@ -13,7 +13,10 @@ const Blogs: NextPage = async () => {
     <>
       <HeadDocument docTitle="All Blogs"/>
       <PageContainer pageName="all-blogs-page" isInLP>
-        <section className={ styles["main-banner"] }/>
+        <section className={ styles["main-banner"] }>
+          <h1 className={ styles["gumrindelwald-title"] }>gumrindel<em>wald</em></h1>
+          <h3 className={ styles["gumrindelwald-subtitle"] }>Ara Gamaliel Boanerges's Personal Blog</h3>
+        </section>
         <section className={ styles["blog-cards-section"] }>
           { Boolean(blogs?.length) &&
             blogs.map((blog, i) => {
