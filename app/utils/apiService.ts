@@ -17,8 +17,6 @@ class ApiService {
 
     const articles = FireStoreParser(responseData);
 
-    console.log("articles", articles);
-
     return articles;
   };
 }
