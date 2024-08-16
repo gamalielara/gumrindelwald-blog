@@ -1,13 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useLayoutEffect } from "react";
-import {
-  BlogCardInterface,
-  CATEGORY_DICTIONARIES,
-  IMAGELOADER,
-} from "../../app/utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
+import { BlogCardInterface } from "<utils>/types";
+import { CATEGORY_DICTIONARIES, IMAGELOADER } from "<utils>/constants";
 
 type FeaturedBlogCardKeys =
   | "thumbnail_image"

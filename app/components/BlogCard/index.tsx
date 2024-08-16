@@ -1,14 +1,10 @@
 import Image from "next/image";
 import React from "react";
-// import {
-//   BlogCardInterface,
-//   CATEGORY_DICTIONARIES,
-//   IMAGELOADER,
-// } from "../../app/utils/vars";
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { CATEGORY_DICTIONARIES, IMAGELOADER } from "<utils>/constants";
+import { BlogCardInterface } from "<utils>/types";
 
 type BlogTypeKeys =
   | "title"

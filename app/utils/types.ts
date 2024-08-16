@@ -69,7 +69,7 @@ export interface Comment {
 export interface BlogCardInterface {
   id: string;
   category: Category;
-  comments: CommentInterface[];
+  comments: Comment[];
   created_at: number;
   excerpt: string;
   featured: boolean;
