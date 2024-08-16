@@ -38,7 +38,7 @@ interface FieldResponse {
 /**
  * @description parsed Article base response from Firestore BE
  */
-export interface Article {
+export interface TrimmedArticle {
   documents: {
     name: string;
     fields: {
@@ -52,11 +52,29 @@ export interface Article {
       thumbnail_image: string;
       title: string;
       slug: string;
+      featured: boolean;
       language: Language;
     };
     createTime: string;
     updateTime: string;
   }[];
+}
+
+export interface Article {
+  excerpt: string;
+  comments: Array<Comment>;
+  created_at: number;
+  category: Category;
+  updated_at: number;
+  likes: Array<number>;
+  content: string;
+  thumbnail_image: string;
+  title: string;
+  slug: string;
+  featured: boolean;
+  language: Language;
+  createTime: string;
+  updateTime: string;
 }
 
 export interface Comment {

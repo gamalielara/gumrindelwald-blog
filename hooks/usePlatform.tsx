@@ -11,8 +11,6 @@ export default () => {
   const [platform, setPlatform] = useState<Platform>();
 
   useEffect(() => {
-    console.log({ navigator });
-
     if (navigator.userAgent) {
       setIsInMobile(
         Boolean(navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod/i))

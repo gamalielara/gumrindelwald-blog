@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
 import { BlogCardInterface } from "<utils>/types";
@@ -17,17 +17,6 @@ type FeaturedBlogCardKeys =
 const FeaturedBlogCard: React.FC<
   Pick<BlogCardInterface, FeaturedBlogCardKeys>
 > = ({ thumbnail_image, category, excerpt, created_at, slug, title }) => {
-  useLayoutEffect(() => {
-    const featuredBlogCard = document.getElementById("featured-blog");
-    const articleImageContainer = document.getElementsByClassName(
-      "article-heading-image"
-    )[0] as HTMLElement;
-
-    if (window.innerWidth >= 700 && featuredBlogCard && articleImageContainer) {
-      articleImageContainer.style.height = `${featuredBlogCard.clientHeight}px`;
-    }
-  }, []);
-
   return (
     <article
       className={styles["featured-blog-card-wrapper"]}

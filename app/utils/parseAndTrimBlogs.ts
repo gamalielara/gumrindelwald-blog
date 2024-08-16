@@ -1,4 +1,4 @@
-import { Article, ArticleFirestoreResponse } from "./types";
+import { Article, ArticleFirestoreResponse, TrimmedArticle } from "./types";
 
 const getFireStoreProp = (value: ArticleFirestoreResponse) => {
   const props = {
@@ -14,10 +14,15 @@ const getFireStoreProp = (value: ArticleFirestoreResponse) => {
     stringValue: 1,
     timestampValue: 1,
   };
-  return Object.keys(value).find((k) => props[k] === 1);
+
+  return Object.keys(value).find((v) => props[v as keyof typeof props] === 1);
 };
 
-export const FireStoreParser = (value: ArticleFirestoreResponse) => {
+/**
+ *
+ * @description recursively parse firebase blog response
+ */
+const FireStoreParser = (value: ArticleFirestoreResponse): TrimmedArticle => {
   let replicatedValue = JSON.parse(JSON.stringify(value));
 
   const prop = getFireStoreProp(value);
@@ -27,7 +32,7 @@ export const FireStoreParser = (value: ArticleFirestoreResponse) => {
     replicatedValue = (
       (replicatedValue[prop] && replicatedValue[prop].values) ||
       []
-    ).map((v) => FireStoreParser(v));
+    ).map((v: ArticleFirestoreResponse) => FireStoreParser(v));
   } else if (prop === "mapValue") {
     replicatedValue = FireStoreParser(
       (replicatedValue[prop] && replicatedValue[prop].fields) || {}
@@ -42,7 +47,22 @@ export const FireStoreParser = (value: ArticleFirestoreResponse) => {
     );
   }
 
-  return replicatedValue as Article;
+  return replicatedValue;
 };
 
-export default FireStoreParser;
+const parseAndTrimBlogs = (value: ArticleFirestoreResponse): Article[] => {
+  const parsedBlogs = FireStoreParser(value);
+
+  const trimmedArticles = parsedBlogs.documents.map((article) => {
+    const { fields, createTime, updateTime } = article;
+    return {
+      ...fields,
+      createTime,
+      updateTime,
+    };
+  });
+
+  return trimmedArticles;
+};
+
+export default parseAndTrimBlogs;

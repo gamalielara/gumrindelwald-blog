@@ -1,4 +1,4 @@
-import FireStoreParser from "./firestoreParser";
+import parseAndTrimBlogs from "./parseAndTrimBlogs";
 import { Article, ArticleFirestoreResponse } from "./types";
 
 class ApiService {
@@ -7,7 +7,7 @@ class ApiService {
   private static baseFirestoreGoogleAPIURL =
     "https://firestore.googleapis.com/v1/projects";
 
-  public static getAllBlogs = async (): Promise<Article> => {
+  public static getAllBlogs = async (): Promise<Article[]> => {
     const response = await fetch(
       `${this.baseFirestoreGoogleAPIURL}/${this.projectId}/databases/(default)/documents/blogs`,
       { next: { revalidate: 3600 } }
@@ -15,7 +15,7 @@ class ApiService {
 
     const responseData = (await response.json()) as ArticleFirestoreResponse;
 
-    const articles = FireStoreParser(responseData);
+    const articles = parseAndTrimBlogs(responseData);
 
     return articles;
   };

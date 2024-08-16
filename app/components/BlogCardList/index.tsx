@@ -4,16 +4,14 @@ import { Article } from "<utils>/types";
 import BlogCard from "<components>/BlogCard";
 
 interface IBlogCardListProps {
-  articles: Article;
+  blogs: Article[];
   isInLandingPage?: boolean;
 }
 
 const BlogCardList: React.FC<IBlogCardListProps> = ({
-  articles,
+  blogs,
   isInLandingPage = false,
 }) => {
-  const { documents: blogs } = articles;
-
   return (
     <section
       className={styles["blog-cards-section"]}
@@ -29,7 +27,7 @@ const BlogCardList: React.FC<IBlogCardListProps> = ({
             created_at,
             slug,
             language,
-          } = blog.fields;
+          } = blog;
 
           return (
             <BlogCard

@@ -9,7 +9,9 @@ import HighlightedBlogs from "<components>/HighlightedBlogs";
 import BlogCardList from "<components>/BlogCardList";
 
 const Blogs: NextPage = async () => {
-  const articles = await ApiService.getAllBlogs();
+  const allBlogs = await ApiService.getAllBlogs();
+
+  const featuredBlogs = allBlogs.filter((blog) => blog.featured);
 
   return (
     <>
@@ -20,8 +22,8 @@ const Blogs: NextPage = async () => {
             gumrindel<em>wald</em>
           </h1>
         </section>
-        <HighlightedBlogs />
-        <BlogCardList articles={articles} isInLandingPage />
+        <HighlightedBlogs featuredBlogs={featuredBlogs} />
+        <BlogCardList blogs={allBlogs} isInLandingPage />
       </PageContainer>
     </>
   );
