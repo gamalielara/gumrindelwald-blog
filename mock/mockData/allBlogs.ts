@@ -49,7 +49,7 @@ export const ALL_BLOGS: ArticleFirestoreResponse = {
           stringValue: "B5qAy2yMzQykd6u5Z0eD",
         },
         featured: {
-          booleanValue: false,
+          booleanValue: true,
         },
       },
       createTime: "2023-07-01T15:49:50.557509Z",
@@ -69,7 +69,7 @@ export const ALL_BLOGS: ArticleFirestoreResponse = {
           stringValue: "film",
         },
         featured: {
-          booleanValue: false,
+          booleanValue: true,
         },
         title: {
           stringValue:
