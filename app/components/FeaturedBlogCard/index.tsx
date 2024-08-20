@@ -18,16 +18,12 @@ const FeaturedBlogCard: React.FC<
   Pick<BlogCardInterface, FeaturedBlogCardKeys>
 > = ({ thumbnail_image, category, excerpt, created_at, slug, title }) => {
   return (
-    <article
-      className={styles["featured-blog-card-wrapper"]}
-      id="featured-blog"
-    >
+    <article className={styles["featured-blog-card-wrapper"]}>
       <div className={styles["article-image"]}>
         <Image
           src={thumbnail_image}
           alt={title}
           layout="fill"
-          loader={IMAGELOADER}
           objectFit="cover"
           priority
           unoptimized

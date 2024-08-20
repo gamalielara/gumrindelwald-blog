@@ -10,7 +10,7 @@ const HighlightedBlogs: React.FC<Props> = ({ featuredBlogs }) => {
   return (
     <section className={styles["highlighted-blog-section"]}>
       <h3 className={styles["highlighted-blogs-title"]}>Highlighted Blogs</h3>
-      <ul>
+      <ul className={styles["featured-blogs-list"]}>
         {featuredBlogs.map((blog) => {
           const {
             thumbnail_image,
@@ -22,7 +22,7 @@ const HighlightedBlogs: React.FC<Props> = ({ featuredBlogs }) => {
           } = blog;
 
           return (
-            <li>
+            <li className={styles["featured-blog-card"]} key={title + slug}>
               <FeaturedBlogCard
                 thumbnail_image={thumbnail_image}
                 category={category}
