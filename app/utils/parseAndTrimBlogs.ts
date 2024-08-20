@@ -23,7 +23,7 @@ const getFireStoreProp = (value: ArticleFirestoreResponse) => {
  * @description recursively parse firebase blog response
  */
 const FireStoreParser = (value: ArticleFirestoreResponse): TrimmedArticle => {
-  let replicatedValue = JSON.parse(JSON.stringify(value));
+  let replicatedValue = structuredClone(value) as any;
 
   const prop = getFireStoreProp(value);
   if (prop === "doubleValue" || prop === "integerValue") {
