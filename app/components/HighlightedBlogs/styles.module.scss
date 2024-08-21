@@ -8,11 +8,31 @@
   font-size: 2rem;
 }
 
+.featured-blogs-container {
+  width: 100%;
+  overflow: scroll;
+}
+
 .featured-blogs-list {
   padding: 0;
+  display: flex;
+  width: 100vw;
 }
 
 .featured-blog-card {
   list-style: none;
   padding: 0;
+  width: 100%;
+
+  margin: 0 10px;
+
+  &:first-child {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-left: 10px;
+    margin-right: 0;
+  }
 }
