@@ -17,12 +17,21 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &[data-should-bounce="true"] {
+    & > ul {
+      animation-name: bouncingHighlightedBlogs;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+    }
+  }
 }
 
 .featured-blogs-list {
   padding: 0;
   display: flex;
   width: 100vw;
+  transition: all 1000ms cubic-bezier(0.79, 1.535, 0.305, -0.475); /* custom */
 }
 
 .featured-blog-card {
