@@ -3,9 +3,26 @@
 .page-container {
   width: 100%;
   display: flex;
+  margin: 0 auto;
+
+  @media screen and (min-width: $screen-lg) {
+    width: calc(calc(4 / 5) * 100%);
+  }
+
+  @media screen and (min-width: $screen-xl) {
+    width: 100ch;
+  }
+
+  @media screen and (min-width: $screen-2xl) {
+    width: 90ch;
+  }
 
   @media screen and (min-width: $screen-md) {
     display: block;
+  }
+
+  &[data-page*="me-page"] {
+    min-height: 100%;
   }
 }
 
@@ -15,25 +32,9 @@
 
 .blog-container {
   padding: 0 1rem;
-  width: auto;
+  width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-
-  @media screen and (min-width: $screen-lg) {
-    width: calc(calc(4 / 5) * 100%);
-  }
-
-  @media screen and (min-width: $screen-xl) {
-    width: 75%;
-  }
-
-  @media screen and (min-width: $screen-2xl) {
-    width: 60%;
-  }
-
-  &[data-page*="me-page"] {
-    min-height: 100%;
-  }
 }
 
 .sidebar {

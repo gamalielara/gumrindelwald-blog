@@ -1,11 +1,11 @@
 @import "../../styles/main.scss";
 
 .article-card-wrapper {
-  aspect-ratio: 1;
+  aspect-ratio: 1/1.25;
   position: relative;
 
-  @supports not (aspect-ratio: 1) {
-    padding-top: 100%;
+  @supports not (aspect-ratio: 1/1.25) {
+    padding-top: 130%;
 
     & .article-card {
       position: absolute;

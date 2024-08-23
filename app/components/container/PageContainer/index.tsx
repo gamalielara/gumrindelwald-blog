@@ -11,37 +11,22 @@ interface PageContainerInterface {
 }
 
 const PageContainer: React.FC<PageContainerInterface> = ({
-                                                           children,
-                                                           noFooter,
-                                                           pageName,
-                                                           isInLP,
-                                                         }) => {
-  // const [showSideBar, setShowBar] = useState<boolean>(false);
-
+  children,
+  noFooter,
+  pageName,
+  isInLP,
+}) => {
   return (
     <>
-      <main className={ styles["page-container"] }>
-        <div className={ styles["main-container"] }>
-          <Navbar isInLandingPage={ isInLP }/>
-          <div className={ styles["blog-container"] } data-page={ pageName }>
-            { children }
+      <main className={styles["page-container"]}>
+        <div className={styles["main-container"]}>
+          <Navbar isInLandingPage={isInLP} />
+          <div className={styles["blog-container"]} data-page={pageName}>
+            {children}
           </div>
         </div>
-        {/* <div
-          style={{ right: showSideBar ? "75%" : 0 }}
-          className={styles["sidebar"]}
-        >
-          <NavMobileButton setShowBar={setShowBar} />
-          <SideBar />
-
-          <div
-            style={{ visibility: showSideBar ? "visible" : "hidden" }}
-            className={styles["bg-mask"]}
-            onClick={() => setShowBar((state) => !state)}
-          />
-        </div> */ }
       </main>
-      { !noFooter && <Footer/> }
+      {!noFooter && <Footer />}
     </>
   );
 };
