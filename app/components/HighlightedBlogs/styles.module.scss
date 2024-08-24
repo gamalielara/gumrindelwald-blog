@@ -2,6 +2,7 @@
 
 .highlighted-blog-section {
   margin-top: $BANNER_SECTION_HEIGHT;
+  margin-bottom: 10px;
 }
 
 .highlighted-blogs-title {
@@ -16,14 +17,6 @@
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  &[data-should-bounce="true"] {
-    & > ul {
-      animation-name: bouncingHighlightedBlogs;
-      animation-duration: 5s;
-      animation-iteration-count: infinite;
-    }
   }
 }
 

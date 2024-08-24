@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 import ApiService from "../utils/apiService";
 import HighlightedBlogs from "<components>/HighlightedBlogs";
 import BlogCardList from "<components>/BlogCardList";
+import Logo from "<components>/Logo";
 
 const Blogs: NextPage = async () => {
   const allBlogs = await ApiService.getAllBlogs();
@@ -18,9 +19,7 @@ const Blogs: NextPage = async () => {
       <HeadDocument docTitle="All Blogs" />
       <PageContainer pageName="all-blogs-page" isInLP>
         <section className={styles["main-banner"]}>
-          <h1 className={styles["gumrindelwald-title"]}>
-            gumrindel<em>wald</em>
-          </h1>
+          <Logo fontColor="black" shouldAnimate isInLandingPage />
         </section>
         <HighlightedBlogs featuredBlogs={featuredBlogs} />
         <BlogCardList blogs={allBlogs} isInLandingPage />

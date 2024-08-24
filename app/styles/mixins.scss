@@ -20,3 +20,19 @@ $breakpoints: (
     $blog-card-columns: $blog-card-columns-lg;
   }
 }
+
+@mixin getPageContainerWidth() {
+  width: 100%;
+
+  @media screen and (min-width: $screen-lg) {
+    width: 80%;
+  }
+
+  @media screen and (min-width: $screen-xl) {
+    width: 100ch;
+  }
+
+  @media screen and (min-width: $screen-2xl) {
+    width: 90ch;
+  }
+}

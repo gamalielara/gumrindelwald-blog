@@ -15,7 +15,6 @@ const HEADER_MARGIN_TOP = 10;
 const HEADER_SLIDE_DOWN_SPEED = 4;
 
 const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
-  const [animateLogo, setAnimateLogo] = useState(true);
   const route = useRouter();
 
   const headerRef = useRef<HTMLElement>(null);
@@ -91,15 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
       data-should-show={shouldHeaderShowOnMount ? "yes" : "no"}
     >
       <div className={styles["logo-container"]} onClick={() => route.push("/")}>
-        {animateLogo ? (
-          <Logo fontColor="black" isHeader />
-        ) : (
-          <span>
-            <strong>
-              g<em>w</em>
-            </strong>
-          </span>
-        )}
+        <Logo fontColor="black" />
       </div>
       <nav className={styles["nav-menus-container"]}>
         <ul className={styles["nav-menu-list"]}>

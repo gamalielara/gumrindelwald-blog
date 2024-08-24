@@ -3,7 +3,7 @@ import React from "react";
 import CategoryBox from "../article/CategoryBox";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import { CATEGORY_DICTIONARIES, IMAGELOADER } from "<utils>/constants";
+import { CATEGORY_DICTIONARIES } from "<utils>/constants";
 import { BlogCardInterface } from "<utils>/types";
 
 type BlogTypeKeys =

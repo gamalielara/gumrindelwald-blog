@@ -1,21 +1,10 @@
 @import "../../../styles/main.scss";
 
 .page-container {
-  width: 100%;
+  @include getPageContainerWidth();
+
   display: flex;
   margin: 0 auto;
-
-  @media screen and (min-width: $screen-lg) {
-    width: calc(calc(4 / 5) * 100%);
-  }
-
-  @media screen and (min-width: $screen-xl) {
-    width: 100ch;
-  }
-
-  @media screen and (min-width: $screen-2xl) {
-    width: 90ch;
-  }
 
   @media screen and (min-width: $screen-md) {
     display: block;

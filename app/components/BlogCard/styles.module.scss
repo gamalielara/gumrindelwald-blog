@@ -99,21 +99,21 @@
       overflow: auto;
       line-height: 1.5em;
     }
+  }
+}
 
-    & > .to-blog-link {
-      background-color: $secondary-color;
-      padding: 0.5rem 0.75em;
-      font-size: 0.75rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      color: $text-color;
-      pointer-events: auto;
+.to-blog-link {
+  background-color: $secondary-color;
+  padding: 0.5rem 0.75em;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  color: $text-color;
+  pointer-events: auto;
 
-      &:hover {
-        cursor: pointer;
-      }
-    }
+  &:hover {
+    cursor: pointer;
   }
 }
 
