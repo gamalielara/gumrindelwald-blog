@@ -5,22 +5,6 @@
   transform: translate(-50%, -50%);
 }
 
-$breakpoints: (
-  lg: 1024px,
-  md: 768px,
-  sm: 576px,
-);
-
-@mixin getBlogCardColumn() {
-  @media screen and (min-width: $screen-md) {
-    $blog-card-columns: $blog-card-columns-md;
-  }
-
-  @media screen and (min-width: $screen-lg) {
-    $blog-card-columns: $blog-card-columns-lg;
-  }
-}
-
 @mixin getPageContainerWidth() {
   --container-width: 100%;
 
@@ -34,5 +18,15 @@ $breakpoints: (
 
   @media screen and (min-width: $screen-2xl) {
     --container-width: 90ch;
+  }
+}
+
+@mixin getBlogCardAspectRatio() {
+  --blog-card-aspect-ratio: 1;
+  --card-padding-top: 100%;
+
+  @media screen and (min-width: $screen-lg) {
+    --blog-card-aspect-ratio: 1 / 1.5;
+    --card-padding-top: 130%;
   }
 }

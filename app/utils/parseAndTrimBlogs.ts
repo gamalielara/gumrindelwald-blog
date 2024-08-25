@@ -53,7 +53,7 @@ const FireStoreParser = (value: ArticleFirestoreResponse): TrimmedArticle => {
 const parseAndTrimBlogs = (value: ArticleFirestoreResponse): Article[] => {
   const parsedBlogs = FireStoreParser(value);
 
-  const trimmedArticles = parsedBlogs.documents.map((article) => {
+  const trimmedArticles = parsedBlogs.documents?.map((article) => {
     const { fields, createTime, updateTime } = article;
     return {
       ...fields,

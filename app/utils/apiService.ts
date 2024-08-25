@@ -17,7 +17,7 @@ class ApiService {
 
     const articles = parseAndTrimBlogs(responseData);
 
-    return articles;
+    return articles ?? [];
   };
 }
 

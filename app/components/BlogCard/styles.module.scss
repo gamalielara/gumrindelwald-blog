@@ -1,11 +1,14 @@
 @import "../../styles/main.scss";
 
 .article-card-wrapper {
-  aspect-ratio: 1/1.25;
+  @include getBlogCardAspectRatio();
+
+  aspect-ratio: var(--blog-card-aspect-ratio);
+  height: fit-content;
   position: relative;
 
-  @supports not (aspect-ratio: 1/1.25) {
-    padding-top: 130%;
+  @supports not (aspect-ratio: var(--blog-card-aspect-ratio)) {
+    padding-top: var(--card-padding-top);
 
     & .article-card {
       position: absolute;
@@ -125,9 +128,12 @@
   width: 100%;
   position: relative;
   margin-right: 1rem;
-  // height: 10rem;
   padding-top: 50%;
   max-height: 100%;
+
+  @media screen and (min-width: $screen-lg) {
+    padding-top: 75%;
+  }
 
   & img {
     border-radius: 10px;
@@ -138,6 +144,15 @@
   flex: 1;
   display: flex;
   align-items: center;
+  font-size: clamp(14px, 5vmin, 20px);
+
+  @media screen and (min-width: $screen-lg) {
+    font-size: clamp(14px, 2vmin, 20px);
+  }
+
+  @media screen and (min-width: $screen-md) {
+    font-size: clamp(14px, 2vmin, 1rem);
+  }
 }
 
 .blog-content {

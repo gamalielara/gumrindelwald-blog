@@ -39,7 +39,6 @@ const BlogCard: React.FC<BlogCardType> = ({
               }
               alt={title}
               layout="fill"
-              // loader={IMAGELOADER}
               objectFit="cover"
               unoptimized
             />
