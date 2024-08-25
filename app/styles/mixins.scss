@@ -22,17 +22,17 @@ $breakpoints: (
 }
 
 @mixin getPageContainerWidth() {
-  width: 100%;
+  --container-width: 100%;
 
   @media screen and (min-width: $screen-lg) {
-    width: 80%;
+    --container-width: 80ch;
   }
 
   @media screen and (min-width: $screen-xl) {
-    width: 100ch;
+    --container-width: 100ch;
   }
 
   @media screen and (min-width: $screen-2xl) {
-    width: 90ch;
+    --container-width: 90ch;
   }
 }
