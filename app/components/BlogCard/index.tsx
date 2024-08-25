@@ -51,9 +51,9 @@ const BlogCard: React.FC<BlogCardType> = ({
             <span className={styles["article-date-posted"]}>
               {new Date(created_at).toDateString()}
             </span>
-
-            <h4>{title}</h4>
           </div>
+
+          <h4 className={styles["article-title"]}>{title}</h4>
         </div>
         <div className={styles["article-card__back"]}>
           <p>{excerpt}</p>
