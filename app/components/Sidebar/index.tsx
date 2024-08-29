@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useImperativeHandle, useRef, useState } from "react";
+import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { MENUS } from "<utils>/constants";
 
@@ -13,6 +13,12 @@ const SideBar = React.forwardRef((_, ref) => {
       setIsSlideIn((state) => !state);
     },
   }));
+
+  useEffect(() => {
+    if (isSlideIn) {
+      document.body.style.overflow = "hidden";
+    }
+  }, [isSlideIn]);
 
   return (
     <aside className={styles["sidebar-aside"]} data-slide-in={isSlideIn}>

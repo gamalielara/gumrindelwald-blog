@@ -1,19 +1,22 @@
 @import "../../styles/main.scss";
 
+$SLIDE_IN_DURATION: 0.5s;
+
 .sidebar-aside {
   display: flex;
   position: fixed;
   z-index: 999;
-  background-color: #ffffff;
+  background-color: $background-color-header;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   width: 100vw;
-  height: 100vh;
   padding: 1rem;
   top: 0;
-  transition: 0.5s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  bottom: 0;
+  transition: $SLIDE_IN_DURATION cubic-bezier(0.55, 0.06, 0.68, 0.19);
   transform: translateX(100%);
+  backdrop-filter: blur(10px);
 
   @media screen and (min-width: $screen-md) {
     display: none;
@@ -21,6 +24,8 @@
 
   &[data-slide-in="true"] {
     transform: translateX(0);
+    animation: asideToBlur 1.5s forwards;
+    animation-delay: calc($SLIDE_IN_DURATION + 0.1s);
   }
 }
 

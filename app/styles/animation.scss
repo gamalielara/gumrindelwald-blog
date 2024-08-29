@@ -25,43 +25,12 @@
   }
 }
 
-@keyframes pulse {
+@keyframes asideToBlur {
   0% {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  50% {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  10% {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-}
-
-$steps: 100;
-
-@keyframes rotatingBorderButton {
-  @for $i from 0 through $steps {
-    #{percentage($i / $steps)} {
-      border-image: linear-gradient($i * 360deg / $steps, #0d4a90, #e85f5f)
-        1
-        stretch
-        round;
-    }
-  }
-}
-
-@keyframes bouncingHighlightedBlogs {
-  0% {
-    transform: translateX(0);
-  }
-
-  25% {
-    transform: translateX(-10%);
+    backdrop-filter: blur(5px);
   }
 
   100% {
-    transform: translateX(0px);
+    backdrop-filter: blur(20px);
   }
 }
