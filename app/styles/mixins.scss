@@ -6,7 +6,7 @@
 }
 
 @mixin getPageContainerWidth() {
-  --container-width: 100%;
+  --container-width: 100vw;
 
   @media screen and (min-width: $screen-lg) {
     --container-width: 80ch;
