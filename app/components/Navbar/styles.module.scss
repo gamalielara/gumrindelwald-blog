@@ -9,7 +9,7 @@ $HEADER_MARGIN_TOP: -999px;
   padding: 1rem 1.5rem;
   backdrop-filter: blur(50px);
   background-color: $background-color-header;
-  z-index: 999;
+  z-index: 99;
   transition: all ease-in-out 100ms;
   transform-style: preserve-3d;
   transform: translateZ(999999px);
@@ -46,6 +46,17 @@ $HEADER_MARGIN_TOP: -999px;
 
   @media screen and (min-width: $screen-md) {
     display: block;
+  }
+}
+
+.hamburger-menu {
+  all: unset;
+  display: block;
+  width: 30px;
+  height: 30px;
+
+  @media screen and (min-width: $screen-md) {
+    display: none;
   }
 }
 

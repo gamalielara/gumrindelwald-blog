@@ -6,6 +6,7 @@ import React, { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Logo from "../Logo";
 import styles from "./styles.module.scss";
 import { MENUS } from "<utils>/constants";
+import SideBar from "<components>/Sidebar";
 
 interface NavbarProps {
   isInLandingPage?: boolean;
@@ -79,31 +80,48 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
     return windowScrollY > 0;
   }, [headerRef.current]);
 
+  const sideBarRef = useRef(null);
+
+  const slideBar = () => {
+    sideBarRef.current?.slide();
+  };
+
   return (
-    <header
-      id="header"
-      ref={headerRef}
-      style={{
-        top: getTopValue(),
-      }}
-      className={styles["header-base"]}
-      data-should-show={shouldHeaderShowOnMount ? "yes" : "no"}
-    >
-      <div className={styles["logo-container"]} onClick={() => route.push("/")}>
-        <Logo fontColor="black" />
-      </div>
-      <nav className={styles["nav-menus-container"]}>
-        <ul className={styles["nav-menu-list"]}>
-          {MENUS.map((menu) => (
-            <Link href={menu.url} key={menu.name}>
-              <li className={styles["nav-menu"]}>
-                <span>{menu.name}</span>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </nav>
-    </header>
+    <>
+      <header
+        id="header"
+        ref={headerRef}
+        style={{
+          top: getTopValue(),
+        }}
+        className={styles["header-base"]}
+        data-should-show={shouldHeaderShowOnMount ? "yes" : "no"}
+      >
+        <div
+          className={styles["logo-container"]}
+          onClick={() => route.push("/")}
+        >
+          <Logo fontColor="black" />
+        </div>
+        <nav className={styles["nav-menus-container"]}>
+          <ul className={styles["nav-menu-list"]}>
+            {MENUS.map((menu) => (
+              <Link href={menu.url} key={menu.name}>
+                <li className={styles["nav-menu"]}>
+                  <span>{menu.name}</span>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </nav>
+        <button className={styles["hamburger-menu"]} onClick={slideBar}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
+          </svg>
+        </button>
+      </header>
+      <SideBar ref={sideBarRef} />
+    </>
   );
 };
 
