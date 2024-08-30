@@ -15,9 +15,14 @@ const SideBar = React.forwardRef((_, ref) => {
   }));
 
   useEffect(() => {
+    let overvlow = "auto";
     if (isSlideIn) {
-      document.body.style.overflow = "hidden";
+      overvlow = "hidden";
+    } else {
+      overvlow = "auto";
     }
+
+    document.body.style.overflow = overvlow;
   }, [isSlideIn]);
 
   return (

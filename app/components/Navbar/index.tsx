@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useMemo, useRef, useState, useSyncExternalStore } from "react";
+import React, { useMemo, useRef, useSyncExternalStore } from "react";
 import Logo from "../Logo";
 import styles from "./styles.module.scss";
 import { MENUS } from "<utils>/constants";

@@ -27,7 +27,7 @@
 }
 
 .landingpage-logo {
-  font-size: 3rem !important;
+  font-size: 2rem !important;
   font-weight: 700 !important;
 
   & > div,
@@ -37,13 +37,13 @@
     font-weight: inherit;
   }
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: $screen-md) {
     & {
       font-size: 3rem !important;
     }
   }
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-lg) {
     & {
       font-size: 5rem !important;
     }
@@ -55,8 +55,12 @@
 }
 
 .header {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
+
+  @media screen and (min-width: $screen-lg) {
+    font-size: 2rem;
+  }
 }
 
 .main-text {
@@ -76,23 +80,5 @@
     & > span {
       padding-right: 10px;
     }
-  }
-}
-
-@media screen and (min-width: 640px) {
-  .header {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .header {
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .header {
-    font-size: 2rem;
   }
 }
