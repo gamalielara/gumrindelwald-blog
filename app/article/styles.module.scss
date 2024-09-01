@@ -10,7 +10,7 @@
 .published-on-text {
   font-size: 0.875rem;
   text-align: center;
-  color: $text-secondary-color;
+  color: var(--text-color);
 }
 
 .article-title {
@@ -85,7 +85,7 @@
     width: 75%;
     padding: 1rem 1.5rem;
     border-radius: 0.25rem;
-    background-color: $card-color;
+    background-color: var(--card-color);
     position: relative;
     font-size: 1rem;
 

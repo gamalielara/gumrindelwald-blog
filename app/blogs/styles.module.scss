@@ -1,6 +1,5 @@
 @import "../styles/main.scss";
 
-
 .main-banner {
   height: $BANNER_SECTION_HEIGHT;
   width: 100%;
@@ -54,7 +53,7 @@
   aspect-ratio: 1;
   justify-items: center;
   align-items: center;
-  background-color: $background-color-grey;
+  background-color: var(--background-color)-grey;
   border: none;
   cursor: pointer;
   color: black;
@@ -64,8 +63,8 @@
   }
 
   &[class*="selected"] {
-    background-color: $background-color;
-    color: $text-color;
+    background-color: var(--background-color);
+    color: var(--text-color);
   }
 }
 

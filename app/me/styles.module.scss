@@ -140,7 +140,7 @@
 .waves {
   position: fixed;
   inset: 50% 0 0;
-  background-color: $card-back-color;
+  background-color: var(--card-back-color);
   z-index: 1;
 
   &:before {

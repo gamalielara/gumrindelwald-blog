@@ -8,7 +8,7 @@ export const setColorTheme = async () => {
 
   const currentColorTheme =
     cookieStore.get(CookieNameKey.APP_THEME_COLOR)?.value ??
-    AppThemeColor.DUNKEL;
+    AppThemeColor.LICHT;
 
   const isLightMode = currentColorTheme === AppThemeColor.LICHT;
 

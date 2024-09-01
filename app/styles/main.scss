@@ -3,5 +3,5 @@
 @import "./animation.scss";
 
 #__next {
-  background-color: $background-color-secondary;
+  background-color: var(--background-color)-secondary;
 }

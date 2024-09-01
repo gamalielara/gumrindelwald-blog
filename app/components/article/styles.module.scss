@@ -3,8 +3,8 @@
 .category-tag-wrapper {
   display: inline-block;
   border-radius: 5px;
-  background-color: $btn-color-primary;
-  color: $text-color;
+  background-color: var(--btn-color-primary);
+  color: var(--text-secondary-color);
   font-size: 0.875rem;
   margin: 0.5rem 0;
   width: fit-content;

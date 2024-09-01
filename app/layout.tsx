@@ -1,9 +1,8 @@
 import React, { PropsWithChildren } from "react";
 import { figTree } from "./ui/font";
-import "./global.css";
 import "./styles/global.scss";
+import "./theme.css";
 import { cookies } from "next/headers";
-import { setColorTheme } from "./actions";
 import { AppThemeColor, CookieNameKey } from "<utils>/constants";
 
 (function () {
@@ -30,7 +29,7 @@ const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
     <html
       lang="id"
       className={figTree.className}
-      data-theme={colorTheme?.value ?? AppThemeColor.DUNKEL}
+      data-theme={colorTheme?.value ?? AppThemeColor.LICHT}
     >
       <title>gumrindelwald</title>
       <body>{children}</body>

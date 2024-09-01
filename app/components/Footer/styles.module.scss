@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .footer {
-  background-color: $background-color-grey;
+  background-color: var(--background-color)-grey;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@
 }
 
 .footer-desc {
-  color: $text-color;
+  color: var(--text-color);
   text-align: center;
   margin: 0.5rem 0;
   font-size: 0.875rem;
@@ -50,7 +50,7 @@
 
   & a {
     margin-left: 0.25em;
-    color: $link-text-color;
+    color: var(--link-text-color);
   }
 }
 
@@ -62,7 +62,7 @@
   display: flex;
 
   & a {
-    color: $text-color;
+    color: var(--text-color);
     font-size: 1.5rem;
     width: 1.5rem;
     aspect-ratio: 1;

@@ -83,14 +83,14 @@
   &__front {
     display: flex;
     flex-direction: column;
-    background-color: $card-color;
+    background-color: var(--card-color);
     box-sizing: border-box;
     grid-column: span 1;
     padding-bottom: 10px;
   }
 
   &__back {
-    background-color: $card-back-color;
+    background-color: var(--card-back-color);
     transform: rotateY(0.5turn);
     display: flex;
     flex-direction: column;
@@ -108,13 +108,13 @@
 }
 
 .to-blog-link {
-  background-color: $secondary-color;
+  background-color: var(--secondary-color);
   padding: 0.5rem 0.75em;
   font-size: 0.75rem;
   font-weight: bold;
   border: none;
   border-radius: 10px;
-  color: $text-color;
+  color: var(--text-color);
   pointer-events: auto;
   width: 100%;
 

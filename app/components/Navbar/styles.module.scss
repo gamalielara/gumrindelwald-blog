@@ -8,7 +8,7 @@ $HEADER_MARGIN_TOP: -999px;
   display: flex;
   padding: 1rem 1.5rem;
   backdrop-filter: blur(50px);
-  background-color: $background-color-header;
+  background-color: var(--background-color-header);
   z-index: 99;
   transition: all ease-in-out 100ms;
   transform-style: preserve-3d;
@@ -69,7 +69,7 @@ $HEADER_MARGIN_TOP: -999px;
   visibility: inherit;
 
   a {
-    color: $link-text-color;
+    color: var(--nav-link-text-color);
     visibility: inherit;
   }
 }

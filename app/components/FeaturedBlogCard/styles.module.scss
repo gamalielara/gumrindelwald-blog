@@ -9,7 +9,7 @@
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.75rem;
-  background-color: $card-color;
+  background-color: var(--card-color);
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   width: inherit;
   height: 100%;
@@ -74,8 +74,8 @@
 
 .read-more-btn {
   border-radius: 10px;
-  background-color: $btn-color-primary;
-  color: $text-color;
+  background-color: var(--btn-color-primary);
+  color: var(--text-secondary-color);
   padding: 0.25rem 0.5rem;
   cursor: pointer;
   border: none;
@@ -85,5 +85,5 @@
 
 .read-more {
   font-weight: 500;
-  color: $text-color;
+  color: var(--text-secondary-color);
 }
