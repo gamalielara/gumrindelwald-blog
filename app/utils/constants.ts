@@ -48,6 +48,15 @@ export enum Language {
   RU = "ru",
 }
 
+export enum AppThemeColor {
+  DUNKEL = "dunkel",
+  LICHT = "licht",
+}
+
+export enum CookieNameKey {
+  APP_THEME_COLOR = "app-theme-color",
+}
+
 export const BLOG_CARDS_COUNT = 15;
 
 export const LG_SCREEN_WIDTH = 1024;

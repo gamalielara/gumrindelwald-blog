@@ -5,7 +5,11 @@ import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { MENUS } from "<utils>/constants";
 
-const SideBar = React.forwardRef((_, ref) => {
+export type SideBarRef = {
+  slide: () => void;
+};
+
+const SideBar = React.forwardRef<SideBarRef, unknown>((_, ref) => {
   const [isSlideIn, setIsSlideIn] = useState(false);
 
   useImperativeHandle(ref, () => ({
