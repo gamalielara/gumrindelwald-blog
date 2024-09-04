@@ -1,0 +1,13 @@
+@import "../../styles/main.scss";
+
+.toggle-btn {
+  all: unset;
+  background-color: red;
+  height: 25px;
+  width: 60px;
+  display: none;
+
+  @media screen and (min-width: $screen-sm) {
+    display: block;
+  }
+}

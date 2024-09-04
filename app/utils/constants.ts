@@ -57,6 +57,15 @@ export enum CookieNameKey {
   APP_THEME_COLOR = "app-theme-color",
 }
 
+export enum WindowBreakPoints {
+  SM = 640,
+  MD = 768,
+  LG_MD = 900,
+  LG = 1024,
+  XL = 1280,
+  XXL = 1536,
+}
+
 export const BLOG_CARDS_COUNT = 15;
 
 export const LG_SCREEN_WIDTH = 1024;

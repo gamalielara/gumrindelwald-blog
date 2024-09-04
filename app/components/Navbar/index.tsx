@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useMemo, useRef, useSyncExternalStore } from "react";
 import Logo from "../Logo";
 import styles from "./styles.module.scss";
-import { MENUS } from "<utils>/constants";
+import { MENUS, WindowBreakPoints } from "<utils>/constants";
 import SideBar, { SideBarRef } from "<components>/Sidebar";
 import ColorThemeToggleButton from "<components>/ColorThemeToggleButton";
 
@@ -22,9 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
   const headerRef = useRef<HTMLElement>(null);
 
   const windowScrollYSubscriber = (callback: () => void) => {
-    window.addEventListener("scroll", () => {
-      callback();
-    });
+    window.addEventListener("scroll", callback);
 
     return () => window.removeEventListener("scroll", callback);
   };
@@ -37,6 +35,20 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
     windowScrollYSubscriber,
     getWindowScrollY,
     serverSnapShot
+  );
+
+  const windowWidthSubscriber = (callback: () => void) => {
+    window.addEventListener("resize", callback);
+
+    return () => window.removeEventListener("resize", callback);
+  };
+
+  const getWindowWidth = () => window.innerWidth;
+
+  const windowWidth = useSyncExternalStore(
+    windowWidthSubscriber,
+    getWindowWidth,
+    () => 1000
   );
 
   const getTopValue = () => {
@@ -102,7 +114,14 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
           className={styles["logo-container"]}
           onClick={() => route.push("/")}
         >
-          <Logo fontColor="black" />
+          <Logo
+            minimize={
+              (windowWidth >= WindowBreakPoints.MD &&
+                windowWidth <= WindowBreakPoints.LG_MD) ||
+              (windowWidth >= WindowBreakPoints.LG &&
+                windowWidth <= WindowBreakPoints.XL)
+            }
+          />
         </div>
         <nav className={styles["nav-menus-container"]}>
           <ul className={styles["nav-menu-list"]}>
