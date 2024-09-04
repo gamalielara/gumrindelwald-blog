@@ -7,6 +7,7 @@ const ColorThemeToggleButton = () => {
     <button
       className={styles["toggle-btn"]}
       onClick={() => setColorTheme()}
+      data-theme={""}
     ></button>
   );
 };

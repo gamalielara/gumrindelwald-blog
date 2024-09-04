@@ -30,6 +30,7 @@ const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
       lang="id"
       className={figTree.className}
       data-theme={colorTheme?.value ?? AppThemeColor.LICHT}
+      id="root"
     >
       <title>gumrindelwald</title>
       <body>{children}</body>

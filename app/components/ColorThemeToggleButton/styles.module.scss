@@ -1,13 +1,40 @@
 @import "../../styles/main.scss";
 
+$toggleButtonHeight: 30px;
+$toggleIndicatorSize: calc($toggleButtonHeight - 5px);
+
 .toggle-btn {
   all: unset;
-  background-color: red;
-  height: 25px;
-  width: 60px;
+  background-color: var(--theme-toggle-button-bgcolor);
+  height: 30px;
+  width: 55px;
   display: none;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 3px;
 
   @media screen and (min-width: $screen-sm) {
     display: block;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  // indicator
+  &:after {
+    content: "";
+    display: block;
+    width: $toggleIndicatorSize;
+    height: $toggleIndicatorSize;
+    background-color: var(--theme-toggle-indicator-color);
+    border-radius: 100%;
+    margin-left: 0;
+    transition: all 0.5s ease-in-out;
+
+    [data-theme="dunkel"] & {
+      margin-left: calc(100% - $toggleIndicatorSize);
+    }
   }
 }

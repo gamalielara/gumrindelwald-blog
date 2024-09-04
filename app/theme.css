@@ -17,6 +17,9 @@ html[data-theme="licht"] {
   --btn-color-primary: rgb(36, 36, 36);
 
   --logo-color: rgb(36, 36, 36);
+
+  --theme-toggle-button-bgcolor: rgb(214, 213, 213);
+  --theme-toggle-indicator-color: rgb(55, 55, 55);
 }
 
 html[data-theme="dunkel"] {
@@ -38,4 +41,7 @@ html[data-theme="dunkel"] {
   --btn-color-primary: rgb(174, 174, 174);
 
   --logo-color: rgb(233, 233, 233);
+
+  --theme-toggle-button-bgcolor: rgb(152, 151, 151);
+  --theme-toggle-indicator-color: rgb(55, 55, 55);
 }
