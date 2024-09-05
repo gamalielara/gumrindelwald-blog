@@ -12,6 +12,7 @@ $toggleIndicatorSize: calc($toggleButtonHeight - 5px);
   border-radius: 20px;
   align-items: center;
   padding: 0 3px;
+  position: relative;
 
   @media screen and (min-width: $screen-md) {
     display: flex;
@@ -21,16 +22,57 @@ $toggleIndicatorSize: calc($toggleButtonHeight - 5px);
     cursor: pointer;
   }
 
+  & > div {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    inset: 0;
+    position: absolute;
+    z-index: 9;
+    border-radius: inherit;
+
+    & img {
+      transition-delay: 0.25s;
+      transition-duration: 0.5s;
+    }
+
+    // moon icon
+    & img:first-child {
+      transform-origin: top right;
+      transform: rotate(-25deg);
+      filter: invert(0.9);
+
+      [data-theme="dunkel"] & {
+        transform: rotate(0);
+      }
+    }
+
+    // sun icon
+    & img:nth-child(2) {
+      transform: rotate(90deg);
+
+      [data-theme="licht"] & {
+        transform: rotate(0);
+      }
+    }
+  }
+
   // indicator
   &:after {
     content: "";
     display: inherit;
+    position: relative;
+    z-index: 99;
     width: $toggleIndicatorSize;
     height: $toggleIndicatorSize;
     background-color: var(--theme-toggle-indicator-color);
     border-radius: 100%;
     margin-left: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.75s cubic-bezier(0.26, 2, 0.46, 0.71);
 
     [data-theme="dunkel"] & {
       margin-left: calc(100% - $toggleIndicatorSize);
