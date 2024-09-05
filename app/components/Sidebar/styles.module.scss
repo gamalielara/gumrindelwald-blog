@@ -6,7 +6,7 @@ $SLIDE_IN_DURATION: 0.5s;
   display: flex;
   position: fixed;
   z-index: 999;
-  background-color: var(--background-color)-header;
+  background-color: var(--background-color-header);
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -40,6 +40,10 @@ $SLIDE_IN_DURATION: 0.5s;
   line-height: 1.75rem;
   font-weight: 600;
   margin: 2rem 0;
+
+  & > a > span {
+    color: var(--nav-link-text-color);
+  }
 }
 
 .back-btn {

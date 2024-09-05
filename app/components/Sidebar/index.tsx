@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { MENUS } from "<utils>/constants";
+import ColorThemeToggleButton from "<components>/ColorThemeToggleButton";
 
 export type SideBarRef = {
   slide: () => void;
@@ -39,6 +40,7 @@ const SideBar = React.forwardRef<SideBarRef, unknown>((_, ref) => {
             </Link>
           </li>
         ))}
+        <ColorThemeToggleButton />
       </ul>
       <button
         className={styles["back-btn"]}

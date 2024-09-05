@@ -28,6 +28,15 @@ $HEADER_MARGIN_TOP: -999px;
     visibility: visible;
     opacity: 1;
   }
+
+  // Color theme button
+  button + button {
+    display: none;
+
+    @media screen and (min-width: $screen-md) {
+      display: flex;
+    }
+  }
 }
 
 .logo-container {

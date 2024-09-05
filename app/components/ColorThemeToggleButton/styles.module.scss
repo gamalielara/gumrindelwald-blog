@@ -8,15 +8,11 @@ $toggleIndicatorSize: calc($toggleButtonHeight - 5px);
   background-color: var(--theme-toggle-button-bgcolor);
   height: 30px;
   width: 55px;
-  display: none;
+  display: flex;
   border-radius: 20px;
   align-items: center;
   padding: 0 3px;
   position: relative;
-
-  @media screen and (min-width: $screen-md) {
-    display: flex;
-  }
 
   &:hover {
     cursor: pointer;
