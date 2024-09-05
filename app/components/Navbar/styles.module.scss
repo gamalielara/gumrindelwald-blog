@@ -77,8 +77,7 @@ $HEADER_MARGIN_TOP: -999px;
   padding: 0;
   visibility: inherit;
 
-  a {
-    color: var(--nav-link-text-color);
+  a > span {
     visibility: inherit;
   }
 }
@@ -100,6 +99,7 @@ $HEADER_MARGIN_TOP: -999px;
   }
 
   span {
+    color: var(--nav-link-text-color);
     font-size: 0.8rem;
     font-weight: 600;
     margin: 0;

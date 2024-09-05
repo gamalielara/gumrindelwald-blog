@@ -24,10 +24,10 @@
   em,
   span {
     color: inherit;
-    animation: unset;
     transition: unset;
     font-size: inherit;
     font-weight: inherit;
+    animation: unset !important;
   }
 }
 
