@@ -18,27 +18,22 @@
 
   &[data-should-animate="false"] {
     animation: unset;
+  }
 
-    & > div,
-    em,
-    span {
-      color: inherit;
-      animation: unset;
-    }
+  & > div,
+  em,
+  span {
+    color: inherit;
+    animation: unset;
+    transition: unset;
+    font-size: inherit;
+    font-weight: inherit;
   }
 }
 
 .landingpage-logo {
   font-size: 2rem !important;
   font-weight: 700 !important;
-
-  & > div,
-  em,
-  span {
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-  }
 
   @media screen and (min-width: $screen-md) {
     & {
