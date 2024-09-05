@@ -22,7 +22,7 @@
     & > div,
     em,
     span {
-      color: var(--logo-color);
+      color: inherit;
       animation: unset;
     }
   }
@@ -35,6 +35,7 @@
   & > div,
   em,
   span {
+    color: inherit;
     font-size: inherit;
     font-weight: inherit;
   }
