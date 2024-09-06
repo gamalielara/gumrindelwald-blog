@@ -17,17 +17,11 @@
   }
 
   &[data-should-animate="false"] {
-    animation: unset;
-  }
-
-  & > div,
-  em,
-  span {
-    color: inherit;
-    transition: unset;
-    font-size: inherit;
-    font-weight: inherit;
-    animation: unset !important;
+    & > div,
+    em,
+    span {
+      animation: unset !important;
+    }
   }
 }
 
@@ -57,17 +51,27 @@
   overflow: hidden;
   display: inline-block;
   animation: mainAnimationKeyframes 10s infinite;
+  color: inherit;
+  transition: unset;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .em-text {
   display: flex;
+  transition: unset;
+  color: inherit;
 
   & > span {
     font-style: italic;
     overflow: hidden;
+    transition: unset;
+    color: inherit;
     animation: italicAnimationKeyframes 10s infinite;
 
     & > span {
+      transition: unset;
+      color: inherit;
       padding-right: 10px;
     }
   }
