@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .footer {
-  background-color: var(--background-color)-grey;
+  background-color: var(--background-color-grey);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@
   &::before {
     content: "";
     mask-image: url("../../../assets/svg/wave.svg");
-    background-color: inherit;
+    background-color: var(--background-color-grey);
     mask-repeat: repeat-x;
     mask-position: bottom;
     height: 50%;
@@ -62,7 +62,6 @@
   display: flex;
 
   & a {
-    color: var(--text-color);
     font-size: 1.5rem;
     width: 1.5rem;
     aspect-ratio: 1;

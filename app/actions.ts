@@ -20,3 +20,10 @@ export const setColorTheme = async () => {
     }
   );
 };
+
+export const getColorTheme = async () => {
+  const cookieStore = cookies();
+
+  return (cookieStore.get(CookieNameKey.APP_THEME_COLOR)?.value ??
+    AppThemeColor.LICHT) as AppThemeColor;
+};
