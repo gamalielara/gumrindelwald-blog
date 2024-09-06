@@ -1,39 +1,50 @@
 @import "../../styles/main.scss";
 
-$toggleButtonHeight: 30px;
-$toggleIndicatorSize: calc($toggleButtonHeight - 5px);
-
 .toggle-btn {
+  --toggle-button-height: 40px;
   all: unset;
   background-color: var(--theme-toggle-button-bgcolor);
-  height: 30px;
-  width: 55px;
+  height: var(--toggle-button-height);
+  width: 100px;
   display: flex;
-  border-radius: 20px;
+  border-radius: 30px;
   align-items: center;
   padding: 0 3px;
   position: relative;
+
+  @media screen and (min-width: $screen-lg) {
+    --toggle-button-height: 30px;
+    width: 55px;
+  }
 
   &:hover {
     cursor: pointer;
   }
 
   & > div {
-    content: "";
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5px;
+    padding: 0 8px;
     inset: 0;
     position: absolute;
     z-index: 9;
     border-radius: inherit;
 
+    @media screen and (min-width: $screen-lg) {
+      padding: 0 5px;
+    }
+
     & img {
       transition-delay: 0.25s;
       transition-duration: 0.5s;
+      height: 100%;
+
+      @media screen and (min-width: $screen-lg) {
+        height: 80%;
+      }
     }
 
     // moon icon
@@ -59,19 +70,25 @@ $toggleIndicatorSize: calc($toggleButtonHeight - 5px);
 
   // indicator
   &:after {
+    --toggle-indicator-size: calc(var(--toggle-button-height) - 5px);
+
+    @media screen and (min-width: $screen-lg) {
+      --toggle-button-height: 30px;
+    }
+
     content: "";
     display: inherit;
     position: relative;
     z-index: 99;
-    width: $toggleIndicatorSize;
-    height: $toggleIndicatorSize;
+    width: var(--toggle-indicator-size);
+    height: var(--toggle-indicator-size);
     background-color: var(--theme-toggle-indicator-color);
     border-radius: 100%;
     margin-left: 0;
     transition: all 0.75s cubic-bezier(0.26, 2, 0.46, 0.71);
 
     [data-theme="dunkel"] & {
-      margin-left: calc(100% - $toggleIndicatorSize);
+      margin-left: calc(100% - var(--toggle-indicator-size));
     }
   }
 }
