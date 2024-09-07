@@ -62,18 +62,15 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
               objectFit="cover"
               src={article.thumbnail_image}
               alt={article.title}
-              // loader={({ src }) => src}
             />
           </div>
 
-          <div className={styles["article-body"]}>
-            <div
-              className={styles["article-post"]}
-              dangerouslySetInnerHTML={{
-                __html: article.content,
-              }}
-            />
-          </div>
+          <div
+            className={styles["article-post"]}
+            dangerouslySetInnerHTML={{
+              __html: article.content,
+            }}
+          />
         </article>
       </PageContainer>
     </>

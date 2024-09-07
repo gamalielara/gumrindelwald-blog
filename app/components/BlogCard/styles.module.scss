@@ -121,6 +121,10 @@
   &:hover {
     cursor: pointer;
   }
+
+  [data-theme="licht"] & {
+    color: var(--text-secondary-color);
+  }
 }
 
 .article-image {

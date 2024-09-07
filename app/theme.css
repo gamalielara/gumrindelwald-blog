@@ -1,6 +1,6 @@
 html[data-theme="licht"] {
   --text-color: rgb(65, 65, 65);
-  --text-secondary-color: rgb(161, 161, 161);
+  --text-secondary-color: rgb(211, 211, 211);
   --link-text-color: rgb(36, 36, 36);
   --nav-link-text-color: rgb(36, 36, 36);
 
@@ -11,8 +11,8 @@ html[data-theme="licht"] {
   --background-color-secondary: rgb(240, 240, 240);
   --background-color-header: rgba(84, 84, 84, 0.25);
 
-  --card-color: rgb(220, 220, 220);
-  --card-back-color: rgb(228, 226, 226);
+  --card-color: rgb(190, 190, 190);
+  --card-back-color: rgb(190, 190, 190);
 
   --btn-color-primary: rgb(36, 36, 36);
 
