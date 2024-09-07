@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
       return windowScrollY >= headerRef.current.clientHeight;
     }
 
-    return windowScrollY > 0;
+    return true;
   }, [headerRef.current]);
 
   const sideBarRef = useRef<SideBarRef>(null);

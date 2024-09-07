@@ -2,7 +2,7 @@
 
 .article-post-wrapper {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 5rem;
   pointer-events: none;
   user-select: none;
 }
@@ -35,7 +35,11 @@
     border-radius: 0.5rem;
   }
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-lg-md) {
+    height: 50vmin;
+  }
+
+  @media screen and (min-width: $screen-lg-md) {
     height: 75vmin;
   }
 }
@@ -52,6 +56,14 @@
 }
 
 .article-post {
+  & > * {
+    margin: 1.5rem 0;
+  }
+
+  & p:has(> br:only-child) {
+    display: none;
+  }
+
   & > p,
   blockquote,
   li,
