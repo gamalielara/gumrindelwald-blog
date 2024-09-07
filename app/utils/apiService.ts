@@ -7,7 +7,7 @@ class ApiService {
   private static baseFirestoreGoogleAPIURL =
     "https://firestore.googleapis.com/v1/projects";
 
-  public static getAllBlogs = async (): Promise<Article[]> => {
+  public static getAllArticles = async (): Promise<Article[]> => {
     const response = await fetch(
       `${this.baseFirestoreGoogleAPIURL}/${this.projectId}/databases/(default)/documents/blogs`,
       { next: { revalidate: 3600 } }
@@ -23,7 +23,7 @@ class ApiService {
   public static getSingleArticle = async (
     slugToFind: string
   ): Promise<Article> => {
-    const allArticles = await this.getAllBlogs();
+    const allArticles = await this.getAllArticles();
 
     return (
       allArticles.find((article) => article.slug === slugToFind) ??

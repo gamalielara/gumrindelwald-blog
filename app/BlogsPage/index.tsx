@@ -10,7 +10,7 @@ import BlogCardList from "<components>/BlogCardList";
 import Logo from "<components>/Logo";
 
 const BlogsPage: NextPage = async () => {
-  const allBlogs = await ApiService.getAllBlogs();
+  const allBlogs = await ApiService.getAllArticles();
 
   const featuredBlogs = allBlogs.filter((blog) => blog.featured);
 
