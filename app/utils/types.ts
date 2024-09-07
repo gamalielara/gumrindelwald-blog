@@ -63,6 +63,7 @@ export interface TrimmedArticle {
 export interface Article {
   excerpt: string;
   comments: Array<Comment>;
+  keywords: string;
   created_at: number;
   category: Category;
   updated_at: number;

@@ -19,6 +19,17 @@ class ApiService {
 
     return articles ?? [];
   };
+
+  public static getSingleArticle = async (
+    slugToFind: string
+  ): Promise<Article> => {
+    const allArticles = await this.getAllBlogs();
+
+    return (
+      allArticles.find((article) => article.slug === slugToFind) ??
+      ({} as Article)
+    );
+  };
 }
 
 export default ApiService;

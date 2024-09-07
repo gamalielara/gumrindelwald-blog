@@ -37,6 +37,16 @@ const nextConfig = {
     locales: ["in", "en"],
     defaultLocale: "en",
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        port: "",
+        pathname: "/v0/b/gumrindelwald-backend.appspot.com/o/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

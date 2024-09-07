@@ -16,7 +16,6 @@ const BlogsPage: NextPage = async () => {
 
   return (
     <>
-      <HeadDocument docTitle="All Blogs" />
       <PageContainer pageName="all-blogs-page" isInLP>
         <section className={styles["main-banner"]}>
           <Logo shouldAnimate isInLandingPage />

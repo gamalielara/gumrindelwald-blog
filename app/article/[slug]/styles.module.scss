@@ -104,13 +104,13 @@
     }
 
     &:before {
-      content: url("../../assets/svg/quote-right.svg");
+      content: url("../../../assets/svg/quote-right.svg");
       top: -15px;
       left: -15px;
     }
 
     &:after {
-      content: url("../../assets/svg/quote-left.svg");
+      content: url("../../../assets/svg/quote-left.svg");
       bottom: -20px;
       right: -15px;
     }
