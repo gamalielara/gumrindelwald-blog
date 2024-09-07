@@ -36,7 +36,8 @@ const Footer: React.FC = async () => {
         {thisYear}. This website is fully created by
         <a href="https://gamalielara.com" target="_blank" rel="noreferrer">
           Ara Gamaliel Boanerges
-        </a>
+        </a>{" "}
+        in 2021.
       </span>
 
       <div className={styles["social-media"]}>
