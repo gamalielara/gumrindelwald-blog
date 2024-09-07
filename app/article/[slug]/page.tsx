@@ -9,7 +9,6 @@ import { CATEGORY_DICTIONARIES } from "<utils>/constants";
 import ApiService from "<utils>/apiService";
 
 interface Props {
-  article: Article;
   params: {
     slug: string;
   };
