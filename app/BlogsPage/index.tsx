@@ -9,7 +9,7 @@ import HighlightedBlogs from "<components>/HighlightedBlogs";
 import BlogCardList from "<components>/BlogCardList";
 import Logo from "<components>/Logo";
 
-const Blogs: NextPage = async () => {
+const BlogsPage: NextPage = async () => {
   const allBlogs = await ApiService.getAllBlogs();
 
   const featuredBlogs = allBlogs.filter((blog) => blog.featured);
@@ -19,7 +19,7 @@ const Blogs: NextPage = async () => {
       <HeadDocument docTitle="All Blogs" />
       <PageContainer pageName="all-blogs-page" isInLP>
         <section className={styles["main-banner"]}>
-          <Logo fontColor="black" shouldAnimate isInLandingPage />
+          <Logo shouldAnimate isInLandingPage />
         </section>
         <HighlightedBlogs featuredBlogs={featuredBlogs} />
         <BlogCardList blogs={allBlogs} isInLandingPage />
@@ -28,4 +28,4 @@ const Blogs: NextPage = async () => {
   );
 };
 
-export default Blogs;
+export default BlogsPage;
