@@ -16,7 +16,7 @@ const AboutMe: NextPage = () => {
   return (
     <>
       <HeadDocument docTitle="About" />
-      <PageContainer pageName="me-page" noFooter>
+      <PageContainer noFooter>
         <div className={styles["me-page-container"]}>
           <div className={styles["me-image-large"]}>
             <Image
@@ -80,6 +80,9 @@ const AboutMe: NextPage = () => {
                 <FontAwesomeIcon icon={faLinkedin} />
                 LinkedIn
               </a>
+            </li>
+
+            <li>
               <a
                 href="https://gamalielara.com"
                 target="_blank"
@@ -88,6 +91,9 @@ const AboutMe: NextPage = () => {
                 <FontAwesomeIcon icon={faInternetExplorer} />
                 My personal website
               </a>
+            </li>
+
+            <li>
               <a
                 href="https://www.instagram.com/gamalielboanerges/"
                 target="_blank"
@@ -96,6 +102,9 @@ const AboutMe: NextPage = () => {
                 <FontAwesomeIcon icon={faInstagram} />
                 Instagram
               </a>
+            </li>
+
+            <li>
               <a
                 href="mailto:aragamalielboanerges@gmail.com"
                 target="_blank"

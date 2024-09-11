@@ -1,11 +1,11 @@
-@import "../../styles/main.scss";
+@import "../styles/main.scss";
 
 .me-page-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding: 0 1rem;
   position: relative;
   z-index: 2;
@@ -116,6 +116,10 @@
     padding-right: 1rem;
   }
 
+  & * {
+    color: var(--nav-link-text-color);
+  }
+
   & > p {
     font-weight: bold;
   }
@@ -123,6 +127,10 @@
   & > ul {
     list-style: none;
     padding: 0;
+
+    & li {
+      margin: 1.25rem 0;
+    }
 
     & a {
       display: flex;
@@ -146,7 +154,7 @@
   &:before {
     content: "";
     mask-image: url("../../assets/svg/wave.svg");
-    background-color: inherit;
+    background-color: var(--card-back-color);
     mask-repeat: repeat-x;
     mask-position: bottom;
     height: 50%;
