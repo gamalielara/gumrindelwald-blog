@@ -15,7 +15,9 @@ const CategoryPage: React.FC<Props> = async ({ category }) => {
 
   return (
     <PageContainer>
-      <h1 className={styles["category-title"]}>{category} Blogs</h1>
+      <h1 className={styles["category-title"]}>
+        {category.replace("_", " ")} Blogs
+      </h1>
       {blogs.length ? (
         <BlogCardList blogs={blogs} isInLandingPage />
       ) : (
