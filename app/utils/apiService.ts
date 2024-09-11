@@ -1,3 +1,4 @@
+import { Category } from "./constants";
 import parseAndTrimBlogs from "./parseAndTrimBlogs";
 import { Article, ArticleFirestoreResponse } from "./types";
 
@@ -29,6 +30,14 @@ class ApiService {
       allArticles.find((article) => article.slug === slugToFind) ??
       ({} as Article)
     );
+  };
+
+  public static getArticlesCategory = async (
+    category: Category
+  ): Promise<Article[]> => {
+    const allArticles = await this.getAllArticles();
+
+    return allArticles.filter((artcle) => artcle.category === category);
   };
 }
 

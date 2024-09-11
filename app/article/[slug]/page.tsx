@@ -41,7 +41,7 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
 
   return (
     <>
-      <PageContainer pageName={article.slug}>
+      <PageContainer>
         <article className={styles["article-post-wrapper"]}>
           <p className={styles["published-on-text"]}>
             PUBLISHED ON&nbsp;

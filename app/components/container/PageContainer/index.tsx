@@ -6,14 +6,12 @@ import styles from "./style.module.scss";
 interface PageContainerInterface {
   children: any;
   noFooter?: boolean;
-  pageName: string;
   isInLP?: boolean;
 }
 
 const PageContainer: React.FC<PageContainerInterface> = ({
   children,
   noFooter,
-  pageName,
   isInLP,
 }) => {
   return (
@@ -21,9 +19,7 @@ const PageContainer: React.FC<PageContainerInterface> = ({
       <main className={styles["page-container"]}>
         <div className={styles["main-container"]}>
           <Navbar isInLandingPage={isInLP} />
-          <div className={styles["blog-container"]} data-page={pageName}>
-            {children}
-          </div>
+          <div className={styles["blog-container"]}>{children}</div>
         </div>
       </main>
       {!noFooter && <Footer />}
