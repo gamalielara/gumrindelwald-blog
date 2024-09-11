@@ -1,6 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
-import CategoryPage from "<components>/CategoryPage";
+import CategoryPage from "<components>/pageComponent/CategoryPage";
 import { Category } from "<utils>/constants";
 
 const BookCategoryPage: NextPage = () => {

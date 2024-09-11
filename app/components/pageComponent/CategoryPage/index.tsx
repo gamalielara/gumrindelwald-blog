@@ -4,6 +4,7 @@ import ApiService from "<utils>/apiService";
 import { Category } from "<utils>/constants";
 import React from "react";
 import styles from "./styles.module.scss";
+import BlogCardList from "<components>/BlogCardList";
 
 interface Props {
   category: Category;
@@ -14,22 +15,9 @@ const CategoryPage: React.FC<Props> = async ({ category }) => {
 
   return (
     <PageContainer>
+      <h1 className={styles["category-title"]}>{category} Blogs</h1>
       {blogs.length ? (
-        <section className={styles["blog-cards-section"]}>
-          {blogs.map((blog, i) => (
-            <BlogCard
-              key={blog.title}
-              thumbnail_image={blog.thumbnail_image}
-              title={blog.title}
-              category={blog.category}
-              excerpt={blog.excerpt}
-              created_at={blog.created_at}
-              slug={blog.slug}
-              i={i + 1}
-              language={blog.language}
-            />
-          ))}
-        </section>
+        <BlogCardList blogs={blogs} isInLandingPage />
       ) : (
         <h1 className={styles["no-blog-text"]}>No blogs</h1>
       )}

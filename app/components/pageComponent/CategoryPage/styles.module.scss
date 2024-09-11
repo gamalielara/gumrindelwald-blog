@@ -1,1 +1,10 @@
 @import "../BlogsPage/styles.module.scss";
+
+.category-title {
+  margin: 5rem 0;
+  text-align: center;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
