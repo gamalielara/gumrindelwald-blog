@@ -84,9 +84,9 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
   };
 
   const shouldHeaderShowOnMount = useMemo(() => {
-    if (!headerRef.current) return;
-
     if (isInLandingPage) {
+      if (!headerRef.current) return;
+
       return windowScrollY >= headerRef.current.clientHeight;
     }
 
