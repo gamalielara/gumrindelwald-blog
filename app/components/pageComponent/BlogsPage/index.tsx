@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import React from "react";
-import BlogCard from "../BlogCard";
-import HeadDocument from "../HeadDocument";
-import PageContainer from "../container/PageContainer";
+import BlogCard from "../../BlogCard";
+import HeadDocument from "../../HeadDocument";
+import PageContainer from "../../container/PageContainer";
 import styles from "./styles.module.scss";
-import ApiService from "../../utils/apiService";
+import ApiService from "../../../utils/apiService";
 import HighlightedBlogs from "<components>/HighlightedBlogs";
 import BlogCardList from "<components>/BlogCardList";
 import Logo from "<components>/Logo";
