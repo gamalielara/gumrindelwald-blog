@@ -19,10 +19,11 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const article = await ApiService.getSingleArticle(slug);
 
-  const { title, keywords, thumbnail_image, excerpt, createTime } = article;
+  const { title, keywords, thumbnail_image, excerpt, createTime, language } =
+    article;
 
   return {
-    title,
+    title: `gumrindelwald / ${title}`,
     keywords,
     authors: { name: "Ara Gamaliel Boanerges", url: "https://gamalielara.com" },
     openGraph: {

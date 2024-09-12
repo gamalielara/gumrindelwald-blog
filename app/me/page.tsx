@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import Image from "next/image";
 import PageContainer from "../components/container/PageContainer";
 import MeImage from "../../assets/me.jpeg";
@@ -10,6 +10,31 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "gumrindelwald / About",
+    keywords: [
+      "gumrindelwald",
+      "Ara Gamaliel Boanerges",
+      "Ara Gamaliel Boanerges's Personal Blog",
+      "Blog",
+      "Buku",
+      "Film",
+      "Teknologi",
+    ],
+    authors: { name: "Ara Gamaliel Boanerges", url: "https://gamalielara.com" },
+    openGraph: {
+      title: "gumrindelwald / About",
+      description:
+        "About gumrindelwald - Ara Gamaliel Boanerges's Personal Blog",
+      siteName: "gumrindelwald",
+      url: `https://gumrindelwald.com/me`,
+      images:
+        "https://firebasestorage.googleapis.com/v0/b/gumrindelwald-backend.appspot.com/o/images%2Fme.jpeg?alt=media",
+    },
+  };
+}
 
 const AboutMe: NextPage = () => {
   return (

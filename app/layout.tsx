@@ -32,7 +32,6 @@ const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
       data-theme={colorTheme?.value ?? AppThemeColor.LICHT}
       id="root"
     >
-      <title>gumrindelwald</title>
       <body>{children}</body>
     </html>
   );
