@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import PageContainer from "../components/container/PageContainer";
-import HeadDocument from "../components/HeadDocument";
 import MeImage from "../../assets/me.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,7 +14,6 @@ import styles from "./styles.module.scss";
 const AboutMe: NextPage = () => {
   return (
     <>
-      <HeadDocument docTitle="About" />
       <PageContainer noFooter>
         <div className={styles["me-page-container"]}>
           <div className={styles["me-image-large"]}>

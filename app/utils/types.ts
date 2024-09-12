@@ -54,6 +54,7 @@ export interface TrimmedArticle {
       slug: string;
       featured: boolean;
       language: Language;
+      keywords: string;
     };
     createTime: string;
     updateTime: string;

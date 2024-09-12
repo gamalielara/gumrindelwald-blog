@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import ImageHero from "../assets/404.jpg";
-import HeadDocument from "./components/HeadDocument";
 import GWLogoWhite from "../assets/com-white.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +10,6 @@ import styles from "./styles-404.module.scss";
 const NotFoundPage = () => {
   return (
     <>
-      <HeadDocument docTitle="Page Not Found" />
       <section className={styles["not-found-container"]}>
         <div className={styles["not-found-container__image"]}>
           <div className={styles["not-found-container__gw-logo"]}>
