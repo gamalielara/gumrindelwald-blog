@@ -37,6 +37,14 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  const articles = await ApiService.getAllArticles();
+
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
+
 const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
   const article = await ApiService.getSingleArticle(slug);
 

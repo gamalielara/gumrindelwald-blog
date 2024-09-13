@@ -2,6 +2,8 @@ import React from "react";
 import BlogsPage from "./components/pageComponent/BlogsPage";
 import { Metadata } from "next";
 
+export const dynamic = "force-static";
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "gumrindelwald / Ara Gamaliel Boanerges's Blog",

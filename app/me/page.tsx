@@ -11,6 +11,8 @@ import {
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
 
+export const dynamic = "force-static";
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "gumrindelwald / About",

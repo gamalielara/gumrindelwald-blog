@@ -32,6 +32,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+export const dynamic = "force-static";
+
 const NotFoundPage = () => {
   return (
     <>
