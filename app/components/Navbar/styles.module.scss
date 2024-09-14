@@ -89,7 +89,7 @@ $HEADER_MARGIN_TOP: -999px;
     width: anchor-size(--a width);
     height: anchor-size(--a height);
     position: absolute;
-    background-color: var(--secondary-color);
+    background-color: var(--text-secondary-color);
     z-index: -1;
     border-radius: 10px;
   }
@@ -103,7 +103,7 @@ $HEADER_MARGIN_TOP: -999px;
   padding: 0.5rem;
 
   &[data-is-selected="true"] {
-    background-color: var(--link-text-color);
+    background-color: var(--card-color);
     border-radius: 10px;
   }
 

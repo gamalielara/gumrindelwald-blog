@@ -60,7 +60,7 @@ $SLIDE_IN_DURATION: 0.5s;
   padding: 10px;
 
   &[data-is-selected="true"] {
-    background-color: var(--link-text-color);
+    background-color: var(--card-color);
     border-radius: 10px;
   }
 

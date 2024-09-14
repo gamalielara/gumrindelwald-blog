@@ -11,8 +11,8 @@ html[data-theme="licht"] {
   --background-color-secondary: rgb(240, 240, 240);
   --background-color-header: rgba(84, 84, 84, 0.25);
 
-  --card-color: rgb(190, 190, 190);
-  --card-back-color: rgb(190, 190, 190);
+  --card-color: rgb(160, 160, 160);
+  --card-back-color: rgb(160, 160, 160);
 
   --btn-color-primary: rgb(36, 36, 36);
 
