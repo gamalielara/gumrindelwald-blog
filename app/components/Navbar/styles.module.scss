@@ -76,9 +76,22 @@ $HEADER_MARGIN_TOP: -999px;
   justify-content: center;
   padding: 0;
   visibility: inherit;
+  position: relative;
+  transition: all 0.1s ease;
 
   a > span {
     visibility: inherit;
+  }
+
+  &:before {
+    content: "";
+    left: anchor(--a left);
+    width: anchor-size(--a width);
+    height: anchor-size(--a height);
+    position: absolute;
+    background-color: var(--secondary-color);
+    z-index: -1;
+    border-radius: 10px;
   }
 }
 
@@ -88,6 +101,15 @@ $HEADER_MARGIN_TOP: -999px;
   transition: all 1s ease;
   border-radius: 5px;
   padding: 0.5rem;
+
+  &[data-is-selected="true"] {
+    background-color: var(--link-text-color);
+    border-radius: 10px;
+  }
+
+  &:has(a:is(:hover, :focus-visible)) {
+    anchor-name: --a;
+  }
 
   &:hover {
     cursor: pointer;

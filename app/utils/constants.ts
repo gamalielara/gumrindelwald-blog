@@ -4,35 +4,35 @@ interface ImageLoader {
 
 export const IMAGELOADER = (fn: ImageLoader) => fn.src;
 
-export const MENUS = [
-  {
-    name: "Book",
-    url: "/category/book",
-  },
-  {
-    name: "Film",
-    url: "/category/film",
-  },
-  {
-    name: "Technology",
-    url: "/category/tech",
-  },
-  {
-    name: "Personal Thoughts",
-    url: "/category/personal",
-  },
-  {
-    name: "About Me",
-    url: "/me",
-  },
-];
-
 export enum Category {
   BOOK = "book",
   FILM = "film",
   PERSONAL_THOUGHTS = "personal_thoughts",
   TECHNOLOGY = "technology",
 }
+
+export const MENUS = {
+  [Category.BOOK]: {
+    name: "Book",
+    url: "/category/book",
+  },
+  [Category.FILM]: {
+    name: "Film",
+    url: "/category/film",
+  },
+  [Category.TECHNOLOGY]: {
+    name: "Technology",
+    url: "/category/tech",
+  },
+  [Category.PERSONAL_THOUGHTS]: {
+    name: "Personal Thoughts",
+    url: "/category/personal",
+  },
+  About_Me: {
+    name: "About Me",
+    url: "/me",
+  },
+} as const;
 
 export const CATEGORY_DICTIONARIES = {
   [Category.BOOK]: "📚 Book",

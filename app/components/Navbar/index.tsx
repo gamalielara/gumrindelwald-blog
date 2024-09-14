@@ -5,18 +5,19 @@ import { useRouter } from "next/navigation";
 import React, { useMemo, useRef, useSyncExternalStore } from "react";
 import Logo from "../Logo";
 import styles from "./styles.module.scss";
-import { MENUS, WindowBreakPoints } from "<utils>/constants";
+import { Category, MENUS, WindowBreakPoints } from "<utils>/constants";
 import SideBar, { SideBarRef } from "<components>/Sidebar";
 import ColorThemeToggleButton from "<components>/ColorThemeToggleButton";
 
 interface NavbarProps {
   isInLandingPage?: boolean;
+  selectedRoute?: (typeof MENUS)[keyof typeof MENUS]["url"];
 }
 
 const HEADER_MARGIN_TOP = 10;
 const HEADER_SLIDE_DOWN_SPEED = 4;
 
-const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
+const Navbar: React.FC<NavbarProps> = ({ isInLandingPage, selectedRoute }) => {
   const route = useRouter();
 
   const headerRef = useRef<HTMLElement>(null);
@@ -125,12 +126,15 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage }) => {
         </div>
         <nav className={styles["nav-menus-container"]}>
           <ul className={styles["nav-menu-list"]}>
-            {MENUS.map((menu) => (
-              <Link href={menu.url} key={menu.name}>
-                <li className={styles["nav-menu"]}>
+            {Object.values(MENUS).map((menu) => (
+              <li
+                className={styles["nav-menu"]}
+                data-is-selected={selectedRoute === menu.url}
+              >
+                <Link href={menu.url} key={menu.name}>
                   <span>{menu.name}</span>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
         </nav>

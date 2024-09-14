@@ -33,7 +33,7 @@ const SideBar = React.forwardRef<SideBarRef, unknown>((_, ref) => {
   return (
     <aside className={styles["sidebar-aside"]} data-slide-in={isSlideIn}>
       <ul className={styles["nav-menu-list"]}>
-        {MENUS.map((menu) => (
+        {Object.values(MENUS).map((menu) => (
           <li className={styles["nav-menu"]}>
             <Link href={menu.url} key={menu.name}>
               <span>{menu.name}</span>
