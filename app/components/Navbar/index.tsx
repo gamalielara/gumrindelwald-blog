@@ -145,7 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage, selectedRoute }) => {
         </button>
         <ColorThemeToggleButton />
       </header>
-      <SideBar ref={sideBarRef} />
+      <SideBar ref={sideBarRef} selectedRoute={selectedRoute} />
     </>
   );
 };

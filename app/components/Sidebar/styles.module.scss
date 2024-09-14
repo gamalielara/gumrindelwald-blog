@@ -55,6 +55,14 @@ $SLIDE_IN_DURATION: 0.5s;
   line-height: 2rem;
   margin: 2.5rem 0;
   font-weight: 600;
+  min-width: 0;
+  width: fit-content;
+  padding: 10px;
+
+  &[data-is-selected="true"] {
+    background-color: var(--link-text-color);
+    border-radius: 10px;
+  }
 
   & > a > span {
     color: var(--nav-link-text-color);
