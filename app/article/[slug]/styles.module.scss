@@ -12,13 +12,22 @@
   text-align: center;
   color: var(--text-color);
 
+  @media screen and (min-width: $screen-md) {
+    font-size: 1rem;
+  }
+
   & > strong {
     color: var(--text-color);
   }
 }
 
 .article-title {
+  font-size: 2rem;
   text-align: center;
+
+  @media screen and (min-width: $screen-md) {
+    font-size: 3rem;
+  }
 }
 
 .category-box {
