@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
+import { MENUS } from "<utils>/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -39,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const AboutMe: NextPage = () => {
   return (
     <>
-      <PageContainer noFooter>
+      <PageContainer noFooter selectedRoute={MENUS.About_Me.url}>
         <div className={styles["me-page-container"]}>
           <div className={styles["me-image-large"]}>
             <Image
