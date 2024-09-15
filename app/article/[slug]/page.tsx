@@ -46,7 +46,9 @@ export async function generateStaticParams() {
 }
 
 const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
-  const article = await ApiService.getSingleArticle(slug);
+  const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
+
+  console.log("HEI ", article, slug);
 
   return (
     <>
