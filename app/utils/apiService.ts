@@ -16,9 +16,12 @@ class ApiService {
 
     const responseData = (await response.json()) as ArticleFirestoreResponse;
 
-    const articles = parseAndTrimBlogs(responseData);
+    const articles = parseAndTrimBlogs(responseData) ?? [];
 
-    return articles ?? [];
+    // Sort decendingly
+    articles.sort((a, b) => b.created_at - a.created_at);
+
+    return articles;
   };
 
   public static getSingleArticle = async (
