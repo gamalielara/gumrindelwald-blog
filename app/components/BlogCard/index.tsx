@@ -52,7 +52,9 @@ const BlogCard: React.FC<BlogCardType> = ({
             </span>
           </div>
 
-          <h4 className={styles["article-title"]}>{title}</h4>
+          <h4 className={styles["article-title"]}>
+            <span>{title}</span>
+          </h4>
         </div>
         <div className={styles["article-card__back"]}>
           <p>{excerpt}</p>

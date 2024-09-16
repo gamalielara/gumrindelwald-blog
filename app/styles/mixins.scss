@@ -26,8 +26,13 @@
 }
 
 @mixin getBlogCardAspectRatio() {
-  --blog-card-aspect-ratio: 1;
-  --card-padding-top: 100%;
+  --blog-card-aspect-ratio: 1 / 1.5;
+  --card-padding-top: 130%;
+
+  @media screen and (min-width: $screen-sm) {
+    --blog-card-aspect-ratio: 1;
+    --card-padding-top: 100%;
+  }
 
   @media screen and (min-width: $screen-lg) {
     --blog-card-aspect-ratio: 1 / 1.5;
