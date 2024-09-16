@@ -75,3 +75,22 @@ em {
 a {
   text-decoration: unset;
 }
+
+input,
+textarea,
+select,
+button,
+a {
+  -webkit-tap-highlight-color: transparent; /* For Safari on iOS */
+  outline: none; /* Remove the outline */
+}
+
+/* For Android-specific browsers */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: none; /* Remove any box-shadow that may be added */
+}
