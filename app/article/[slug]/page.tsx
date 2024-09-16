@@ -17,7 +17,7 @@ interface Props {
 export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
-  const article = await ApiService.getSingleArticle(slug);
+  const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
 
   const { title, keywords, thumbnail_image, excerpt, createTime, language } =
     article;
