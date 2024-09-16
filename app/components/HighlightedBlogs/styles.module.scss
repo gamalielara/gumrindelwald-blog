@@ -30,20 +30,26 @@
 .featured-blog-card {
   @include getPageContainerWidth();
 
+  --card-gap: 3px;
+
   list-style: none;
   padding: 0;
-  width: calc(var(--container-width) - 10ch);
+  width: calc(var(--container-width) - 3ch);
   padding: 5px;
+  margin: 0 var(--card-gap);
 
-  margin: 0 10px;
+  @media screen and (min-width: $screen-xs) {
+    --card-gap: 10px;
+    width: calc(var(--container-width) - 10ch);
+  }
 
   &:first-child {
-    margin-right: 10px;
+    margin-right: var(--card-gap);
     margin-left: 0;
   }
 
   &:last-child {
-    margin-left: 10px;
+    margin-left: var(--card-gap);
     margin-right: 0;
   }
 }
