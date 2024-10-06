@@ -7,6 +7,7 @@ import PageContainer from "<components>/container/PageContainer";
 import CategoryBox from "<components>/article/CategoryBox";
 import { CATEGORY_DICTIONARIES } from "<utils>/constants";
 import ApiService from "<utils>/apiService";
+import ActionButtons from "<components>/ActionButtons";
 
 interface Props {
   params: {
@@ -73,12 +74,16 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
             />
           </div>
 
-          <div
-            className={styles["article-post"]}
-            dangerouslySetInnerHTML={{
-              __html: article.content,
-            }}
-          />
+          <div className={styles["article-body"]}>
+            {" "}
+            <div
+              className={styles["article-post"]}
+              dangerouslySetInnerHTML={{
+                __html: article.content,
+              }}
+            />
+            <ActionButtons />
+          </div>
         </article>
       </PageContainer>
     </>

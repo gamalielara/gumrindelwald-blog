@@ -173,3 +173,12 @@
     object-fit: contain;
   }
 }
+
+.article-body {
+  display: flex;
+
+  @media screen and (min-width: $screen-lg-md) {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}

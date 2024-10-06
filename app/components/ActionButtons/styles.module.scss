@@ -1,0 +1,88 @@
+@import "../../styles/main.scss";
+
+.divider {
+  width: 75%;
+  margin: 50px auto;
+  border-color: var(--text-color);
+  opacity: 0.5;
+  border-width: 0.5px;
+
+  @media screen and (min-width: $screen-lg-md) {
+    display: none;
+  }
+}
+
+.action-title {
+  color: var(--text-color);
+
+  @media screen and (min-width: $screen-lg-md) {
+    display: none;
+  }
+}
+
+.action-button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  line-height: 1em;
+  pointer-events: auto;
+  padding: 10px 20px 10px 0;
+  color: var(--text-color);
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::before {
+    width: 1.25em;
+    height: 1.25em;
+    margin-right: 5px;
+
+    [data-theme="dunkel"] & {
+      filter: invert(1);
+    }
+  }
+
+  &--like {
+    &::before {
+      content: url("../../../assets/svg/heart.svg");
+    }
+  }
+
+  &--comment {
+    &::before {
+      content: url("../../../assets/svg/comment.svg");
+    }
+  }
+
+  @media screen and (min-width: $screen-lg-md) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 0;
+
+    &:before {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.action-buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  &,
+  & div {
+    @media screen and (min-width: $screen-lg-md) {
+      flex-direction: column;
+      margin-left: 20px;
+      height: fit-content;
+
+      position: sticky;
+      top: 25%;
+    }
+  }
+}
