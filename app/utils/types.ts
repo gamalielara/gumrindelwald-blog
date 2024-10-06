@@ -77,6 +77,7 @@ export interface Article {
   language: Language;
   createTime: string;
   updateTime: string;
+  id: string;
 }
 
 export interface Comment {

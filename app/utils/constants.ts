@@ -110,3 +110,8 @@ export enum WindowBreakPoints {
 export const BLOG_CARDS_COUNT = 15;
 
 export const LG_SCREEN_WIDTH = 1024;
+
+export enum LocalStorageKey {
+  LIKES = "this-user-article-likes",
+  COMMENTS = "this-user-article-comments",
+}

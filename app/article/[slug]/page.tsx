@@ -82,7 +82,7 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
                 __html: article.content,
               }}
             />
-            <ActionButtons />
+            <ActionButtons articleId={article.id} />
           </div>
         </article>
       </PageContainer>

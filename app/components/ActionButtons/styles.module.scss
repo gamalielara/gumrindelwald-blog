@@ -30,6 +30,14 @@
   color: var(--text-color);
   font-weight: bold;
 
+  --like-icon: url("../../../assets/svg/heart.svg");
+  --comment-icon: url("../../../assets/svg/comment.svg");
+
+  &[data-has-action="true"] {
+    --like-icon: url("../../../assets/svg/heart-filled.svg");
+    --comment-icon: url("../../../assets/svg/comment-filled.svg");
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -46,13 +54,13 @@
 
   &--like {
     &::before {
-      content: url("../../../assets/svg/heart.svg");
+      content: var(--like-icon);
     }
   }
 
   &--comment {
     &::before {
-      content: url("../../../assets/svg/comment.svg");
+      content: var(--comment-icon);
     }
   }
 
