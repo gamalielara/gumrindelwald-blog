@@ -67,7 +67,6 @@ const ActionButtons: React.FC<Props> = ({ articleId }) => {
 
   return (
     <>
-      <hr className={styles["divider"]} />
       <h3 className={styles["action-title"]}>
         Do you enjoy reading this article? Leave your mark here! :)
       </h3>
@@ -81,7 +80,6 @@ const ActionButtons: React.FC<Props> = ({ articleId }) => {
         </button>
         <button
           className={`${styles["action-button"]} ${styles["action-button--comment"]}`}
-          data-has-action={actionInfo.isCommented}
           onClick={onCommentHandler}
         >
           100

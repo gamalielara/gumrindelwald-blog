@@ -1,0 +1,33 @@
+@import "../../styles/main.scss";
+
+.divider {
+  width: 75%;
+  margin: 50px auto;
+  border-color: var(--text-color);
+  opacity: 0.5;
+  border-width: 0.5px;
+  display: none;
+
+  @media screen and (min-width: $screen-lg-md) {
+    display: block;
+  }
+}
+
+.comment-section {
+  min-height: 25vh;
+
+  & > h2 {
+    margin: 10px 0;
+    font-size: 2rem;
+    display: flex;
+
+    &:before {
+      content: url("../../../assets/svg/comments-two-bubbles.svg");
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      color: inherit;
+      margin-right: 5px;
+    }
+  }
+}

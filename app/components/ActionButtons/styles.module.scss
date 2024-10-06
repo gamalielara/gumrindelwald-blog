@@ -1,17 +1,5 @@
 @import "../../styles/main.scss";
 
-.divider {
-  width: 75%;
-  margin: 50px auto;
-  border-color: var(--text-color);
-  opacity: 0.5;
-  border-width: 0.5px;
-
-  @media screen and (min-width: $screen-lg-md) {
-    display: none;
-  }
-}
-
 .action-title {
   color: var(--text-color);
 
@@ -31,11 +19,9 @@
   font-weight: bold;
 
   --like-icon: url("../../../assets/svg/heart.svg");
-  --comment-icon: url("../../../assets/svg/comment.svg");
 
   &[data-has-action="true"] {
     --like-icon: url("../../../assets/svg/heart-filled.svg");
-    --comment-icon: url("../../../assets/svg/comment-filled.svg");
   }
 
   &:hover {
@@ -60,7 +46,7 @@
 
   &--comment {
     &::before {
-      content: var(--comment-icon);
+      content: url("../../../assets/svg/comment.svg");
     }
   }
 

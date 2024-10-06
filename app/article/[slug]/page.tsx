@@ -8,6 +8,7 @@ import CategoryBox from "<components>/article/CategoryBox";
 import { CATEGORY_DICTIONARIES } from "<utils>/constants";
 import ApiService from "<utils>/apiService";
 import ActionButtons from "<components>/ActionButtons";
+import CommentsSection from "<components>/CommentsSection";
 
 interface Props {
   params: {
@@ -84,6 +85,7 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
             />
             <ActionButtons articleId={article.id} />
           </div>
+          <CommentsSection />
         </article>
       </PageContainer>
     </>
