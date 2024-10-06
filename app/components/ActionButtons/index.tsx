@@ -9,28 +9,16 @@ type Props = {
 };
 
 const ActionButtons: React.FC<Props> = ({ articleId }) => {
-  const [actionInfo, setActionInfo] = useState({
-    isLiked: false,
-    isCommented: false,
-  });
+  const [isLiked, setIsLiked] = useState(false);
 
   const thisUserLikeList = JSON.parse(
     localStorage.getItem(LocalStorageKey.LIKES) ?? "[]"
   ) as string[];
 
-  const thisUserCommentList = JSON.parse(
-    localStorage.getItem(LocalStorageKey.COMMENTS) ?? "[]"
-  ) as string[];
-
   const isAlreadyLikedThisPost = thisUserLikeList.includes(articleId);
 
-  const isAlreadyCommentedThisPost = thisUserCommentList.includes(articleId);
-
   useEffect(() => {
-    setActionInfo({
-      isCommented: isAlreadyCommentedThisPost,
-      isLiked: isAlreadyLikedThisPost,
-    });
+    setIsLiked(isAlreadyLikedThisPost);
   }, []);
 
   const onLikeClickHandler = () => {
@@ -45,24 +33,13 @@ const ActionButtons: React.FC<Props> = ({ articleId }) => {
 
     localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
 
-    setActionInfo((state) => ({ ...state, isLiked: !isAlreadyLikedThisPost }));
+    setIsLiked(!isAlreadyLikedThisPost);
   };
 
   const onCommentHandler = () => {
-    let newLikeList;
-    if (isAlreadyCommentedThisPost) {
-      newLikeList = thisUserCommentList.filter((id) => id !== articleId);
-    } else {
-      newLikeList = [...thisUserCommentList];
-      newLikeList.push(articleId);
-    }
-
-    localStorage.setItem(LocalStorageKey.COMMENTS, JSON.stringify(newLikeList));
-
-    setActionInfo((state) => ({
-      ...state,
-      isCommented: !isAlreadyCommentedThisPost,
-    }));
+    document
+      .getElementById("comment-section")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -73,7 +50,7 @@ const ActionButtons: React.FC<Props> = ({ articleId }) => {
       <div className={styles["action-buttons-wrapper"]}>
         <button
           className={`${styles["action-button"]} ${styles["action-button--like"]}`}
-          data-has-action={actionInfo.isLiked}
+          data-has-action={isLiked}
           onClick={onLikeClickHandler}
         >
           19

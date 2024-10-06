@@ -113,5 +113,4 @@ export const LG_SCREEN_WIDTH = 1024;
 
 export enum LocalStorageKey {
   LIKES = "this-user-article-likes",
-  COMMENTS = "this-user-article-comments",
 }
