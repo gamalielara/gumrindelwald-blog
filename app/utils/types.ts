@@ -55,6 +55,7 @@ export interface TrimmedArticle {
       featured: boolean;
       language: Language;
       keywords: string;
+      id: string;
     };
     createTime: string;
     updateTime: string;
