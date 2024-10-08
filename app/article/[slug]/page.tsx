@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 import styles from "./styles.module.scss";
 import { Metadata } from "next";
-import { Article } from "<utils>/types";
 import PageContainer from "<components>/container/PageContainer";
 import CategoryBox from "<components>/article/CategoryBox";
 import { CATEGORY_DICTIONARIES } from "<utils>/constants";
@@ -76,7 +75,6 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
           </div>
 
           <div className={styles["article-body"]}>
-            {" "}
             <div
               className={styles["article-post"]}
               dangerouslySetInnerHTML={{

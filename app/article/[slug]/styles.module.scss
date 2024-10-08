@@ -176,6 +176,7 @@
 
 .article-body {
   display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: $screen-lg-md) {
     flex-direction: row;

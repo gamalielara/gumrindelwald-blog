@@ -43,26 +43,21 @@ const ActionButtons: React.FC<Props> = ({ articleId }) => {
   };
 
   return (
-    <>
-      <h3 className={styles["action-title"]}>
-        Do you enjoy reading this article? Leave your mark here! :)
-      </h3>
-      <div className={styles["action-buttons-wrapper"]}>
-        <button
-          className={`${styles["action-button"]} ${styles["action-button--like"]}`}
-          data-has-action={isLiked}
-          onClick={onLikeClickHandler}
-        >
-          19
-        </button>
-        <button
-          className={`${styles["action-button"]} ${styles["action-button--comment"]}`}
-          onClick={onCommentHandler}
-        >
-          100
-        </button>
-      </div>
-    </>
+    <div className={styles["action-buttons-wrapper"]}>
+      <button
+        className={`${styles["action-button"]} ${styles["action-button--like"]}`}
+        data-has-action={isLiked}
+        onClick={onLikeClickHandler}
+      >
+        19
+      </button>
+      <button
+        className={`${styles["action-button"]} ${styles["action-button--comment"]}`}
+        onClick={onCommentHandler}
+      >
+        100
+      </button>
+    </div>
   );
 };
 

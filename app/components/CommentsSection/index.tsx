@@ -5,9 +5,8 @@ import CommentCard from "./CommentCard";
 const CommentsSection = () => {
   return (
     <>
-      <hr className={styles["divider"]} />
       <section className={styles["comment-section"]} id="comment-section">
-        <h2>10 Comment(s)</h2>
+        <h2 className={styles["comment-title"]}>10 Comment(s)</h2>
         <CommentCard username={""} date={0} body={0} />
       </section>
 
