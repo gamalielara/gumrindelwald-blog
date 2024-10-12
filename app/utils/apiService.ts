@@ -1,6 +1,8 @@
 import { Category } from "./constants";
+import { firestoreDB } from "./firebase";
 import parseAndTrimBlogs from "./parseAndTrimBlogs";
 import { Article, ArticleFirestoreResponse } from "./types";
+import { collection, query, where, getDocs } from "@firebase/firestore";
 
 class ApiService {
   private static projectId: string = process.env.REACT_APP_PROJECTID ?? "";
@@ -8,31 +10,39 @@ class ApiService {
   private static baseFirestoreGoogleAPIURL =
     "https://firestore.googleapis.com/v1/projects";
 
+  private static blogsDocRef = collection(firestoreDB, "blogs");
+
   public static getAllArticles = async (): Promise<Article[]> => {
-    const response = await fetch(
-      `${this.baseFirestoreGoogleAPIURL}/${this.projectId}/databases/(default)/documents/blogs`,
-      { next: { revalidate: 3600 } }
-    );
+    const rawArticles = await getDocs(this.blogsDocRef);
 
-    const responseData = (await response.json()) as ArticleFirestoreResponse;
-
-    const articles = parseAndTrimBlogs(responseData) ?? [];
+    const processedArticles = rawArticles.docs.map((blogDoc) => ({
+      ...blogDoc.data(),
+      id: blogDoc.id,
+    })) as Artcile[];
 
     // Sort decendingly
-    articles.sort((a, b) => b.created_at - a.created_at);
+    processedArticles.sort((a, b) => b.created_at - a.created_at);
 
-    return articles;
+    return processedArticles;
   };
 
   public static getSingleArticle = async (
     slugToFind: string
   ): Promise<Article> => {
-    const allArticles = await this.getAllArticles();
+    const articles = await this.getAllArticles();
 
-    return (
-      allArticles.find((article) => article.slug === slugToFind) ??
-      ({} as Article)
-    );
+    console.log({ articles });
+
+    const queryBlog = query(this.blogsDocRef, where("slug", "==", slugToFind));
+    const queryRawResult = await getDocs(queryBlog);
+    const queryResult = queryRawResult.docs.map((blog) => ({
+      ...blog.data(),
+      id: blog.id,
+    }))[0] as Article;
+
+    console.log({ queryResult, raw: queryRawResult.docs });
+
+    return queryResult ?? {};
   };
 
   public static getArticlesCategory = async (
