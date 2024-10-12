@@ -1,7 +1,16 @@
 import { Category } from "./constants";
 import { firestoreDB } from "./firebase";
-import { Article } from "./types";
-import { collection, query, where, getDocs } from "@firebase/firestore";
+import { Article, Comment } from "./types";
+import {
+  collection,
+  query,
+  where,
+  doc,
+  getDocs,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+} from "@firebase/firestore";
 
 class ApiService {
   private static projectId: string = process.env.REACT_APP_PROJECTID ?? "";
@@ -43,6 +52,42 @@ class ApiService {
     const allArticles = await this.getAllArticles();
 
     return allArticles.filter((artcle) => artcle.category === category);
+  };
+
+  public static postComment = async ({
+    blogId,
+    username,
+    email,
+    body,
+  }: {
+    blogId: string;
+    username: string;
+    email?: string;
+    body: string;
+  }) => {
+    const thisBlogDoc = doc(firestoreDB, "blogs", blogId);
+    const thisBlog = await getDoc(thisBlogDoc);
+
+    if (!thisBlog.exists()) {
+      throw new Error("Blog does not exist.");
+    }
+
+    const commentsToPost: Omit<Comment, "id"> & { id: string | null } = {
+      username,
+      body,
+      email: email || null,
+      timestamp: Date.now(),
+      replies: [],
+      id: window.location.hostname === "localhost" ? crypto.randomUUID() : null,
+    };
+
+    try {
+      await updateDoc(thisBlogDoc, {
+        comments: arrayUnion(commentsToPost),
+      });
+    } catch (err) {
+      throw err;
+    }
   };
 }
 

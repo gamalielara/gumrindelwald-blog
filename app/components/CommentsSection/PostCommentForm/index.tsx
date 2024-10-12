@@ -2,8 +2,13 @@
 
 import React, { MouseEventHandler, useRef } from "react";
 import styles from "./styles.module.scss";
+import ApiService from "<utils>/apiService";
 
-const PostCommentForm = () => {
+interface Props {
+  blogId: string;
+}
+
+const PostCommentForm: React.FC<Props> = ({ blogId }) => {
   const usernameRef = useRef<string>();
   const emailRef = useRef<string>();
   const bodyRef = useRef<string>();
@@ -28,11 +33,20 @@ const PostCommentForm = () => {
       return;
     }
 
-    console.log("HAIII ", {
-      username: usernameRef.current,
-      email: emailRef.current,
-      body: bodyRef.current,
-    });
+    try {
+      await ApiService.postComment({
+        blogId,
+        username: usernameRef.current,
+        email: emailRef.current,
+        body: bodyRef.current,
+      });
+
+      // TODO: show successful toast
+      console.log("SUCCESS!");
+    } catch (err) {
+      //TODO: show error toast
+      console.log("There is something wrong", err);
+    }
   };
 
   return (

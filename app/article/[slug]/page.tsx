@@ -84,7 +84,7 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
             />
             <ActionButtons article={article} />
           </div>
-          <CommentsSection comments={article.comments} />
+          <CommentsSection blogId={article.id} comments={article.comments} />
         </article>
       </PageContainer>
     </>

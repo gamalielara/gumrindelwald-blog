@@ -5,10 +5,11 @@ import { Comment } from "<utils>/types";
 import PostCommentForm from "./PostCommentForm";
 
 interface Props {
+  blogId: string;
   comments: Array<Comment>;
 }
 
-const CommentsSection: React.FC<Props> = ({ comments }) => {
+const CommentsSection: React.FC<Props> = ({ blogId, comments }) => {
   return (
     <>
       <section className={styles["comment-section"]} id="comment-section">
@@ -24,7 +25,7 @@ const CommentsSection: React.FC<Props> = ({ comments }) => {
           />
         ))}
       </section>
-      <PostCommentForm />
+      <PostCommentForm blogId={blogId} />
     </>
   );
 };

@@ -24,6 +24,7 @@ export interface Comment {
   username: string;
   body: string;
   timestamp: number;
+  email: string | null;
   replies: Array<Comment>;
 }
 
