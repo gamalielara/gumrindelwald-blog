@@ -1,7 +1,6 @@
 import { Category } from "./constants";
 import { firestoreDB } from "./firebase";
-import parseAndTrimBlogs from "./parseAndTrimBlogs";
-import { Article, ArticleFirestoreResponse } from "./types";
+import { Article } from "./types";
 import { collection, query, where, getDocs } from "@firebase/firestore";
 
 class ApiService {
@@ -18,7 +17,7 @@ class ApiService {
     const processedArticles = rawArticles.docs.map((blogDoc) => ({
       ...blogDoc.data(),
       id: blogDoc.id,
-    })) as Artcile[];
+    })) as Article[];
 
     // Sort decendingly
     processedArticles.sort((a, b) => b.created_at - a.created_at);
