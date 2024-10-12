@@ -20,8 +20,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
 
-  const { title, keywords, thumbnail_image, excerpt, createTime, language } =
-    article;
+  const { title, keywords, thumbnail_image, excerpt, createTime } = article;
 
   return {
     title: `gumrindelwald / ${title}`,
@@ -48,6 +47,8 @@ export async function generateStaticParams() {
 
 const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
   const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
+
+  console.log("HEY ARTICLE ", { article });
 
   return (
     <>
@@ -81,9 +82,9 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
                 __html: article.content,
               }}
             />
-            <ActionButtons articleId={article.id} />
+            <ActionButtons article={article} />
           </div>
-          <CommentsSection />
+          <CommentsSection comments={article.comments} />
         </article>
       </PageContainer>
     </>

@@ -7,7 +7,7 @@ export interface Article {
   created_at: number;
   category: Category;
   updated_at: number;
-  likes: Array<number>;
+  likes: number;
   content: string;
   thumbnail_image: string;
   title: string;
@@ -24,6 +24,7 @@ export interface Comment {
   username: string;
   body: string;
   timestamp: number;
+  replies: Array<Comment>;
 }
 
 export interface BlogCardInterface {

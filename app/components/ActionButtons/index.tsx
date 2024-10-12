@@ -3,12 +3,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { LocalStorageKey } from "<utils>/constants";
+import { Article } from "<utils>/types";
 
 type Props = {
-  articleId: string;
+  article: Article;
 };
 
-const ActionButtons: React.FC<Props> = ({ articleId }) => {
+const ActionButtons: React.FC<Props> = ({ article }) => {
+  const { id: articleId, likes, comments } = article;
+
   const [isLiked, setIsLiked] = useState(false);
 
   const thisUserLikeList = JSON.parse(
@@ -49,13 +52,13 @@ const ActionButtons: React.FC<Props> = ({ articleId }) => {
         data-has-action={isLiked}
         onClick={onLikeClickHandler}
       >
-        19
+        {likes}
       </button>
       <button
         className={`${styles["action-button"]} ${styles["action-button--comment"]}`}
         onClick={onCommentHandler}
       >
-        100
+        {comments.length}
       </button>
     </div>
   );

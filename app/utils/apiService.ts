@@ -28,18 +28,11 @@ class ApiService {
   public static getSingleArticle = async (
     slugToFind: string
   ): Promise<Article> => {
-    const articles = await this.getAllArticles();
-
-    console.log({ articles });
-
     const queryBlog = query(this.blogsDocRef, where("slug", "==", slugToFind));
     const queryRawResult = await getDocs(queryBlog);
     const queryResult = queryRawResult.docs.map((blog) => ({
       ...blog.data(),
-      id: blog.id,
     }))[0] as Article;
-
-    console.log({ queryResult, raw: queryRawResult.docs });
 
     return queryResult ?? {};
   };

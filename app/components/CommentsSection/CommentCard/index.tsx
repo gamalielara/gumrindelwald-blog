@@ -5,7 +5,7 @@ import meIcon from "<assets>/svg/me.svg";
 type Props = {
   username: string;
   date: number; // epoch
-  body: number;
+  body: string;
 };
 
 const CommentCard: React.FC<Props> = () => {
