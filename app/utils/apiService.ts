@@ -54,6 +54,15 @@ class ApiService {
     return allArticles.filter((artcle) => artcle.category === category);
   };
 
+  public static getCommentsOfThisArtcile = async (blogId: string) => {
+    const thisBlogDoc = doc(firestoreDB, "blogs", blogId);
+    const thisBlog = await getDoc(thisBlogDoc);
+
+    const thisBlogData = thisBlog.data() as Article;
+
+    return thisBlogData.comments;
+  };
+
   public static postComment = async ({
     blogId,
     username,

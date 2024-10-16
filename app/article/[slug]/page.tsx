@@ -48,8 +48,6 @@ export async function generateStaticParams() {
 const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
   const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
 
-  console.log("HEY ARTICLE ", { article });
-
   return (
     <>
       <PageContainer>
@@ -84,7 +82,7 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
             />
             <ActionButtons article={article} />
           </div>
-          <CommentsSection blogId={article.id} comments={article.comments} />
+          <CommentsSection blogId={article.id} />
         </article>
       </PageContainer>
     </>
