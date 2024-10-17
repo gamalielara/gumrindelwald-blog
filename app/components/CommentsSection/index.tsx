@@ -1,22 +1,23 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import CommentCard from "./CommentCard";
-import { Comment } from "<utils>/types";
 import PostCommentForm from "./PostCommentForm";
 import ApiService from "<utils>/apiService";
+import { ClientContext } from "<utils>/ClientContext";
+import { ClientActionType } from "<utils>/constants";
 
 interface Props {
   blogId: string;
 }
 
 const CommentsSection: React.FC<Props> = ({ blogId }) => {
-  const [comments, setComments] = useState<Comment[]>([]);
+  const { comments, dispatch } = useContext(ClientContext);
 
   const fetchComments = async () => {
     const comments = await ApiService.getCommentsOfThisArtcile(blogId);
-    setComments(comments);
+    dispatch({ type: ClientActionType.UPDATE_COMMENTS, value: comments });
   };
 
   useEffect(() => {

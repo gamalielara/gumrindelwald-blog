@@ -1,16 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
+import { ClientContext } from "<utils>/ClientContext";
 
 type Props = {
   article: Article;
 };
 
 const ActionButtons: React.FC<Props> = ({ article }) => {
-  const { id: articleId, likes, comments } = article;
+  const { comments } = useContext(ClientContext);
+  const { id: articleId, likes } = article;
 
   const [isLiked, setIsLiked] = useState(false);
 
