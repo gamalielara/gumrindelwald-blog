@@ -1,5 +1,5 @@
 "use client";
-import { ClientContext } from "<utils>/ClientContext";
+import { ClientContext } from "<utils>/clientContext";
 import React, { PropsWithChildren, useReducer } from "react";
 import { clientReducer } from "../../hooks/clientReducer";
 import { ClientContextState } from "<utils>/types";

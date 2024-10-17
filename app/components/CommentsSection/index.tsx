@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 import CommentCard from "./CommentCard";
 import PostCommentForm from "./PostCommentForm";
 import ApiService from "<utils>/apiService";
-import { ClientContext } from "<utils>/ClientContext";
+import { ClientContext } from "<utils>/clientContext";
 import { ClientActionType } from "<utils>/constants";
 
 interface Props {

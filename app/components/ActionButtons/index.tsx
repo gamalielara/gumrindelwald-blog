@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
-import { ClientContext } from "<utils>/ClientContext";
+import { ClientContext } from "<utils>/clientContext";
 
 type Props = {
   article: Article;
