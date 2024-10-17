@@ -1,4 +1,4 @@
-import { Category, Language } from "./constants";
+import { Category, ClientActionType, Language } from "./constants";
 
 export interface Article {
   excerpt: string;
@@ -47,4 +47,18 @@ export interface ArticleInterface extends BlogCardInterface {
   content: string;
   keywords: string;
   tags?: string;
+}
+
+export interface ClientContextState {
+  comments: Comment[];
+}
+
+export interface ClientContextProviderValue {
+  comments: Comment[];
+  dispatch: React.Dispatch<ClientAction<unknown>>;
+}
+
+export interface ClientAction<T extends unknown> {
+  type: ClientActionType;
+  value: T;
 }

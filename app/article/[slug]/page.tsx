@@ -8,6 +8,7 @@ import { CATEGORY_DICTIONARIES } from "<utils>/constants";
 import ApiService from "<utils>/apiService";
 import ActionButtons from "<components>/ActionButtons";
 import CommentsSection from "<components>/CommentsSection";
+import ClientProvider from "<app>/hoc/ClientProvider";
 
 interface Props {
   params: {
@@ -48,10 +49,8 @@ export async function generateStaticParams() {
 const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
   const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
 
-  console.log("HEY ARTICLE ", { article });
-
   return (
-    <>
+    <ClientProvider>
       <PageContainer>
         <article className={styles["article-post-wrapper"]}>
           <p className={styles["published-on-text"]}>
@@ -84,10 +83,10 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
             />
             <ActionButtons article={article} />
           </div>
-          <CommentsSection blogId={article.id} comments={article.comments} />
+          <CommentsSection blogId={article.id} />
         </article>
       </PageContainer>
-    </>
+    </ClientProvider>
   );
 };
 

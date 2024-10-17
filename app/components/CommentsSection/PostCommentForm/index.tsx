@@ -1,31 +1,32 @@
 "use client";
 
-import React, { MouseEventHandler, useRef } from "react";
+import React, { MouseEventHandler, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import ApiService from "<utils>/apiService";
 
 interface Props {
   blogId: string;
+  fetchComments: () => void;
 }
 
-const PostCommentForm: React.FC<Props> = ({ blogId }) => {
-  const usernameRef = useRef<string>();
-  const emailRef = useRef<string>();
-  const bodyRef = useRef<string>();
+const PostCommentForm: React.FC<Props> = ({ blogId, fetchComments }) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [body, setBody] = useState("");
 
   const submitCommentHandler: MouseEventHandler<HTMLInputElement> = async (
     e
   ) => {
     e.preventDefault();
 
-    if (!usernameRef.current || !bodyRef.current) {
+    if (!username || !body) {
       // TODO: show toast validate username and body
       return;
     }
 
     if (
-      emailRef.current &&
-      !emailRef.current.match(
+      email &&
+      !email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       )
     ) {
@@ -36,13 +37,18 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
     try {
       await ApiService.postComment({
         blogId,
-        username: usernameRef.current,
-        email: emailRef.current,
-        body: bodyRef.current,
+        username,
+        email,
+        body,
       });
 
       // TODO: show successful toast
       console.log("SUCCESS!");
+      fetchComments();
+
+      setUsername("");
+      setEmail("");
+      setBody("");
     } catch (err) {
       //TODO: show error toast
       console.log("There is something wrong", err);
@@ -58,24 +64,27 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
           type="text"
           placeholder="Enter your name here"
           className={styles["comment-section-input"]}
+          value={username}
           onChange={(e) => {
-            usernameRef.current = e.target.value;
+            setUsername(e.target.value);
           }}
         />
         <input
           placeholder="Enter your email (optional, fill this if you want to get email notification if someone replies.)"
           type="email"
           className={styles["comment-section-input"]}
+          value={email}
           onChange={(e) => {
-            emailRef.current = e.target.value;
+            setEmail(e.target.value);
           }}
         />
         <textarea
           required
           placeholder="Enter your comment here..."
           className={styles["insert-comment-field"]}
+          value={body}
           onChange={(e) => {
-            bodyRef.current = e.target.value;
+            setBody(e.target.value);
           }}
         />
         <input
