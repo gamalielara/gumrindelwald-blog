@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import styles from "./styles.module.scss";
 import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
@@ -16,11 +16,17 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
 
   const [isLiked, setIsLiked] = useState(false);
 
-  const thisUserLikeList = JSON.parse(
-    localStorage.getItem(LocalStorageKey.LIKES) ?? "[]"
-  ) as string[];
+  const getThisUserLikesList = () => {
+    if (typeof window === "undefined") return [];
 
-  const isAlreadyLikedThisPost = thisUserLikeList.includes(articleId);
+    return JSON.parse(
+      localStorage.getItem(LocalStorageKey.LIKES) ?? "[]"
+    ) as string[];
+  };
+
+  const thisUserCurrentLikesList = getThisUserLikesList();
+
+  const isAlreadyLikedThisPost = thisUserCurrentLikesList.includes(articleId);
 
   useEffect(() => {
     setIsLiked(isAlreadyLikedThisPost);
@@ -30,9 +36,9 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
     let newLikeList: string[];
 
     if (isAlreadyLikedThisPost) {
-      newLikeList = thisUserLikeList.filter((id) => id !== articleId);
+      newLikeList = thisUserCurrentLikesList.filter((id) => id !== articleId);
     } else {
-      newLikeList = [...thisUserLikeList];
+      newLikeList = [...thisUserCurrentLikesList];
       newLikeList.push(articleId);
     }
 
