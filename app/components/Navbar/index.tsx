@@ -103,7 +103,7 @@ const Navbar: React.FC<NavbarProps> = ({ isInLandingPage, selectedRoute }) => {
   return (
     <>
       <header
-        id="header"
+        id="navbar-top-header"
         ref={headerRef}
         style={{
           top: getTopValue(),

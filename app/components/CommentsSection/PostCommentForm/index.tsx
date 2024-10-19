@@ -1,26 +1,31 @@
 "use client";
 
-import React, { MouseEventHandler, useRef, useState } from "react";
+import React, {
+  MouseEventHandler,
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import styles from "./styles.module.scss";
 import ApiService from "<utils>/apiService";
+import { ClientContext } from "<utils>/clientContext";
+import { showToast } from "<utils>/showToast";
+import useDebounce from "../../../../hooks/useDebounce";
 
 interface Props {
   blogId: string;
-  fetchComments: () => void;
 }
 
-const PostCommentForm: React.FC<Props> = ({ blogId, fetchComments }) => {
+const PostCommentForm: React.FC<Props> = ({ blogId }) => {
+  const { getLikesAndCommentOfThisblog } = useContext(ClientContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
 
-  const submitCommentHandler: MouseEventHandler<HTMLInputElement> = async (
-    e
-  ) => {
-    e.preventDefault();
-
-    if (!username || !body) {
-      // TODO: show toast validate username and body
+  const submitCommentHandler = async () => {
+    if (!body) {
+      showToast("You need to fill your comment content");
       return;
     }
 
@@ -30,7 +35,7 @@ const PostCommentForm: React.FC<Props> = ({ blogId, fetchComments }) => {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       )
     ) {
-      // TODO: show toast Validate valid email
+      showToast("Oops, seems your email format is not correct.");
       return;
     }
 
@@ -42,27 +47,26 @@ const PostCommentForm: React.FC<Props> = ({ blogId, fetchComments }) => {
         body,
       });
 
-      // TODO: show successful toast
-      console.log("SUCCESS!");
-      fetchComments();
+      showToast("Your comment has successfully been posted!😆");
+      getLikesAndCommentOfThisblog();
 
       setUsername("");
       setEmail("");
       setBody("");
     } catch (err) {
-      //TODO: show error toast
-      console.log("There is something wrong", err);
+      showToast(err);
     }
   };
+
+  const debouncedPostCommentHandlder = useDebounce(submitCommentHandler, 10000);
 
   return (
     <section className={styles["post-comment-form"]}>
       <form className={styles["comment-form"]}>
         <h4>Post your comment here</h4>
         <input
-          required
           type="text"
-          placeholder="Enter your name here"
+          placeholder="Enter your name here (Optional)"
           className={styles["comment-section-input"]}
           value={username}
           onChange={(e) => {
@@ -91,7 +95,10 @@ const PostCommentForm: React.FC<Props> = ({ blogId, fetchComments }) => {
           className={styles["submit-comment-btn"]}
           type="submit"
           value="Post Comment"
-          onClick={submitCommentHandler}
+          onClick={(e) => {
+            e.preventDefault();
+            debouncedPostCommentHandlder();
+          }}
         />
       </form>
     </section>

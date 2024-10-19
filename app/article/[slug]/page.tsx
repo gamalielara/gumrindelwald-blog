@@ -8,7 +8,8 @@ import { CATEGORY_DICTIONARIES } from "<utils>/constants";
 import ApiService from "<utils>/apiService";
 import ActionButtons from "<components>/ActionButtons";
 import CommentsSection from "<components>/CommentsSection";
-import ClientProvider from "<app>/hoc/ClientProvider";
+import ArticlePageClientProvider from "<app>/hoc/ArticlePageClientProvider";
+import ClientErrorBoundary from "<app>/hoc/ClientErrorBoundary";
 
 interface Props {
   params: {
@@ -50,43 +51,45 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
   const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
 
   return (
-    <ClientProvider>
-      <PageContainer>
-        <article className={styles["article-post-wrapper"]}>
-          <p className={styles["published-on-text"]}>
-            PUBLISHED ON&nbsp;
-            <strong>
-              {new Date(article.created_at).toDateString().toUpperCase()}
-            </strong>
-          </p>
-          <h1 className={styles["article-title"]}>{article.title}</h1>
-          <div className={styles["category-box"]}>
-            <CategoryBox category={article.category}>
-              {CATEGORY_DICTIONARIES[article.category]}
-            </CategoryBox>
-          </div>
-          <div className={styles["article-thumbnail"]}>
-            <Image
-              layout="fill"
-              objectFit="cover"
-              src={article.thumbnail_image}
-              alt={article.title}
-            />
-          </div>
+    <ClientErrorBoundary>
+      <ArticlePageClientProvider slug={slug}>
+        <PageContainer>
+          <article className={styles["article-post-wrapper"]}>
+            <p className={styles["published-on-text"]}>
+              PUBLISHED ON&nbsp;
+              <strong>
+                {new Date(article.created_at).toDateString().toUpperCase()}
+              </strong>
+            </p>
+            <h1 className={styles["article-title"]}>{article.title}</h1>
+            <div className={styles["category-box"]}>
+              <CategoryBox category={article.category}>
+                {CATEGORY_DICTIONARIES[article.category]}
+              </CategoryBox>
+            </div>
+            <div className={styles["article-thumbnail"]}>
+              <Image
+                layout="fill"
+                objectFit="cover"
+                src={article.thumbnail_image}
+                alt={article.title}
+              />
+            </div>
 
-          <div className={styles["article-body"]}>
-            <div
-              className={styles["article-post"]}
-              dangerouslySetInnerHTML={{
-                __html: article.content,
-              }}
-            />
-            <ActionButtons article={article} />
-          </div>
-          <CommentsSection blogId={article.id} />
-        </article>
-      </PageContainer>
-    </ClientProvider>
+            <div className={styles["article-body"]}>
+              <div
+                className={styles["article-post"]}
+                dangerouslySetInnerHTML={{
+                  __html: article.content,
+                }}
+              />
+              <ActionButtons article={article} />
+            </div>
+            <CommentsSection blogId={article.id} />
+          </article>
+        </PageContainer>
+      </ArticlePageClientProvider>
+    </ClientErrorBoundary>
   );
 };
 

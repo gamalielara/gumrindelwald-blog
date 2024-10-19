@@ -1,6 +1,8 @@
 import { Category } from "./constants";
 import { firestoreDB } from "./firebase";
+import { showToast } from "./showToast";
 import { Article, Comment } from "./types";
+import { faker } from "@faker-js/faker";
 import {
   collection,
   query,
@@ -13,11 +15,6 @@ import {
 } from "@firebase/firestore";
 
 class ApiService {
-  private static projectId: string = process.env.REACT_APP_PROJECTID ?? "";
-
-  private static baseFirestoreGoogleAPIURL =
-    "https://firestore.googleapis.com/v1/projects";
-
   private static blogsDocRef = collection(firestoreDB, "blogs");
 
   public static getAllArticles = async (): Promise<Article[]> => {
@@ -82,21 +79,34 @@ class ApiService {
     }
 
     const commentsToPost: Omit<Comment, "id"> & { id: string | null } = {
-      username,
+      username: username || "Anonymous",
       body,
       email: email || null,
       timestamp: Date.now(),
       replies: [],
       id: window.location.hostname === "localhost" ? crypto.randomUUID() : null,
+      userProfilePicture: faker.image.avatarGitHub(),
+      isAuthor: false,
     };
 
-    try {
-      await updateDoc(thisBlogDoc, {
-        comments: arrayUnion(commentsToPost),
-      });
-    } catch (err) {
-      throw err;
+    await updateDoc(thisBlogDoc, {
+      comments: arrayUnion(commentsToPost),
+    });
+  };
+
+  public static postLike = async (blogId: string, isLiked: boolean) => {
+    const thisBlogDoc = doc(firestoreDB, "blogs", blogId);
+    const thisBlog = await getDoc(thisBlogDoc);
+
+    if (!thisBlog.exists()) {
+      throw new Error("Blog does not exist.");
     }
+
+    const thisBlogLikes = thisBlog.data().likes;
+
+    await updateDoc(thisBlogDoc, {
+      likes: thisBlogLikes + (isLiked ? -1 : 1),
+    });
   };
 }
 

@@ -3,6 +3,7 @@ import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import styles from "./style.module.scss";
 import { MENUS } from "<utils>/constants";
+import ToastProvider from "<app>/hoc/ToastProvider";
 
 interface PageContainerInterface {
   children: any;
@@ -18,7 +19,7 @@ const PageContainer: React.FC<PageContainerInterface> = ({
   selectedRoute,
 }) => {
   return (
-    <>
+    <ToastProvider>
       <main className={styles["page-container"]}>
         <div className={styles["main-container"]}>
           <Navbar isInLandingPage={isInLP} selectedRoute={selectedRoute} />
@@ -26,7 +27,7 @@ const PageContainer: React.FC<PageContainerInterface> = ({
         </div>
       </main>
       {!noFooter && <Footer />}
-    </>
+    </ToastProvider>
   );
 };
 

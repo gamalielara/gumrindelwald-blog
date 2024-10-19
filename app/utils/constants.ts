@@ -117,4 +117,9 @@ export enum LocalStorageKey {
 
 export enum ClientActionType {
   UPDATE_COMMENTS,
+  UPDATE_LIKES,
+}
+
+export enum CustomEventNames {
+  SHOW_TOAST = "gw_custom_show_toast",
 }

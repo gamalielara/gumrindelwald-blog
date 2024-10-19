@@ -1,18 +1,28 @@
 "use client";
 
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import styles from "./styles.module.scss";
 import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
 import { ClientContext } from "<utils>/clientContext";
+import ApiService from "<utils>/apiService";
+import { showToast } from "<utils>/showToast";
+import useDebounce from "../../../hooks/useDebounce";
 
 type Props = {
   article: Article;
 };
 
 const ActionButtons: React.FC<Props> = ({ article }) => {
-  const { comments } = useContext(ClientContext);
-  const { id: articleId, likes } = article;
+  const { likes, comments, getLikesAndCommentOfThisblog, setLikes } =
+    useContext(ClientContext);
+  const { id: articleId } = article;
 
   const [isLiked, setIsLiked] = useState(false);
 
@@ -29,36 +39,60 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
   const isAlreadyLikedThisPost = thisUserCurrentLikesList.includes(articleId);
 
   useEffect(() => {
+    getLikesAndCommentOfThisblog();
     setIsLiked(isAlreadyLikedThisPost);
   }, []);
 
-  const onLikeClickHandler = () => {
+  const onLikeClickHandler = async () => {
+    console.log("clicked! ", likes);
+
     let newLikeList: string[];
 
     if (isAlreadyLikedThisPost) {
+      // Unlike this post
       newLikeList = thisUserCurrentLikesList.filter((id) => id !== articleId);
     } else {
       newLikeList = [...thisUserCurrentLikesList];
       newLikeList.push(articleId);
     }
 
-    localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
+    try {
+      await ApiService.postLike(articleId, isAlreadyLikedThisPost);
 
-    setIsLiked(!isAlreadyLikedThisPost);
+      // Update likes locally
+      localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
+      setLikes(likes + (isAlreadyLikedThisPost ? -1 : 1));
+      setIsLiked(!isAlreadyLikedThisPost);
+    } catch (err) {
+      showToast(err);
+    }
   };
 
   const onCommentHandler = () => {
-    document
-      .getElementById("comment-section")
-      ?.scrollIntoView({ behavior: "smooth" });
+    const offset =
+      document.getElementById("navbar-top-header")!.clientHeight + 20;
+
+    const commentSection = document.getElementById("comment-section")!;
+
+    const elementPosition =
+      commentSection.getBoundingClientRect().top + window.scrollY;
+
+    const scrollToPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: scrollToPosition,
+      behavior: "smooth",
+    });
   };
+
+  const debouncedLikeHandler = useDebounce(onLikeClickHandler, 5000);
 
   return (
     <div className={styles["action-buttons-wrapper"]}>
       <button
         className={`${styles["action-button"]} ${styles["action-button--like"]}`}
         data-has-action={isLiked}
-        onClick={onLikeClickHandler}
+        onClick={debouncedLikeHandler}
       >
         {likes}
       </button>

@@ -6,14 +6,21 @@ type Props = {
   username: string;
   date: number; // epoch
   body: string;
+  userProfilePicture: string;
+  isAuthor: boolean;
 };
 
-const CommentCard: React.FC<Props> = ({ username, date, body }) => {
+const CommentCard: React.FC<Props> = (props) => {
+  const { username, date, body, userProfilePicture, isAuthor } = props;
+
   return (
     <div className={styles["card-wrapper"]}>
-      <img src={meIcon.src} className={styles["avatar"]} />
+      <img
+        src={isAuthor ? meIcon.src : userProfilePicture}
+        className={styles["avatar"]}
+      />
       <div className={styles["card"]}>
-        <h4>{username}</h4>
+        <h4>{`${username} ${isAuthor ? "(Author)" : ""}`}</h4>
         <h5> {new Date(date).toDateString()}</h5>
         <p className={styles["comment-body"]}>{body}</p>
       </div>

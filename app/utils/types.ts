@@ -22,6 +22,8 @@ export interface Article {
 export interface Comment {
   id: string;
   username: string;
+  userProfilePicture: string;
+  isAuthor: boolean;
   body: string;
   timestamp: number;
   email: string | null;
@@ -51,14 +53,21 @@ export interface ArticleInterface extends BlogCardInterface {
 
 export interface ClientContextState {
   comments: Comment[];
+  likes: number;
 }
 
-export interface ClientContextProviderValue {
-  comments: Comment[];
-  dispatch: React.Dispatch<ClientAction<unknown>>;
+export interface ClientContextProviderValue extends ClientContextState {
+  getLikesAndCommentOfThisblog: () => void;
+  setLikes: (param: number) => void;
 }
 
 export interface ClientAction<T extends unknown> {
   type: ClientActionType;
   value: T;
+}
+
+export interface Toast {
+  id: string;
+  isError: boolean;
+  text: string;
 }
