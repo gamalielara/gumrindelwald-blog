@@ -117,4 +117,5 @@ export enum LocalStorageKey {
 
 export enum ClientActionType {
   UPDATE_COMMENTS,
+  UPDATE_LIKES,
 }

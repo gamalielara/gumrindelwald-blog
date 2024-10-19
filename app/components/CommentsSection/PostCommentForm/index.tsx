@@ -1,15 +1,16 @@
 "use client";
 
-import React, { MouseEventHandler, useRef, useState } from "react";
+import React, { MouseEventHandler, useContext, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import ApiService from "<utils>/apiService";
+import { ClientContext } from "<utils>/clientContext";
 
 interface Props {
   blogId: string;
-  fetchComments: () => void;
 }
 
-const PostCommentForm: React.FC<Props> = ({ blogId, fetchComments }) => {
+const PostCommentForm: React.FC<Props> = ({ blogId }) => {
+  const { getLikesAndCommentOfThisblog } = useContext(ClientContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
@@ -44,7 +45,7 @@ const PostCommentForm: React.FC<Props> = ({ blogId, fetchComments }) => {
 
       // TODO: show successful toast
       console.log("SUCCESS!");
-      fetchComments();
+      getLikesAndCommentOfThisblog();
 
       setUsername("");
       setEmail("");

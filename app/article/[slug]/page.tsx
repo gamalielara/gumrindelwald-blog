@@ -50,7 +50,7 @@ const ArticlePage: React.FC<Props> = async ({ params: { slug } }) => {
   const article = await ApiService.getSingleArticle(decodeURIComponent(slug));
 
   return (
-    <ClientProvider>
+    <ClientProvider slug={slug}>
       <PageContainer>
         <article className={styles["article-post-wrapper"]}>
           <p className={styles["published-on-text"]}>

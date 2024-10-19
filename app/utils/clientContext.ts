@@ -3,5 +3,7 @@ import { ClientContextProviderValue, ClientContextState } from "./types";
 
 export const ClientContext = React.createContext<ClientContextProviderValue>({
   comments: [],
-  dispatch: () => {},
+  likes: 0,
+  setLikes: undefined as unknown as () => void,
+  getLikesAndCommentOfThisblog: undefined as unknown as () => void,
 });

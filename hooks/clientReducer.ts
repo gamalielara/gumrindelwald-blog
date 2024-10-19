@@ -6,6 +6,8 @@ export const clientReducer = (
   action: ClientAction<unknown>
 ): ClientContextState => {
   switch (action.type) {
+    case ClientActionType.UPDATE_LIKES:
+      return { ...state, likes: action.value as number };
     case ClientActionType.UPDATE_COMMENTS:
     default:
       return { ...state, comments: action.value as Comment[] };

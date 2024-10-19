@@ -5,14 +5,16 @@ import styles from "./styles.module.scss";
 import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
 import { ClientContext } from "<utils>/clientContext";
+import ApiService from "<utils>/apiService";
 
 type Props = {
   article: Article;
 };
 
 const ActionButtons: React.FC<Props> = ({ article }) => {
-  const { comments } = useContext(ClientContext);
-  const { id: articleId, likes } = article;
+  const { likes, comments, getLikesAndCommentOfThisblog, setLikes } =
+    useContext(ClientContext);
+  const { id: articleId } = article;
 
   const [isLiked, setIsLiked] = useState(false);
 
@@ -29,21 +31,26 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
   const isAlreadyLikedThisPost = thisUserCurrentLikesList.includes(articleId);
 
   useEffect(() => {
+    getLikesAndCommentOfThisblog();
     setIsLiked(isAlreadyLikedThisPost);
   }, []);
 
-  const onLikeClickHandler = () => {
+  const onLikeClickHandler = async () => {
     let newLikeList: string[];
 
     if (isAlreadyLikedThisPost) {
+      // Unlike this post
       newLikeList = thisUserCurrentLikesList.filter((id) => id !== articleId);
     } else {
       newLikeList = [...thisUserCurrentLikesList];
       newLikeList.push(articleId);
     }
 
-    localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
+    await ApiService.postLike(articleId, isAlreadyLikedThisPost);
 
+    // Update likes locally
+    localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
+    setLikes(likes + (isAlreadyLikedThisPost ? -1 : 1));
     setIsLiked(!isAlreadyLikedThisPost);
   };
 

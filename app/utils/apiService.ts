@@ -101,6 +101,25 @@ class ApiService {
       throw err;
     }
   };
+
+  public static postLike = async (blogId: string, isLiked: boolean) => {
+    const thisBlogDoc = doc(firestoreDB, "blogs", blogId);
+    const thisBlog = await getDoc(thisBlogDoc);
+
+    if (!thisBlog.exists()) {
+      throw new Error("Blog does not exist.");
+    }
+
+    const thisBlogLikes = thisBlog.data().likes;
+
+    try {
+      await updateDoc(thisBlogDoc, {
+        likes: thisBlogLikes + (isLiked ? -1 : 1),
+      });
+    } catch (err) {
+      throw err;
+    }
+  };
 }
 
 export default ApiService;

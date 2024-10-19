@@ -53,11 +53,12 @@ export interface ArticleInterface extends BlogCardInterface {
 
 export interface ClientContextState {
   comments: Comment[];
+  likes: number;
 }
 
-export interface ClientContextProviderValue {
-  comments: Comment[];
-  dispatch: React.Dispatch<ClientAction<unknown>>;
+export interface ClientContextProviderValue extends ClientContextState {
+  getLikesAndCommentOfThisblog: () => void;
+  setLikes: (param: number) => void;
 }
 
 export interface ClientAction<T extends unknown> {
