@@ -79,7 +79,7 @@ class ApiService {
     }
 
     const commentsToPost: Omit<Comment, "id"> & { id: string | null } = {
-      username,
+      username: username || "Anonymous",
       body,
       email: email || null,
       timestamp: Date.now(),

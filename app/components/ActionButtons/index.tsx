@@ -1,12 +1,19 @@
 "use client";
 
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import styles from "./styles.module.scss";
 import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
 import { ClientContext } from "<utils>/clientContext";
 import ApiService from "<utils>/apiService";
 import { showToast } from "<utils>/showToast";
+import useDebounce from "../../../hooks/useDebounce";
 
 type Props = {
   article: Article;
@@ -37,6 +44,8 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
   }, []);
 
   const onLikeClickHandler = async () => {
+    console.log("clicked! ", likes);
+
     let newLikeList: string[];
 
     if (isAlreadyLikedThisPost) {
@@ -76,12 +85,14 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
     });
   };
 
+  const debouncedLikeHandler = useDebounce(onLikeClickHandler, 5000);
+
   return (
     <div className={styles["action-buttons-wrapper"]}>
       <button
         className={`${styles["action-button"]} ${styles["action-button--like"]}`}
         data-has-action={isLiked}
-        onClick={onLikeClickHandler}
+        onClick={debouncedLikeHandler}
       >
         {likes}
       </button>

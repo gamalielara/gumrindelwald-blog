@@ -1,10 +1,17 @@
 "use client";
 
-import React, { MouseEventHandler, useContext, useRef, useState } from "react";
+import React, {
+  MouseEventHandler,
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import styles from "./styles.module.scss";
 import ApiService from "<utils>/apiService";
 import { ClientContext } from "<utils>/clientContext";
 import { showToast } from "<utils>/showToast";
+import useDebounce from "../../../../hooks/useDebounce";
 
 interface Props {
   blogId: string;
@@ -16,22 +23,9 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
 
-  const submitCommentHandler: MouseEventHandler<HTMLInputElement> = async (
-    e
-  ) => {
-    e.preventDefault();
-
-    if (!username || !body) {
-      const missingFields = [];
-
-      if (!username) {
-        missingFields.push("username");
-      }
-
-      if (!body) {
-        missingFields.push("comment content");
-      }
-      showToast(`You need to fill your ${missingFields.join(" and ")}`);
+  const submitCommentHandler = async () => {
+    if (!body) {
+      showToast("You need to fill your comment content");
       return;
     }
 
@@ -64,14 +58,15 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
     }
   };
 
+  const debouncedPostCommentHandlder = useDebounce(submitCommentHandler, 10000);
+
   return (
     <section className={styles["post-comment-form"]}>
       <form className={styles["comment-form"]}>
         <h4>Post your comment here</h4>
         <input
-          required
           type="text"
-          placeholder="Enter your name here"
+          placeholder="Enter your name here (Optional)"
           className={styles["comment-section-input"]}
           value={username}
           onChange={(e) => {
@@ -100,7 +95,10 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
           className={styles["submit-comment-btn"]}
           type="submit"
           value="Post Comment"
-          onClick={submitCommentHandler}
+          onClick={(e) => {
+            e.preventDefault();
+            debouncedPostCommentHandlder();
+          }}
         />
       </form>
     </section>
