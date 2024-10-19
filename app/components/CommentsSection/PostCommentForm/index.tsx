@@ -4,7 +4,7 @@ import React, { MouseEventHandler, useContext, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import ApiService from "<utils>/apiService";
 import { ClientContext } from "<utils>/clientContext";
-import { handleError } from "<utils>/handleError";
+import { showToast } from "<utils>/showToast";
 
 interface Props {
   blogId: string;
@@ -22,7 +22,16 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
     e.preventDefault();
 
     if (!username || !body) {
-      // TODO: show toast validate username and body
+      const missingFields = [];
+
+      if (!username) {
+        missingFields.push("username");
+      }
+
+      if (!body) {
+        missingFields.push("comment content");
+      }
+      showToast(`You need to fill your ${missingFields.join(" and ")}`);
       return;
     }
 
@@ -32,7 +41,7 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       )
     ) {
-      // TODO: show toast Validate valid email
+      showToast("Oops, seems your email format is not correct.");
       return;
     }
 
@@ -44,15 +53,14 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
         body,
       });
 
-      // TODO: show successful toast
-      console.log("SUCCESS!");
+      showToast("Your comment has successfully been posted!😆");
       getLikesAndCommentOfThisblog();
-    } catch (err) {
-      handleError(err);
-    } finally {
+
       setUsername("");
       setEmail("");
       setBody("");
+    } catch (err) {
+      showToast(err);
     }
   };
 

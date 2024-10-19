@@ -1,0 +1,12 @@
+.toast-box {
+  min-height: 60px;
+  border-radius: 10px;
+  background-color: var(--btn-color-primary);
+  padding: 10px;
+  pointer-events: auto;
+  transform: translateX(100%);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--text-secondary-color);
+}

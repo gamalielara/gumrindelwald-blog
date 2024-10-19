@@ -121,5 +121,5 @@ export enum ClientActionType {
 }
 
 export enum CustomEventNames {
-  ERROR = "gw_custom_event_error",
+  SHOW_TOAST = "gw_custom_show_toast",
 }

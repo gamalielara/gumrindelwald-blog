@@ -6,7 +6,7 @@ import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
 import { ClientContext } from "<utils>/clientContext";
 import ApiService from "<utils>/apiService";
-import { handleError } from "<utils>/handleError";
+import { showToast } from "<utils>/showToast";
 
 type Props = {
   article: Article;
@@ -55,7 +55,7 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
       setLikes(likes + (isAlreadyLikedThisPost ? -1 : 1));
       setIsLiked(!isAlreadyLikedThisPost);
     } catch (err) {
-      handleError(err);
+      showToast(err);
     }
   };
 

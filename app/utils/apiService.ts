@@ -1,6 +1,6 @@
 import { Category } from "./constants";
 import { firestoreDB } from "./firebase";
-import { handleError } from "./handleError";
+import { showToast } from "./showToast";
 import { Article, Comment } from "./types";
 import { faker } from "@faker-js/faker";
 import {

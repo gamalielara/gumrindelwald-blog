@@ -65,3 +65,9 @@ export interface ClientAction<T extends unknown> {
   type: ClientActionType;
   value: T;
 }
+
+export interface Toast {
+  id: string;
+  isError: boolean;
+  text: string;
+}

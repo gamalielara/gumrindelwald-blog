@@ -9,10 +9,10 @@ export default ({ children }: PropsWithChildren<unknown>) => {
       console.log("ERROR? ", (event as CustomEvent).detail);
     };
 
-    document.addEventListener(CustomEventNames.ERROR, handleError);
+    document.addEventListener(CustomEventNames.SHOW_TOAST, handleError);
 
     return () =>
-      document.removeEventListener(CustomEventNames.ERROR, handleError);
+      document.removeEventListener(CustomEventNames.SHOW_TOAST, handleError);
   }, []);
 
   return children;
