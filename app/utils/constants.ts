@@ -119,3 +119,7 @@ export enum ClientActionType {
   UPDATE_COMMENTS,
   UPDATE_LIKES,
 }
+
+export enum CustomEventNames {
+  ERROR = "gw_custom_event_error",
+}

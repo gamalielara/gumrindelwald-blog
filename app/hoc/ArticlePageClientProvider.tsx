@@ -9,7 +9,7 @@ interface Props {
   slug: string;
 }
 
-const ClientProvider: React.FC<PropsWithChildren<Props>> = ({
+const ArticlePageClientProvider: React.FC<PropsWithChildren<Props>> = ({
   slug,
   children,
 }) => {
@@ -37,4 +37,4 @@ const ClientProvider: React.FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default ClientProvider;
+export default ArticlePageClientProvider;

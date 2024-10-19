@@ -6,6 +6,7 @@ import { LocalStorageKey } from "<utils>/constants";
 import { Article } from "<utils>/types";
 import { ClientContext } from "<utils>/clientContext";
 import ApiService from "<utils>/apiService";
+import { handleError } from "<utils>/handleError";
 
 type Props = {
   article: Article;
@@ -46,12 +47,16 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
       newLikeList.push(articleId);
     }
 
-    await ApiService.postLike(articleId, isAlreadyLikedThisPost);
+    try {
+      await ApiService.postLike(articleId, isAlreadyLikedThisPost);
 
-    // Update likes locally
-    localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
-    setLikes(likes + (isAlreadyLikedThisPost ? -1 : 1));
-    setIsLiked(!isAlreadyLikedThisPost);
+      // Update likes locally
+      localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
+      setLikes(likes + (isAlreadyLikedThisPost ? -1 : 1));
+      setIsLiked(!isAlreadyLikedThisPost);
+    } catch (err) {
+      handleError(err);
+    }
   };
 
   const onCommentHandler = () => {

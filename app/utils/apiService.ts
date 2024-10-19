@@ -1,5 +1,6 @@
 import { Category } from "./constants";
 import { firestoreDB } from "./firebase";
+import { handleError } from "./handleError";
 import { Article, Comment } from "./types";
 import { faker } from "@faker-js/faker";
 import {
@@ -14,11 +15,6 @@ import {
 } from "@firebase/firestore";
 
 class ApiService {
-  private static projectId: string = process.env.REACT_APP_PROJECTID ?? "";
-
-  private static baseFirestoreGoogleAPIURL =
-    "https://firestore.googleapis.com/v1/projects";
-
   private static blogsDocRef = collection(firestoreDB, "blogs");
 
   public static getAllArticles = async (): Promise<Article[]> => {
@@ -93,13 +89,9 @@ class ApiService {
       isAuthor: false,
     };
 
-    try {
-      await updateDoc(thisBlogDoc, {
-        comments: arrayUnion(commentsToPost),
-      });
-    } catch (err) {
-      throw err;
-    }
+    await updateDoc(thisBlogDoc, {
+      comments: arrayUnion(commentsToPost),
+    });
   };
 
   public static postLike = async (blogId: string, isLiked: boolean) => {
@@ -112,13 +104,9 @@ class ApiService {
 
     const thisBlogLikes = thisBlog.data().likes;
 
-    try {
-      await updateDoc(thisBlogDoc, {
-        likes: thisBlogLikes + (isLiked ? -1 : 1),
-      });
-    } catch (err) {
-      throw err;
-    }
+    await updateDoc(thisBlogDoc, {
+      likes: thisBlogLikes + (isLiked ? -1 : 1),
+    });
   };
 }
 

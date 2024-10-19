@@ -4,6 +4,7 @@ import React, { MouseEventHandler, useContext, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import ApiService from "<utils>/apiService";
 import { ClientContext } from "<utils>/clientContext";
+import { handleError } from "<utils>/handleError";
 
 interface Props {
   blogId: string;
@@ -46,13 +47,12 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
       // TODO: show successful toast
       console.log("SUCCESS!");
       getLikesAndCommentOfThisblog();
-
+    } catch (err) {
+      handleError(err);
+    } finally {
       setUsername("");
       setEmail("");
       setBody("");
-    } catch (err) {
-      //TODO: show error toast
-      console.log("There is something wrong", err);
     }
   };
 
