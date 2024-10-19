@@ -48,9 +48,20 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
   };
 
   const onCommentHandler = () => {
-    document
-      .getElementById("comment-section")
-      ?.scrollIntoView({ behavior: "smooth" });
+    const offset =
+      document.getElementById("navbar-top-header")!.clientHeight + 20;
+
+    const commentSection = document.getElementById("comment-section")!;
+
+    const elementPosition =
+      commentSection.getBoundingClientRect().top + window.scrollY;
+
+    const scrollToPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: scrollToPosition,
+      behavior: "smooth",
+    });
   };
 
   return (

@@ -1,6 +1,7 @@
 import { Category } from "./constants";
 import { firestoreDB } from "./firebase";
 import { Article, Comment } from "./types";
+import { faker } from "@faker-js/faker";
 import {
   collection,
   query,
@@ -88,6 +89,8 @@ class ApiService {
       timestamp: Date.now(),
       replies: [],
       id: window.location.hostname === "localhost" ? crypto.randomUUID() : null,
+      userProfilePicture: faker.image.avatarGitHub(),
+      isAuthor: false,
     };
 
     try {

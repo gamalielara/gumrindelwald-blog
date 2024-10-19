@@ -30,14 +30,18 @@ const CommentsSection: React.FC<Props> = ({ blogId }) => {
         <h2 className={styles["comment-title"]}>
           {comments.length} Comment{comments.length > 1 && "s"}
         </h2>
-        {comments.map(({ username, timestamp, body, id }) => (
-          <CommentCard
-            key={id}
-            username={username}
-            date={timestamp}
-            body={body}
-          />
-        ))}
+        {comments.map(
+          ({ username, timestamp, body, userProfilePicture, isAuthor, id }) => (
+            <CommentCard
+              key={id}
+              username={username}
+              date={timestamp}
+              body={body}
+              userProfilePicture={userProfilePicture}
+              isAuthor={isAuthor}
+            />
+          )
+        )}
       </section>
       <PostCommentForm blogId={blogId} fetchComments={fetchComments} />
     </>

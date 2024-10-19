@@ -22,6 +22,8 @@ export interface Article {
 export interface Comment {
   id: string;
   username: string;
+  userProfilePicture: string;
+  isAuthor: boolean;
   body: string;
   timestamp: number;
   email: string | null;
