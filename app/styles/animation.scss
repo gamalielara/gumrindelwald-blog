@@ -34,3 +34,22 @@
     backdrop-filter: blur(35px);
   }
 }
+
+@keyframes smileIconZoomIn {
+  0% {
+    transform: scale(0) rotate(60deg);
+  }
+
+  40% {
+    transform: scale(1.5) rotate(0deg);
+  }
+
+  80% {
+    transform: scale(1.5) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(0) rotate(60deg);
+  }
+
+}

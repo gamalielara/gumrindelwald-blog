@@ -17,6 +17,7 @@
   padding: 10px 20px 10px 0;
   color: var(--text-color);
   font-weight: bold;
+  position: relative;
 
   --like-icon: url("../../../assets/svg/heart.svg");
 
@@ -41,6 +42,18 @@
   &--like {
     &::before {
       content: var(--like-icon);
+    }
+
+    &[data-is-clicked="true"] {
+      &[data-has-action="true"] {
+        &::after {
+          content: url("../../../assets/svg/smile.svg");
+          position: absolute;
+          width: 100%;
+          top: 0;
+          animation: smileIconZoomIn 1s forwards;
+        }
+      }
     }
   }
 
@@ -74,7 +87,6 @@
       flex-direction: column;
       margin-left: 20px;
       height: fit-content;
-
       position: sticky;
       top: 25%;
     }
