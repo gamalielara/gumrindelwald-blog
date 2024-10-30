@@ -180,6 +180,7 @@
 
   @media screen and (min-width: $screen-lg-md) {
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
+    padding: 0 1rem;
   }
 }
