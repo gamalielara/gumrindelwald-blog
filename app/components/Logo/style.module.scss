@@ -1,0 +1,84 @@
+@import "../../styles/main.scss";
+
+.logo {
+  display: flex;
+  justify-items: flex-end;
+  width: fit-content;
+  margin: auto;
+  font-weight: 600;
+  color: var(--logo-color);
+
+  &[color*="white"] {
+    color: white;
+  }
+
+  &[letterSpacing] {
+    letter-spacing: 1;
+  }
+
+  &[data-should-animate="false"] {
+    & > div,
+    em,
+    span {
+      animation: unset !important;
+    }
+  }
+}
+
+.landingpage-logo {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+
+  @media screen and (min-width: $screen-xs) {
+    & {
+      font-size: 3.25rem !important;
+    }
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    & {
+      font-size: 3.75rem !important;
+    }
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    & {
+      font-size: 5rem !important;
+    }
+  }
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.main-text {
+  overflow: hidden;
+  display: inline-block;
+  animation: mainAnimationKeyframes 10s infinite;
+  color: inherit;
+  transition: unset;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.em-text {
+  display: flex;
+  transition: unset;
+  color: inherit;
+
+  & > span {
+    font-style: italic;
+    overflow: hidden;
+    transition: unset;
+    color: inherit;
+    animation: italicAnimationKeyframes 10s infinite;
+
+    & > span {
+      transition: unset;
+      color: inherit;
+      padding-right: 10px;
+    }
+  }
+}

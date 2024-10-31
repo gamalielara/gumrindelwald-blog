@@ -1,0 +1,25 @@
+.card-wrapper {
+  display: flex;
+  max-width: 100%;
+  min-height: 10ch;
+  margin: 10px 0;
+}
+
+.card {
+  background-color: var(--card-color);
+  border-radius: 10px;
+  flex: 1;
+  margin-left: 5px;
+  padding: 10px 20px;
+}
+
+.avatar {
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 5px;
+}
+
+.comment-body {
+  margin-top: 10px;
+}

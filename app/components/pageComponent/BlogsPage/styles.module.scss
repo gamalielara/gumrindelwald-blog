@@ -1,0 +1,76 @@
+@import "../../../styles/main.scss";
+
+.main-banner {
+  height: $BANNER_SECTION_HEIGHT;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gumrindelwald-title {
+  text-align: center;
+  width: 100%;
+  font-size: 5rem;
+  margin-bottom: 0;
+}
+
+.featured-blog-card {
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.cards-wrapper {
+  width: 100%;
+  overflow: hidden;
+
+  & > div:first-child {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+  & > div {
+    transition: all 1s ease-in-out;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto 20px;
+  gap: 2rem;
+}
+
+.button-pagination {
+  border-radius: 100%;
+  width: 2rem;
+  aspect-ratio: 1;
+  justify-items: center;
+  align-items: center;
+  background-color: var(--background-color)-grey;
+  border: none;
+  cursor: pointer;
+  color: black;
+
+  @supports not (aspect-ratio: 1) {
+    height: 2rem;
+  }
+
+  &[class*="selected"] {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+}
+
+.no-blog-text {
+  font-size: 2rem;
+  text-align: center;
+  margin: 2rem auto;
+  font-weight: bold;
+}

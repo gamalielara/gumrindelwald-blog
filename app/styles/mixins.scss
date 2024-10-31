@@ -1,0 +1,37 @@
+@mixin positionCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin getPageContainerWidth() {
+  --container-width: 100vw;
+
+  @media screen and (min-width: $screen-lg) {
+    --container-width: 80ch;
+  }
+
+  @media screen and (min-width: $screen-lg-md) {
+    --container-width: 90ch;
+  }
+
+  @media screen and (min-width: $screen-2xl) {
+    --container-width: 90ch;
+  }
+}
+
+@mixin getBlogCardAspectRatio() {
+  --blog-card-aspect-ratio: 1 / 1.5;
+  --card-padding-top: 130%;
+
+  @media screen and (min-width: $screen-xs) {
+    --blog-card-aspect-ratio: 1;
+    --card-padding-top: 100%;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    --blog-card-aspect-ratio: 1 / 1.5;
+    --card-padding-top: 130%;
+  }
+}

@@ -1,0 +1,60 @@
+.post-comment-form {
+  min-height: 25vh;
+  pointer-events: initial;
+  margin-top: 75px;
+}
+.comment-form {
+  display: flex;
+  flex-direction: column;
+
+  & > h2 {
+    margin: 10px 0;
+    font-size: 2rem;
+    display: flex;
+
+    &:before {
+      content: url("../../../../assets/svg/comments-two-bubbles.svg");
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      color: inherit;
+      margin-right: 5px;
+    }
+  }
+}
+
+.insert-comment-field,
+.comment-section-input {
+  width: 100%;
+  margin: 5px 0;
+  resize: none;
+  background-color: var(--card-color);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--text-color);
+
+  &::placeholder {
+    color: var(--text-secondary-color);
+  }
+}
+
+.insert-comment-field {
+  height: 10ch;
+}
+
+.submit-comment-btn {
+  all: unset;
+  max-width: 50%;
+  width: fit-content;
+  background-color: var(--btn-color-primary);
+  color: var(--text-secondary-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

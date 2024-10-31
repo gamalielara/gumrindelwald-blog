@@ -1,0 +1,62 @@
+@import "../../../styles/main.scss";
+
+.page-container {
+  @include getPageContainerWidth();
+
+  width: var(--container-width);
+  max-width: 100%;
+
+
+  display: flex;
+  margin: 0 auto;
+
+  @media screen and (min-width: $screen-md) {
+    padding: 0 1rem;
+    display: block;
+  }
+
+  &[data-page*="me-page"] {
+    min-height: 100%;
+  }
+}
+
+.main-container {
+  width: 100%;
+}
+
+.blog-container {
+  padding: 0 0.25rem;
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (min-width: $screen-xs) {
+    padding: 0 1rem;
+  }
+}
+
+.sidebar {
+  width: fit-content;
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-items: flex-end;
+  transition: all 700ms ease-in-out;
+  z-index: 9999;
+  right: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(99999999px);
+
+  @media screen and (min-width: $screen-lg-md) {
+    visibility: hidden;
+  }
+}
+
+.bg-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background-color: black;
+  opacity: 0.2;
+  transition: visibility 0.5s ease-in;
+}

@@ -1,0 +1,91 @@
+@import "../../styles/main.scss";
+
+$SLIDE_IN_DURATION: 0.5s;
+
+.sidebar-aside {
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  background-color: var(--background-color-header);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  padding: 1rem;
+  top: 0;
+  bottom: 0;
+  transition: $SLIDE_IN_DURATION cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  transform: translateX(100%);
+  backdrop-filter: blur(10px);
+
+  @media screen and (min-width: $screen-md) {
+    display: none;
+  }
+
+  &[data-slide-in="true"] {
+    transform: translateX(0);
+    animation: asideToBlur 1.5s forwards;
+    animation-delay: calc($SLIDE_IN_DURATION + 0.1s);
+  }
+
+  &::before {
+    content: "";
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.25);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    [data-theme="dunkel"] & {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.nav-menu-list {
+  list-style: none;
+  width: 100%;
+  padding: 1rem;
+}
+
+.nav-menu {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 2.5rem 0;
+  font-weight: 600;
+  min-width: 0;
+  width: fit-content;
+  padding: 10px;
+
+  &[data-is-selected="true"] {
+    background-color: var(--card-color);
+    border-radius: 10px;
+  }
+
+  & > a > span {
+    color: var(--nav-link-text-color);
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin: 4rem 0;
+  }
+
+  @media screen and (min-width: $screen-lg-md) {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin: 2rem 0;
+  }
+}
+
+.back-btn {
+  all: unset;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 35px;
+  right: 35px;
+}

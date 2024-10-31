@@ -1,0 +1,96 @@
+@import "./main.scss";
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: all 1s ease-in-out;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+em {
+  color: var(--text-color);
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+a {
+  text-decoration: unset;
+}
+
+input,
+textarea,
+select,
+button,
+a {
+  -webkit-tap-highlight-color: transparent; /* For Safari on iOS */
+  outline: none; /* Remove the outline */
+}
+
+/* For Android-specific browsers */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: none; /* Remove any box-shadow that may be added */
+}

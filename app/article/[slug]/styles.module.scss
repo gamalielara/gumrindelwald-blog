@@ -1,0 +1,186 @@
+@import "../../styles/main.scss";
+
+.article-post-wrapper {
+  width: 100%;
+  margin-top: 5rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.published-on-text {
+  font-size: 0.875rem;
+  text-align: center;
+  color: var(--text-color);
+
+  @media screen and (min-width: $screen-md) {
+    font-size: 1rem;
+  }
+
+  & > strong {
+    color: var(--text-color);
+  }
+}
+
+.article-title {
+  font-size: 2rem;
+  text-align: center;
+
+  @media screen and (min-width: $screen-md) {
+    font-size: 3rem;
+  }
+}
+
+.category-box {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.article-thumbnail {
+  width: auto;
+  height: 30vh;
+  margin: 1rem;
+  position: relative;
+  border-radius: 0.5rem;
+
+  & img {
+    border-radius: 0.5rem;
+  }
+
+  @media screen and (min-width: $screen-lg-md) {
+    height: 50vmin;
+  }
+
+  @media screen and (min-width: $screen-lg-md) {
+    height: 75vmin;
+  }
+}
+
+.article-post {
+  justify-content: space-evenly;
+  width: auto;
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: $screen-md) {
+    margin-bottom: 0.5rem;
+  }
+
+  & > * {
+    margin: 1.5rem 0;
+    color: var(--text-color);
+  }
+
+  & > h1,
+  h2 {
+    margin-top: 3.5rem;
+    margin-bottom: 0;
+  }
+
+  & > h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 2.5rem;
+  }
+
+  & *:has(> br:only-child) {
+    display: none;
+  }
+
+  & p > *:has(+ strong) {
+    font-weight: bold;
+    font-style: normal;
+    margin-right: 0.5ch;
+  }
+
+  & > p,
+  blockquote,
+  li,
+  span,
+  em,
+  strong {
+    font-size: 1rem;
+  }
+
+  & > h1,
+  h2 {
+    font-size: 1.25rem;
+    @media screen and (min-width: $screen-md) {
+      font-size: 2rem;
+    }
+
+    & em,
+    strong {
+      font-size: inherit;
+    }
+  }
+
+  & > p,
+  li {
+    text-align: justify;
+    line-height: 1.5rem;
+  }
+
+  & > blockquote {
+    margin: 2.5rem auto;
+    width: 75%;
+    padding: 1rem 1.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--card-color);
+    position: relative;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: justify;
+
+    & > strong {
+      font-weight: bold;
+    }
+
+    @media screen and (min-width: $screen-lg) {
+      width: 50%;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      font-style: initial;
+
+      [data-theme="dunkel"] & {
+        filter: invert(1);
+      }
+    }
+
+    &:before {
+      content: url("../../../assets/svg/quote-right.svg");
+      top: -15px;
+      left: -15px;
+    }
+
+    &:after {
+      content: url("../../../assets/svg/quote-left.svg");
+      bottom: -20px;
+      right: -15px;
+    }
+  }
+
+  & p > img {
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+    border-radius: 0.5rem;
+    max-height: 50vh;
+    object-fit: contain;
+  }
+}
+
+.article-body {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: $screen-lg-md) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+}

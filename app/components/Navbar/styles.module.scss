@@ -1,0 +1,133 @@
+@import "../../styles/main.scss";
+
+$HEADER_MARGIN_TOP: -999px;
+
+.header-base {
+  position: sticky;
+  left: 0;
+  display: flex;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(50px);
+  background-color: var(--background-color-header);
+  z-index: 99;
+  transition: all ease-in-out 100ms;
+  transform-style: preserve-3d;
+  transform: translateZ(999999px);
+  justify-content: space-between;
+  margin: 10px;
+  border-radius: 20px;
+  align-items: center;
+  top: $HEADER_MARGIN_TOP;
+
+  &[data-should-show="no"] {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &[data-should-show="yes"] {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  // Color theme button
+  button + button {
+    display: none;
+
+    @media screen and (min-width: $screen-md) {
+      display: flex;
+    }
+  }
+}
+
+.logo-container {
+  &:hover {
+    cursor: pointer;
+  }
+
+  & > span:first-child {
+    font-size: 3rem;
+  }
+}
+
+.nav-menus-container {
+  display: none;
+  visibility: inherit;
+
+  @media screen and (min-width: $screen-md) {
+    display: block;
+  }
+}
+
+.hamburger-menu {
+  all: unset;
+  display: block;
+  width: 30px;
+  height: 30px;
+
+  @media screen and (min-width: $screen-md) {
+    display: none;
+  }
+}
+
+.nav-menu-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  visibility: inherit;
+  position: relative;
+  transition: all 0.1s ease;
+
+  a > span {
+    visibility: inherit;
+  }
+
+  &:before {
+    content: "";
+    left: anchor(--a left);
+    width: anchor-size(--a width);
+    height: anchor-size(--a height);
+    position: absolute;
+    background-color: var(--text-secondary-color);
+    z-index: -1;
+    border-radius: 10px;
+  }
+}
+
+.nav-menu {
+  margin-top: 0.25rem;
+  width: calc((5 / 6) * 100%);
+  transition: all 1s ease;
+  border-radius: 5px;
+  padding: 0.5rem;
+
+  &[data-is-selected="true"] {
+    background-color: var(--card-color);
+    border-radius: 10px;
+  }
+
+  &:has(a:is(:hover, :focus-visible)) {
+    anchor-name: --a;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    margin: 0 0.5rem;
+    width: auto;
+  }
+
+  span {
+    color: var(--nav-link-text-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0;
+
+    @media screen and (min-width: $screen-md) {
+      font-size: 1rem;
+    }
+  }
+}

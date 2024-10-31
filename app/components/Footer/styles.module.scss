@@ -1,0 +1,94 @@
+@import "../../styles/main.scss";
+
+.footer {
+  background-color: var(--background-color-grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px 5px;
+  z-index: 0;
+  height: fit-content;
+  transform: translateY(50%);
+
+  &::before {
+    content: "";
+    mask-image: url("../../../assets/svg/wave.svg");
+    background-color: var(--background-color-grey);
+    mask-repeat: repeat-x;
+    mask-position: bottom;
+    height: 50%;
+    width: 100%;
+    bottom: 99%;
+    position: absolute;
+  }
+}
+
+.footer-wrapper {
+  width: 60%;
+  margin: 1rem 0;
+  pointer-events: none;
+
+  @media screen and (min-width: $screen-md) {
+    width: 50%;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    width: calc((1 / 6) * 100%);
+  }
+}
+
+.footer-desc {
+  color: var(--text-color);
+  text-align: center;
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+
+  @media screen and (min-width: $screen-lg) {
+    font-size: 1.25rem;
+  }
+
+  & a {
+    margin-left: 0.25em;
+    color: var(--link-text-color);
+  }
+}
+
+.social-media {
+  margin: 0.5rem 0;
+  width: 50%;
+  justify-content: center;
+  gap: 2rem;
+  display: flex;
+
+  & a {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    display: inline-block;
+    margin: 0 5px;
+
+    & > svg {
+      width: 100%;
+      aspect-ratio: 1;
+
+      @supports not (aspect-ratio: 1) {
+        height: 1.5rem;
+      }
+
+      @media screen and (max-width: $screen-md) {
+        font-size: 1.5rem;
+      }
+    }
+
+    @supports not (aspect-ratio: 1) {
+      height: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: $screen-md) {
+    justify-content: center;
+    gap: 2rem;
+  }
+}

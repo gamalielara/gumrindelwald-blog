@@ -1,0 +1,22 @@
+@import "../../styles/main.scss";
+
+.blog-cards-section {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: $screen-md) {
+    display: grid;
+    // grid-template-columns: repeat($blog-card-columns-sm, 1fr);
+    gap: 15px;
+    grid-template-columns: repeat($blog-card-columns-md, 1fr);
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    grid-template-columns: repeat($blog-card-columns-lg, 1fr);
+    gap: 25px;
+  }
+
+  &[data-type="general"] {
+    margin-top: $BANNER_SECTION_HEIGHT;
+  }
+}

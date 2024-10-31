@@ -1,0 +1,95 @@
+@import "../../styles/main.scss";
+
+.toggle-btn {
+  --toggle-button-height: 40px;
+  all: unset;
+  background-color: var(--theme-toggle-button-bgcolor);
+  height: var(--toggle-button-height);
+  width: 100px;
+  display: flex;
+  border-radius: 30px;
+  align-items: center;
+  padding: 0 3px;
+  position: relative;
+
+  @media screen and (min-width: $screen-md) {
+    --toggle-button-height: 30px;
+    width: 70px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    inset: 0;
+    position: absolute;
+    z-index: 9;
+    border-radius: inherit;
+    pointer-events: none;
+
+    @media screen and (min-width: $screen-md) {
+      padding: 0 5px;
+    }
+
+    & img {
+      transition-delay: 0.25s;
+      transition-duration: 0.5s;
+      height: 100%;
+
+      @media screen and (min-width: $screen-md) {
+        height: 80%;
+      }
+    }
+
+    // moon icon
+    & img:first-child {
+      transform-origin: top right;
+      transform: translateX(-50%) rotate(-45deg);
+      filter: invert(0.9);
+
+      [data-theme="dunkel"] & {
+        transform: rotate(0);
+      }
+    }
+
+    // sun icon
+    & img:nth-child(2) {
+      transform: rotate(90deg);
+
+      [data-theme="licht"] & {
+        transform: rotate(0);
+      }
+    }
+  }
+
+  // indicator
+  &:after {
+    --toggle-indicator-size: calc(var(--toggle-button-height) - 5px);
+
+    @media screen and (min-width: $screen-md) {
+      --toggle-button-height: 30px;
+    }
+
+    content: "";
+    display: inherit;
+    position: relative;
+    z-index: 99;
+    width: var(--toggle-indicator-size);
+    height: var(--toggle-indicator-size);
+    background-color: var(--theme-toggle-indicator-color);
+    border-radius: 100%;
+    margin-left: 0;
+    transition: all 0.75s cubic-bezier(0.26, 2, 0.46, 0.71);
+
+    [data-theme="dunkel"] & {
+      margin-left: calc(100% - var(--toggle-indicator-size));
+    }
+  }
+}
