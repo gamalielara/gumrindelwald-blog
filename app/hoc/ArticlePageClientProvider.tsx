@@ -1,19 +1,21 @@
 "use client";
 import { ClientContext } from "<utils>/clientContext";
-import React, { PropsWithChildren, useEffect, useReducer } from "react";
+import React, { PropsWithChildren, useReducer } from "react";
 import { clientReducer } from "../../hooks/clientReducer";
 import ApiService from "<utils>/apiService";
 import { ClientActionType } from "<utils>/constants";
+import usePermissions from "../../hooks/usePermissions";
 
 interface Props {
   slug: string;
 }
 
 const ArticlePageClientProvider: React.FC<PropsWithChildren<Props>> = ({
-  slug,
-  children,
-}) => {
-  const [state, dispatch] = useReducer(clientReducer, {
+                                                                         slug,
+                                                                         children,
+                                                                       }) => {
+  usePermissions();
+  const [ state, dispatch ] = useReducer(clientReducer, {
     comments: [],
     likes: 0,
   });
@@ -28,11 +30,12 @@ const ArticlePageClientProvider: React.FC<PropsWithChildren<Props>> = ({
     dispatch({ type: ClientActionType.UPDATE_LIKES, value: likes });
   };
 
+
   return (
     <ClientContext.Provider
-      value={{ ...state, setLikes, getLikesAndCommentOfThisblog }}
+      value={ { ...state, setLikes, getLikesAndCommentOfThisblog } }
     >
-      {children}
+      { children }
     </ClientContext.Provider>
   );
 };

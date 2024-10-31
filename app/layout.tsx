@@ -9,14 +9,15 @@ const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const cookieStore = cookies();
   const colorTheme = cookieStore.get(CookieNameKey.APP_THEME_COLOR);
 
+
   return (
     <html
       lang="id"
-      className={figTree.className}
-      data-theme={colorTheme?.value ?? AppThemeColor.LICHT}
+      className={ figTree.className }
+      data-theme={ colorTheme?.value ?? AppThemeColor.LICHT }
       id="root"
     >
-      <body>{children}</body>
+    <body>{ children }</body>
     </html>
   );
 };
