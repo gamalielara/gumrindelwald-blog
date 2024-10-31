@@ -51,7 +51,7 @@
           position: absolute;
           width: 100%;
           top: 0;
-          animation: smileIconZoomIn 1s forwards;
+          animation: smileIconZoomIn 1.5s forwards;
         }
       }
     }
@@ -80,6 +80,7 @@
 .action-buttons-wrapper {
   display: flex;
   flex-direction: row;
+  width: 2rem;
 
   &,
   & div {
