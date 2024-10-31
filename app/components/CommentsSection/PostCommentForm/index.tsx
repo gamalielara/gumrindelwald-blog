@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  MouseEventHandler,
-  useCallback,
-  useContext,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useState, } from "react";
 import styles from "./styles.module.scss";
 import ApiService from "<utils>/apiService";
 import { ClientContext } from "<utils>/clientContext";
@@ -19,12 +13,12 @@ interface Props {
 
 const PostCommentForm: React.FC<Props> = ({ blogId }) => {
   const { getLikesAndCommentOfThisblog } = useContext(ClientContext);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [body, setBody] = useState("");
+  const [ username, setUsername ] = useState("");
+  const [ email, setEmail ] = useState("");
+  const [ body, setBody ] = useState("");
 
   const submitCommentHandler = async () => {
-    if (!body) {
+    if ( !body ) {
       showToast("You need to fill your comment content");
       return;
     }
@@ -61,44 +55,35 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
   const debouncedPostCommentHandlder = useDebounce(submitCommentHandler, 10000);
 
   return (
-    <section className={styles["post-comment-form"]}>
-      <form className={styles["comment-form"]}>
+    <section className={ styles["post-comment-form"] }>
+      <form className={ styles["comment-form"] }>
         <h4>Post your comment here</h4>
         <input
           type="text"
           placeholder="Enter your name here (Optional)"
-          className={styles["comment-section-input"]}
-          value={username}
-          onChange={(e) => {
+          className={ styles["comment-section-input"] }
+          value={ username }
+          onChange={ (e) => {
             setUsername(e.target.value);
-          }}
-        />
-        <input
-          placeholder="Enter your email (optional, fill this if you want to get email notification if someone replies.)"
-          type="email"
-          className={styles["comment-section-input"]}
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
+          } }
         />
         <textarea
           required
           placeholder="Enter your comment here..."
-          className={styles["insert-comment-field"]}
-          value={body}
-          onChange={(e) => {
+          className={ styles["insert-comment-field"] }
+          value={ body }
+          onChange={ (e) => {
             setBody(e.target.value);
-          }}
+          } }
         />
         <input
-          className={styles["submit-comment-btn"]}
+          className={ styles["submit-comment-btn"] }
           type="submit"
           value="Post Comment"
-          onClick={(e) => {
+          onClick={ (e) => {
             e.preventDefault();
             debouncedPostCommentHandlder();
-          }}
+          } }
         />
       </form>
     </section>

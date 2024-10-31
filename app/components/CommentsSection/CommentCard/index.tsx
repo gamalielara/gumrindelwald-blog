@@ -13,16 +13,29 @@ type Props = {
 const CommentCard: React.FC<Props> = (props) => {
   const { username, date, body, userProfilePicture, isAuthor } = props;
 
+  const getCommentPublishedAt = () => {
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+    return formatter.format(date);
+  };
+
   return (
-    <div className={styles["card-wrapper"]}>
+    <div className={ styles["card-wrapper"] }>
       <img
-        src={isAuthor ? meIcon.src : userProfilePicture}
-        className={styles["avatar"]}
+        src={ isAuthor ? meIcon.src : userProfilePicture }
+        className={ styles["avatar"] }
       />
-      <div className={styles["card"]}>
-        <h4>{`${username} ${isAuthor ? "(Author)" : ""}`}</h4>
-        <h5> {new Date(date).toDateString()}</h5>
-        <p className={styles["comment-body"]}>{body}</p>
+      <div className={ styles["card"] }>
+        <h4>{ `${ username } ${ isAuthor ? "(Author)" : "" }` }</h4>
+        <h5> { getCommentPublishedAt() }</h5>
+        <p className={ styles["comment-body"] }>{ body }</p>
       </div>
     </div>
   );

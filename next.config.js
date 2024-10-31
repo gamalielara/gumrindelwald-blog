@@ -12,6 +12,8 @@ const nextConfig = {
 				REACT_APP_VERSION: require("./package.json").version,
 				REACT_GA_ID: process.env.REACT_GA_ID,
 				REACT_GA_INIT_FUNC: process.env.REACT_GA_INIT_FUNC,
+				REACT_APP_USR_IMG: process.env.REACT_APP_USR_IMG,
+				REACT_APP_ALLOWED_DOMAIN: process.env.REACT_APP_ALLOWED_DOMAIN
 		},
 		compiler: {}, // TODO: reenable console exception
 		async redirects() {

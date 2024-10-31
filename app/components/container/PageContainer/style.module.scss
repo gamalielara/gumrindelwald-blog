@@ -5,12 +5,13 @@
 
   width: var(--container-width);
   max-width: 100%;
-  padding: 0 1rem;
+
 
   display: flex;
   margin: 0 auto;
 
   @media screen and (min-width: $screen-md) {
+    padding: 0 1rem;
     display: block;
   }
 
