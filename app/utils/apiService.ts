@@ -101,9 +101,13 @@ class ApiService {
       };
 
 
-      await updateDoc(thisBlogDoc, {
-        comments: arrayUnion(commentsToPost),
-      });
+      try {
+        await updateDoc(thisBlogDoc, {
+          comments: arrayUnion(commentsToPost),
+        });
+      } catch (err) {
+        throw ( err as unknown as Error ).message;
+      }
     }
   };
 
@@ -117,9 +121,13 @@ class ApiService {
 
     const thisBlogLikes = thisBlog.data().likes;
 
-    await updateDoc(thisBlogDoc, {
-      likes: thisBlogLikes + ( isLiked ? -1 : 1 ),
-    });
+    try {
+      await updateDoc(thisBlogDoc, {
+        likes: thisBlogLikes + ( isLiked ? -1 : 1 ),
+      });
+    } catch (err) {
+      throw ( err as unknown as Error ).message;
+    }
   };
 }
 

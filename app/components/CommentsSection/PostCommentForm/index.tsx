@@ -48,7 +48,7 @@ const PostCommentForm: React.FC<Props> = ({ blogId }) => {
       setEmail("");
       setBody("");
     } catch (err) {
-      showToast(( err as unknown as Error ).message);
+      showToast(err);
     }
   };
 

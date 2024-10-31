@@ -43,18 +43,6 @@
     &::before {
       content: var(--like-icon);
     }
-
-    &[data-is-clicked="true"] {
-      &[data-has-action="true"] {
-        &::after {
-          content: url("../../../assets/svg/smile.svg");
-          position: absolute;
-          width: 100%;
-          top: 0;
-          animation: smileIconZoomIn 1.5s forwards;
-        }
-      }
-    }
   }
 
   &--comment {
