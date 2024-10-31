@@ -24,10 +24,10 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
     useContext(ClientContext);
   const { id: articleId } = article;
 
-  const [isLiked, setIsLiked] = useState(false);
+  const [ isLiked, setIsLiked ] = useState(false);
 
   const getThisUserLikesList = () => {
-    if (typeof window === "undefined") return [];
+    if ( typeof window === "undefined" ) return [];
 
     return JSON.parse(
       localStorage.getItem(LocalStorageKey.LIKES) ?? "[]"
@@ -43,16 +43,14 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
     setIsLiked(isAlreadyLikedThisPost);
   }, []);
 
-  const onLikeClickHandler = async () => {
-    console.log("clicked! ", likes);
-
+  const onLikeClickHandler = async (e: MouseEvent) => {
     let newLikeList: string[];
 
-    if (isAlreadyLikedThisPost) {
+    if ( isAlreadyLikedThisPost ) {
       // Unlike this post
       newLikeList = thisUserCurrentLikesList.filter((id) => id !== articleId);
     } else {
-      newLikeList = [...thisUserCurrentLikesList];
+      newLikeList = [ ...thisUserCurrentLikesList ];
       newLikeList.push(articleId);
     }
 
@@ -61,10 +59,12 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
 
       // Update likes locally
       localStorage.setItem(LocalStorageKey.LIKES, JSON.stringify(newLikeList));
-      setLikes(likes + (isAlreadyLikedThisPost ? -1 : 1));
+      setLikes(likes + ( isAlreadyLikedThisPost ? -1 : 1 ));
       setIsLiked(!isAlreadyLikedThisPost);
     } catch (err) {
       showToast(err);
+    } finally {
+      ( e.target as HTMLButtonElement ).setAttribute("data-is-clicked", "true");
     }
   };
 
@@ -88,19 +88,19 @@ const ActionButtons: React.FC<Props> = ({ article }) => {
   const debouncedLikeHandler = useDebounce(onLikeClickHandler, 5000);
 
   return (
-    <div className={styles["action-buttons-wrapper"]}>
+    <div className={ styles["action-buttons-wrapper"] }>
       <button
-        className={`${styles["action-button"]} ${styles["action-button--like"]}`}
-        data-has-action={isLiked}
-        onClick={debouncedLikeHandler}
+        className={ `${ styles["action-button"] } ${ styles["action-button--like"] }` }
+        data-has-action={ isLiked }
+        onClick={ debouncedLikeHandler }
       >
-        {likes}
+        { likes }
       </button>
       <button
-        className={`${styles["action-button"]} ${styles["action-button--comment"]}`}
-        onClick={onCommentHandler}
+        className={ `${ styles["action-button"] } ${ styles["action-button--comment"] }` }
+        onClick={ onCommentHandler }
       >
-        {comments.length}
+        { comments.length }
       </button>
     </div>
   );

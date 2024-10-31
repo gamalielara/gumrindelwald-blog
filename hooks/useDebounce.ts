@@ -6,7 +6,7 @@ export default <T extends Function>(func: T, delay = 1000) => {
   const shouldWait = useRef<boolean>(false);
 
   return function (...args: unknown[]) {
-    if (shouldWait.current) {
+    if ( shouldWait.current ) {
       showToast(
         "You seem pretty fast clicking that button. No need to hurry, please wait for a while :)"
       );
@@ -15,8 +15,7 @@ export default <T extends Function>(func: T, delay = 1000) => {
 
     clearTimeout(timeoutId.current);
 
-    //@ts-ignore
-    func.apply(this, ...args);
+    func(...args);
     shouldWait.current = true;
 
     timeoutId.current = setTimeout(() => {

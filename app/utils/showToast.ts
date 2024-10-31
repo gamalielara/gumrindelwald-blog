@@ -1,15 +1,15 @@
 import { CustomEventNames } from "./constants";
 
 export const showToast = (content: unknown) => {
-  if (typeof window === "undefined") {
-    // Handle error in server component later
+  if ( typeof window === "undefined" ) {
+    // TODO: Handle error in server component later
     console.log(content);
     return;
   }
 
   let text = content;
 
-  if (content instanceof Error) {
+  if ( content instanceof Error ) {
     text = content.message;
   }
 
