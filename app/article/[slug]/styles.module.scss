@@ -167,10 +167,24 @@
   & p > img {
     margin: auto;
     display: block;
-    border-radius: 10px;
     border-radius: 0.5rem;
     max-height: 50vh;
     object-fit: contain;
+  }
+
+
+  $max-indent: 10;
+
+  @for $i from 1 through $max-indent {
+    li:global(.ql-indent-#{$i}) {
+      margin-left: #{$i * 1.5}rem;
+
+      @if ($i % 2 == 0) {
+        list-style-type: disc;
+      } @else {
+        list-style-type: circle;
+      }
+    }
   }
 }
 
